@@ -5,7 +5,7 @@ icon: mdi:home
 title: Home
 heroImage: /logo.svg
 heroText: vanhung4499's Blog
-bgImage: "/assets/home_bg3.jpg"
+bgImage: "/assets/home_bg.jpg"
 heroFullScreen: true
 tagline: Learn, Learn More, Learn Forever!
 description:  Focus on Backend, DevOps, System, Automation, Productivity | Exploration & geek enthusiast，Software Engineer, Hackintosher.
