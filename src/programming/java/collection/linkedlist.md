@@ -6,7 +6,7 @@ categories:
   - java
 order: 3
 ---
-# 6.4 Giải thích chi tiết về LinkedList (Kèm mã nguồn)
+# Giải thích chi tiết về LinkedList (Kèm mã nguồn)
 
 Tôi là LinkedList, là đồng môn đệ tử với ArrayList, nhưng chúng tôi lại luyện công nghệ phụ thuộc hoàn toàn khác nhau. Đồng môn luyện công là mảng động, còn tôi luyện công là danh sách liên kết.
 

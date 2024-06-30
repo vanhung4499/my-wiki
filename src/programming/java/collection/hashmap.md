@@ -1290,11 +1290,11 @@ Tóm lại, để sử dụng bảng băm an toàn cho các luồng, nên sử d
 HashMap là một trong những cấu trúc dữ liệu phổ biến nhất trong Java, nó là một cấu trúc lưu trữ các cặp khóa - giá trị và cho phép truy cập nhanh vào giá trị dựa trên khóa. Dưới đây là tổng kết về HashMap:
 
 - HashMap sử dụng cấu trúc lưu trữ mảng kết hợp với danh sách liên kết hoặc cây đỏ đen, cho phép thực hiện các thao tác thêm, xóa, tìm kiếm với độ phức tạp O(1).
-- HashMap không an toàn đối với các luồng (non-thread-safe), do đó trong môi trường đa luồng cần sử dụng [ConcurrentHashMap](/programming/java/thread/ConcurrentHashMap) để đảm bảo an toàn.
+- HashMap không an toàn đối với các luồng (non-thread-safe), do đó trong môi trường đa luồng cần sử dụng [ConcurrentHashMap](/programming/java/thread/concurrenthashmap) để đảm bảo an toàn.
 - Cơ chế mở rộng của HashMap thực hiện bằng cách tăng kích thước mảng và tính lại giá trị hash, dẫn đến việc mở rộng có thể ảnh hưởng đến hiệu suất khi có nhiều phần tử.
 - Từ Java 8, HashMap sử dụng phương pháp nén danh sách và cây để tối ưu hóa việc lưu trữ một lượng lớn phần tử, cải thiện hiệu suất.
 - Key trong HashMap là duy nhất, nếu cố gắng lưu trữ key trùng lặp, giá trị sau sẽ ghi đè giá trị trước.
 - Bạn có thể thiết lập kích thước ban đầu và hệ số tải của HashMap, kích thước ban đầu chỉ ra kích thước ban đầu của mảng, hệ số tải chỉ ra tỷ lệ mà mảng sẽ được điền. Nói chung, kích thước ban đầu là 16, hệ số tải là 0.75.
-- Khi duyệt HashMap, nó không có thứ tự, vì vậy nếu bạn cần duyệt theo thứ tự, bạn nên sử dụng [TreeMap](https://javabebetter.cn/collection/treemap.html).
+- Khi duyệt HashMap, nó không có thứ tự, vì vậy nếu bạn cần duyệt theo thứ tự, bạn nên sử dụng [TreeMap](treemap).
 
 Tóm lại, HashMap là một cấu trúc dữ liệu hiệu quả với khả năng tìm kiếm và chèn nhanh chóng, nhưng cần chú ý đến vấn đề an toàn đối với các luồng và hiệu suất.

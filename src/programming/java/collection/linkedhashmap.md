@@ -261,3 +261,144 @@ public class MyLinkedHashMap<K, V> extends LinkedHashMap<K, V> {
 ```
 
 MyLinkedHashMap là một lớp tự định nghĩa, kế thừa từ LinkedHashMap và ghi đè phương thức `removeEldestEntry()` để giới hạn Map chỉ có thể chứa tối đa 5 cặp khóa-giá trị. Nếu vượt quá, phần tử đã thêm sớm nhất sẽ tự động bị loại bỏ.
+
+Hãy thử kiểm tra nó.
+
+```java
+MyLinkedHashMap<String, String> map = new MyLinkedHashMap<>(16, 0.75f, true);
+map.put("沉", "沉默王二");
+map.put("默", "沉默王二");
+map.put("王", "沉默王二");
+map.put("二", "沉默王二");
+map.put("一枚有趣的程序员", "一枚有趣的程序员");
+
+System.out.println(map);
+
+map.put("一枚有颜值的程序员", "一枚有颜值的程序员");
+System.out.println(map);
+
+map.put("一枚有才华的程序员", "一枚有才华的程序员");
+System.out.println(map);
+```
+
+Kết quả đầu ra như sau:
+
+```
+{沉=沉默王二, 默=沉默王二, 王=沉默王二, 二=沉默王二, 一枚有趣的程序员=一枚有趣的程序员}
+{默=沉默王二, 王=沉默王二, 二=沉默王二, 一枚有趣的程序员=一枚有趣的程序员, 一枚有颜值的程序员=一枚有颜值的程序员}
+{王=沉默王二, 二=沉默王二, 一枚有趣的程序员=一枚有趣的程序员, 一枚有颜值的程序员=一枚有颜值的程序员, 一枚有才华的程序员=一枚有才华的程序员}
+```
+
+`沉=沉默王二` và `默=沉默王二` lần lượt bị loại bỏ.
+
+Giả sử trước khi put “一枚有才华的程序员” chúng ta get giá trị với key “默”:
+
+```java
+MyLinkedHashMap<String, String> map = new MyLinkedHashMap<>(16, 0.75f, true);
+map.put("沉", "沉默王二");
+map.put("默", "沉默王二");
+map.put("王", "沉默王二");
+map.put("二", "沉默王二");
+map.put("一枚有趣的程序员", "一枚有趣的程序员");
+
+System.out.println(map);
+
+map.put("一枚有颜值的程序员", "一枚有颜值的程序员");
+System.out.println(map);
+
+map.get("默");
+map.put("一枚有才华的程序员", "一枚有才华的程序员");
+System.out.println(map);
+```
+
+Kết quả đầu ra sẽ thay đổi, đúng không?
+
+```
+{沉=沉默王二, 默=沉默王二, 王=沉默王二, 二=沉默王二, 一枚有趣的程序员=一枚有趣的程序员}
+{默=沉默王二, 王=沉默王二, 二=沉默王二, 一枚有趣的程序员=一枚有趣的程序员, 一枚有颜值的程序员=一枚有颜值的程序员}
+{二=沉默王二, 一枚有趣的程序员=一枚有趣的程序员, 一枚有颜值的程序员=一枚有颜值的程序员, 默=沉默王二, 一枚有才华的程序员=一枚有才华的程序员}
+```
+
+`沉=沉默王二` và `王=沉默王二` bị loại bỏ.
+
+Vậy LinkedHashMap duy trì thứ tự truy cập như thế nào? Các bạn có thể quan tâm nghiên cứu ba phương thức sau:
+
+```java
+void afterNodeAccess(Node<K,V> p) { }
+void afterNodeInsertion(boolean evict) { }
+void afterNodeRemoval(Node<K,V> p) { }
+```
+
+`afterNodeAccess()` sẽ được gọi khi phương thức `get()` được gọi, `afterNodeInsertion()` sẽ được gọi khi phương thức `put()` được gọi, và `afterNodeRemoval()` sẽ được gọi khi phương thức `remove()` được gọi.
+
+Hãy lấy `afterNodeAccess()` làm ví dụ để giải thích:
+
+```java
+/**
+ * Sau khi truy cập nút, di chuyển nút đến cuối danh sách liên kết
+ *
+ * @param e nút cần di chuyển
+ */
+void afterNodeAccess(HashMap.Node<K,V> e) { // move node to last
+    LinkedHashMap.Entry<K,V> last;
+    if (accessOrder && (last = tail) != e) { // Nếu sắp xếp theo thứ tự truy cập và nút được truy cập không phải là nút cuối
+        LinkedHashMap.Entry<K,V> p = (LinkedHashMap.Entry<K,V>)e, b = p.before, a = p.after;
+        p.after = null; // Đặt nút sau của nút cần di chuyển thành null
+        if (b == null)
+            head = a; // Nếu nút cần di chuyển không có nút trước đó, đặt nút này làm nút đầu
+        else
+            b.after = a; // Đặt nút sau của nút trước đó thành nút sau của nút cần di chuyển
+        if (a != null)
+            a.before = b; // Nếu nút cần di chuyển có nút sau, đặt nút trước của nút sau thành nút trước của nút cần di chuyển
+        else
+            last = b; // Nếu nút cần di chuyển không có nút sau, đặt nút trước đó thành nút cuối
+        if (last == null)
+            head = p; // Nếu nút cuối là null, đặt nút cần di chuyển làm nút đầu
+        else {
+            p.before = last; // Đặt nút trước của nút cần di chuyển thành nút cuối
+            last.after = p; // Đặt nút sau của nút cuối thành nút cần di chuyển
+        }
+        tail = p; // Đặt nút cần di chuyển làm nút cuối
+        ++modCount; // Tăng bộ đếm sửa đổi
+    }
+}
+```
+
+Phần tử nào được `get` thì phần tử đó sẽ được đặt ở cuối danh sách. Hiểu chưa nào?
+
+Các bạn có thể thắc mắc tại sao LinkedHashMap có thể thực hiện bộ nhớ đệm LRU (Least Recently Used) và loại bỏ phần tử ít được truy cập nhất.
+
+Khi chèn phần tử, phương thức `put()` sẽ được gọi, và phương thức này sẽ gọi `afterNodeInsertion()`, phương thức này đã được LinkedHashMap ghi đè.
+
+```java
+/**
+ * Sau khi chèn nút, nếu cần, có thể xóa phần tử được thêm đầu tiên
+ *
+ * @param evict có cần xóa phần tử được thêm đầu tiên hay không
+ */
+void afterNodeInsertion(boolean evict) { // possibly remove eldest
+    LinkedHashMap.Entry<K,V> first;
+    if (evict && (first = head) != null && removeEldestEntry(first)) { // Nếu cần xóa phần tử được thêm đầu tiên
+        K key = first.key; // Lấy khóa của phần tử cần xóa
+        removeNode(hash(key), key, null, false, true); // Gọi phương thức removeNode() để xóa phần tử
+    }
+}
+```
+
+Phương thức `removeEldestEntry()` sẽ kiểm tra xem phần tử đầu tiên có vượt quá phạm vi cho phép hay không, nếu có, phương thức `removeNode()` sẽ được gọi để xóa phần tử ít được truy cập nhất.
+
+### 03. Kết luận
+
+Do LinkedHashMap phải duy trì danh sách liên kết hai chiều, thời gian cần thiết cho các thao tác chèn và xóa trong LinkedHashMap sẽ nhiều hơn so với HashMap.
+
+Đây là điều không thể tránh khỏi, đúng không? Muốn đội vương miện thì phải chịu được sức nặng của nó. Nếu muốn duy trì thứ tự của các phần tử, phải trả giá một chút.
+
+Hãy tóm tắt một chút nhé.
+
+Trước tiên, chúng ta biết rằng HashMap là một cấu trúc dữ liệu bảng băm thường dùng, nó có thể thực hiện nhanh chóng các thao tác tìm kiếm và chèn cặp khóa-giá trị. Tuy nhiên, HashMap bản thân không đảm bảo thứ tự của các cặp khóa-giá trị. Nếu chúng ta cần duyệt qua các cặp khóa-giá trị theo thứ tự chèn vào hoặc thứ tự truy cập, thì chúng ta cần sử dụng LinkedHashMap.
+
+LinkedHashMap kế thừa từ HashMap, và trên cơ sở của HashMap, nó thêm một danh sách liên kết hai chiều để duy trì thứ tự của các cặp khóa-giá trị. Danh sách này có thể sắp xếp theo thứ tự chèn vào hoặc theo thứ tự truy cập. Nút đầu của danh sách này biểu thị phần tử được chèn vào hoặc truy cập đầu tiên, và nút cuối biểu thị phần tử được chèn vào hoặc truy cập cuối cùng. Chức năng của danh sách này là giúp LinkedHashMap duy trì thứ tự của các cặp khóa-giá trị, và có thể duyệt qua chúng theo thứ tự.
+
+LinkedHashMap cũng cung cấp hai phương thức khởi tạo để xác định cách sắp xếp, đó là sắp xếp theo thứ tự chèn vào và sắp xếp theo thứ tự truy cập. Trong trường hợp sắp xếp theo thứ tự truy cập, mỗi lần truy cập một cặp khóa-giá trị, cặp đó sẽ được chuyển đến cuối danh sách để đảm bảo các phần tử được truy cập gần đây nhất ở cuối cùng. Nếu cần xóa phần tử được chèn vào đầu tiên, có thể thực hiện bằng cách ghi đè phương thức `removeEldestEntry()`.
+
+Tóm lại, LinkedHashMap duy trì một danh sách liên kết hai chiều để giữ thứ tự của các cặp khóa-giá trị, và có thể duyệt qua chúng theo thứ tự chèn vào hoặc truy cập. Nếu bạn cần duyệt qua các cặp khóa-giá trị theo thứ tự, LinkedHashMap là lựa chọn tốt nhất cho bạn!
