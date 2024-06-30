@@ -54,6 +54,11 @@ features:
       details: Software design, not user interface design. Including design patterns, system architecture, etc.
       link: /design/
 
+    - title: Interview
+      icon: mdi:account-tie
+      details: Interview preparation, including resume, questions, leetcode, system design, etc.
+      link: /interview/
+
 
 footer: <div><span>Powered by <a href="https://v2.vuepress.vuejs.org/zh/" target="_blank">VuePress</a></span>|<span>Theme by <a href="https://theme-hope.vuejs.press/zh/" target="_blank">Hope</a></span></div>
 ---

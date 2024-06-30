@@ -163,6 +163,11 @@ export const enNavbar = navbar([
     link: "/project/",
   },
   {
+    text: "Interview",
+    icon: "mdi:account-tie",
+    link: "/interview/",
+  },
+  {
     text: "About",
     icon: "mdi:about",
     children: [

@@ -1,8 +1,8 @@
 ---
-title: Collection
+title: JVM
 index: false
 dir:
-  order: 2
+  order: 6
 ---
 
 <Catalog />

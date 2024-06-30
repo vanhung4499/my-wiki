@@ -1,8 +1,8 @@
 ---
-title: Collection
+title: Concurrency
 index: false
 dir:
-  order: 2
+  order: 5
 ---
 
 <Catalog />

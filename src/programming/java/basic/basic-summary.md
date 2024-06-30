@@ -2,8 +2,6 @@
 categories:
   - java
 title: Java Basic Summary
-date created: 2023-07-02
-date modified: 2024-04-20
 tags:
   - java
 order: -1
@@ -29,13 +27,13 @@ double|Double|64
 Các kiểu cơ bản có thể được gán giá trị cho các kiểu đóng gói tương ứng và ngược lại thông qua quá trình autoboxing và unboxing. Ví dụ:
 
 ```java
-Integer x = 2; // Autoboxing 
+Integer x = 2; // Autoboxing
 int y = x; // Unboxing
 ```
 
 ### Cache Pool
 
-Sự khác biệt giữa `new Integer(123)` và `Integer.valueOf(123)` là:  
+Sự khác biệt giữa `new Integer(123)` và `Integer.valueOf(123)` là:
 
 - `new Integer(123)` sẽ tạo một đối tượng mới mỗi lần gọi
 - `Integer.valueOf(123)` sẽ sử dụng đối tượng từ bộ nhớ cache, nếu đã tồn tại. Nhiều lần gọi sẽ trả về cùng một tham chiếu đến đối tượng.
@@ -136,19 +134,19 @@ public final class String
 
 **1. Có thể lưu trữ giá trị hash và bộ đệm**
 
-Vì giá trị hash của String thường được sử dụng, ví dụ như khi String được sử dụng làm khóa trong HashMap. Tính không thay đổi của String đảm bảo giá trị hash cũng không thay đổi, do đó chỉ cần tính toán một lần.  
+Vì giá trị hash của String thường được sử dụng, ví dụ như khi String được sử dụng làm khóa trong HashMap. Tính không thay đổi của String đảm bảo giá trị hash cũng không thay đổi, do đó chỉ cần tính toán một lần.
 
-**2. Yêu cầu của String Pool**  
+**2. Yêu cầu của String Pool**
 
-Nếu một đối tượng String đã được tạo, thì sẽ lấy tham chiếu từ String Pool. Chỉ khi String là không thay đổi, mới có thể sử dụng String Pool.  
+Nếu một đối tượng String đã được tạo, thì sẽ lấy tham chiếu từ String Pool. Chỉ khi String là không thay đổi, mới có thể sử dụng String Pool.
 
 ![Pasted image 20230702160800](https://raw.githubusercontent.com/vanhung4499/images/master/snap/Pasted%20image%2020230702160800.png)
 
-**3. Bảo mật**  
+**3. Bảo mật**
 
-String thường được sử dụng làm tham số, tính không thay đổi của String đảm bảo tham số không thay đổi. Ví dụ: trong trường hợp sử dụng làm tham số kết nối mạng, nếu String là có thể thay đổi, thì trong quá trình kết nối mạng, String bị thay đổi, phía sử dụng String có thể nghĩ rằng đang kết nối với máy chủ khác, trong khi thực tế không nhất thiết như vậy.  
+String thường được sử dụng làm tham số, tính không thay đổi của String đảm bảo tham số không thay đổi. Ví dụ: trong trường hợp sử dụng làm tham số kết nối mạng, nếu String là có thể thay đổi, thì trong quá trình kết nối mạng, String bị thay đổi, phía sử dụng String có thể nghĩ rằng đang kết nối với máy chủ khác, trong khi thực tế không nhất thiết như vậy.
 
-**4. An toàn đa luồng**  
+**4. An toàn đa luồng**
 
 Tính không thay đổi của String tự nhiên có tính an toàn đa luồng, có thể sử dụng an toàn trong nhiều luồng.
 
@@ -204,7 +202,7 @@ System.out.println(s4 == s5);  // true
 
 ### Truyền tham số (pass paramater)
 
-Tham số trong Java được truyền theo cách truyền giá trị, chứ không phải truyền tham chiếu.  
+Tham số trong Java được truyền theo cách truyền giá trị, chứ không phải truyền tham chiếu.
 
 Trong đoạn mã dưới đây, `dog` trong hàm `main` là một con trỏ, lưu trữ địa chỉ của đối tượng. Khi một tham số được truyền vào một phương thức, thực chất là truyền địa chỉ của đối tượng dưới dạng giá trị cho tham số hình thức. Do đó, khi thay đổi đối tượng mà con trỏ đang trỏ đến trong phương thức, hai con trỏ này sẽ trỏ đến hai đối tượng hoàn toàn khác nhau, và việc thay đổi nội dung của đối tượng một bên sẽ không ảnh hưởng đến bên kia.
 
@@ -351,12 +349,12 @@ Từ khóa `protected` được sử dụng để chỉ ra rằng thành viên c
 
 Một module tốt được thiết kế để ẩn tất cả các chi tiết cài đặt, tách rời giao diện (interface) của nó và cài đặt một cách rõ ràng. Các module chỉ giao tiếp thông qua giao diện (interface) của chúng, một module không cần biết về cách thức hoạt động bên trong của các module khác, điều này được gọi là ẩn thông tin hoặc đóng gói. Do đó, quyền truy cập nên được sử dụng để giới hạn việc truy cập từ bên ngoài cho mỗi lớp hoặc thành viên.
 
-Nếu một phương thức trong lớp con ghi đè phương thức trong lớp cha, thì quyền truy cập của phương thức trong lớp con không được phép thấp hơn quyền truy cập của phương thức trong lớp cha. Điều này đảm bảo rằng mọi nơi mà một thể hiện của lớp cha có thể được sử dụng, một thể hiện của lớp con cũng có thể được sử dụng, đồng nghĩa với việc tuân thủ **nguyên tắc thay thế Liskov**.  
+Nếu một phương thức trong lớp con ghi đè phương thức trong lớp cha, thì quyền truy cập của phương thức trong lớp con không được phép thấp hơn quyền truy cập của phương thức trong lớp cha. Điều này đảm bảo rằng mọi nơi mà một thể hiện của lớp cha có thể được sử dụng, một thể hiện của lớp con cũng có thể được sử dụng, đồng nghĩa với việc tuân thủ **nguyên tắc thay thế Liskov**.
 
 Các trường không bao giờ được công khai, vì điều này sẽ mất đi sự kiểm soát về hành vi thay đổi trường từ phía khách hàng. Ví dụ, trong ví dụ dưới đây, `AccessExample` có trường `id` công khai. Nếu tại một thời điểm nào đó, chúng ta muốn sử dụng `int` để lưu trữ trường `id`, chúng ta sẽ phải sửa đổi tất cả mã khách hàng.
 
 ```java
-public class AccessExample { public String id; } 
+public class AccessExample { public String id; }
 ```
 
 Thay vào đó, có thể sử dụng các phương thức `getter` và `setter` công khai để thay thế trường công khai, điều này cho phép kiểm soát hành vi thay đổi trường.
@@ -681,7 +679,7 @@ public class EqualExample {
 
 ### hashCode()
 
-Phương thức `hashCode()` trả về giá trị băm (hash code), trong khi `equals()` được sử dụng để kiểm tra xem hai đối tượng có tương đương nhau hay không. Hai đối tượng tương đương nhau sẽ có cùng giá trị băm, nhưng hai đối tượng có cùng giá trị băm không nhất thiết là tương đương nhau.  
+Phương thức `hashCode()` trả về giá trị băm (hash code), trong khi `equals()` được sử dụng để kiểm tra xem hai đối tượng có tương đương nhau hay không. Hai đối tượng tương đương nhau sẽ có cùng giá trị băm, nhưng hai đối tượng có cùng giá trị băm không nhất thiết là tương đương nhau.
 
 Khi ghi đè phương thức `equals()`, luôn nên ghi đè phương thức `hashCode()` để đảm bảo rằng hai đối tượng tương đương sẽ có cùng giá trị băm.
 

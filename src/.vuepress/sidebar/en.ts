@@ -40,4 +40,7 @@ export const enSidebar = sidebar({
 
   // Project
   "/project/": "structure",
+
+  // Interview
+  "/interview/": "structure",
 });

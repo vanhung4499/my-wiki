@@ -1,8 +1,8 @@
 ---
-title: Collection
+title: IO
 index: false
 dir:
-  order: 2
+  order: 3
 ---
 
 <Catalog />

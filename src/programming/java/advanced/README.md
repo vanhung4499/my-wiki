@@ -1,8 +1,8 @@
 ---
-title: Collection
+title: Advanced
 index: false
 dir:
-  order: 2
+  order: 4
 ---
 
 <Catalog />
