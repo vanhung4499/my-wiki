@@ -3,6 +3,7 @@ title: Java
 icon: devicon:java
 tags: ['java']
 categories: ['java']
+star: true
 ---
 
 ## :book: Contents
@@ -110,4 +111,3 @@ categories: ['java']
 - [[JVM Command Line Tools]]
 - [[JVM GUI Tools]]
 - [[JVM In Action]]
-
