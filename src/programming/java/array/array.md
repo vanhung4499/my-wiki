@@ -65,9 +65,9 @@ Tương tự, cách khởi tạo mảng cũng có nhiều loại, phổ biến n
 int[] anArray = new int[10];
 ```
 
-Dòng mã trên sử dụng từ khóa `new`, điều này có nghĩa là mảng thực sự là một đối tượng, chỉ có việc tạo đối tượng mới sử dụng từ khóa `new`, [kiểu dữ liệu cơ bản](/programming/java/basic/grammar/basic-data-type.html) thì không (các kiểu gói của dữ liệu cơ bản có thể sử dụng `new`, vì kiểu gói là đối tượng). Sau đó, chúng ta cần chỉ định độ dài của mảng trong dấu ngoặc vuông.
+Dòng mã trên sử dụng từ khóa `new`, điều này có nghĩa là mảng thực sự là một đối tượng, chỉ có việc tạo đối tượng mới sử dụng từ khóa `new`, [kiểu dữ liệu cơ bản](/programming/java/basic/basic-data-type) thì không (các kiểu gói của dữ liệu cơ bản có thể sử dụng `new`, vì kiểu gói là đối tượng). Sau đó, chúng ta cần chỉ định độ dài của mảng trong dấu ngoặc vuông.
 
-Lúc này, mỗi phần tử trong mảng sẽ được khởi tạo với giá trị mặc định, kiểu `int` sẽ là 0, kiểu `Object` sẽ là null. Các kiểu dữ liệu khác nhau có giá trị mặc định khác nhau, bạn có thể tham khảo [bài viết trước](/programming/java/basic/grammar/basic-data-type).
+Lúc này, mỗi phần tử trong mảng sẽ được khởi tạo với giá trị mặc định, kiểu `int` sẽ là 0, kiểu `Object` sẽ là null. Các kiểu dữ liệu khác nhau có giá trị mặc định khác nhau, bạn có thể tham khảo [bài viết trước](/programming/java/basic/basic-data-type).
 
 Ngoài ra, còn có thể sử dụng dấu ngoặc nhọn để trực tiếp khởi tạo các phần tử trong mảng:
 

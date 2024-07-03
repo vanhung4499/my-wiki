@@ -2,7 +2,7 @@
 title: Concurrency
 index: false
 dir:
-  order: 5
+  order: 18
 ---
 
 <Catalog />

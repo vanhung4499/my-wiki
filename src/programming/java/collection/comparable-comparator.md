@@ -56,7 +56,7 @@ public class Cmower implements Comparable<Cmower> {
 
 Trong ví dụ trên, tôi đã tạo một lớp Cmower, có hai trường: age và name. Lớp Cmower implement interface Comparable và override phương thức `compareTo()`.
 
-Kết quả đầu ra của chương trình là "Jerry trẻ tuổi và triển vọng hơn", vì wangsan nhỏ hơn wanger ba tuổi. Cơ sở cho kết quả này là phương thức `compareTo()`, phương thức này trả về giá trị âm, không hoặc dương, biểu thị rằng đối tượng này nhỏ hơn, bằng hoặc lớn hơn đối tượng được so sánh. Nếu loại đối tượng cụ thể không thể so sánh với đối tượng này, nó sẽ ném ra ngoại lệ ClassCastException (từ khi có [generic](/programming/java/basic/extra/generic), trường hợp này đã ít xảy ra hơn).
+Kết quả đầu ra của chương trình là "Jerry trẻ tuổi và triển vọng hơn", vì wangsan nhỏ hơn wanger ba tuổi. Cơ sở cho kết quả này là phương thức `compareTo()`, phương thức này trả về giá trị âm, không hoặc dương, biểu thị rằng đối tượng này nhỏ hơn, bằng hoặc lớn hơn đối tượng được so sánh. Nếu loại đối tượng cụ thể không thể so sánh với đối tượng này, nó sẽ ném ra ngoại lệ ClassCastException (từ khi có [generic](/programming/java/extra/generic), trường hợp này đã ít xảy ra hơn).
 
 ### 02. Comparator
 

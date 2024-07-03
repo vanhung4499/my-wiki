@@ -24,7 +24,7 @@ Khi nhắc đến lớp bất biến, hầu hết các lập trình viên đều
 
 #### 1) Yêu cầu của Pool Constants
 
-[String Constant Pool](/programming/java/basic/string/constant-pool) là một khu vực đặc biệt trong bộ nhớ heap của Java. Khi tạo một đối tượng String, nếu chuỗi này chưa tồn tại trong pool hằng số, một đối tượng mới sẽ được tạo ra; nếu đã tồn tại, chỉ có thể tham chiếu đến đối tượng đã có mà không tạo mới, giúp giảm thiểu chi phí bộ nhớ của JVM và tăng hiệu suất.
+[String Constant Pool](/programming/java/string/constant-pool) là một khu vực đặc biệt trong bộ nhớ heap của Java. Khi tạo một đối tượng String, nếu chuỗi này chưa tồn tại trong pool hằng số, một đối tượng mới sẽ được tạo ra; nếu đã tồn tại, chỉ có thể tham chiếu đến đối tượng đã có mà không tạo mới, giúp giảm thiểu chi phí bộ nhớ của JVM và tăng hiệu suất.
 
 #### 2) Yêu cầu của hashCode
 

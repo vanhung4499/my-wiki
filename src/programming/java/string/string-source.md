@@ -56,7 +56,7 @@ public boolean equals(Object anObject) {
 }
 ```
 
-“Thứ tư, [String và StringBuffer, StringBuilder](/programming/java/basic/string/builder-buffer.html) đều thực thi giao diện CharSequence, vì vậy chúng là những người anh em gần gũi nhau. Bởi vì String là không thay đổi, vì vậy khi cần ghép chuỗi, bạn có thể xem xét hai người anh em tốt hơn là StringBuffer và StringBuilder, vì chúng là có thể thay đổi.”
+“Thứ tư, [String và StringBuffer, StringBuilder](/programming/java/string/builder-buffer.html) đều thực thi giao diện CharSequence, vì vậy chúng là những người anh em gần gũi nhau. Bởi vì String là không thay đổi, vì vậy khi cần ghép chuỗi, bạn có thể xem xét hai người anh em tốt hơn là StringBuffer và StringBuilder, vì chúng là có thể thay đổi.”
 
 ### Tại sao String sau này được tối ưu hóa từ mảng char sang mảng byte
 
@@ -437,4 +437,4 @@ public String trim() {
 
 Ví dụ: `"  java   ".trim()` sẽ trả về "java".
 
-Ngoài ra, còn có các phương thức như [split](/programming/java/basic/string/split), [equals](/programming/java/basic/string/equals), [join](/programming/java/basic/string/join) và nhiều phương thức khác, chúng ta sẽ cụ thể hơn trong các bài viết sau.
+Ngoài ra, còn có các phương thức như [split](/programming/java/string/split), [equals](/programming/java/string/equals), [join](/programming/java/string/join) và nhiều phương thức khác, chúng ta sẽ cụ thể hơn trong các bài viết sau.

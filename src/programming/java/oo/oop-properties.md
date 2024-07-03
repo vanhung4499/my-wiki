@@ -352,7 +352,7 @@ Mặc dù Java không hỗ trợ đa kế thừa, nhưng có ba cách để đ�
 
 **Kế thừa nhiều tầng:** Lớp con kế thừa lớp cha, và lớp cha nếu kế thừa các lớp khác thì đó được gọi là **kế thừa nhiều tầng**. Theo cách này, lớp con sẽ có tất cả các thuộc tính và phương thức của các lớp được kế thừa.
 
-[Triển khai interface](/programming/java/basic/oo/interface.html) chắc chắn là cách tốt nhất để đáp ứng nhu cầu sử dụng đa kế thừa. Một lớp có thể triển khai nhiều interface để đáp ứng nhu cầu phong phú và môi trường phức tạp.
+[Triển khai interface](/programming/java/oo/interface.html) chắc chắn là cách tốt nhất để đáp ứng nhu cầu sử dụng đa kế thừa. Một lớp có thể triển khai nhiều interface để đáp ứng nhu cầu phong phú và môi trường phức tạp.
 
 So với lớp, **lớp là một thực thể, có thuộc tính và phương thức, trong khi interface thiên về một tập hợp các phương thức**.
 
@@ -431,13 +431,13 @@ Khi lớp Cat2 triển khai các interface doA và doB, nó cần triển khai c
 
 #### 05. Đặc điểm của kế thừa
 
-Nội dung chính của kế thừa là lớp con kế thừa lớp cha và ghi đè phương thức của lớp cha. Khi sử dụng thuộc tính hoặc phương thức của lớp con, trước tiên cần tạo một đối tượng, và đối tượng này được tạo thông qua [phương thức khởi tạo (constructor)](/programming/java/basic/oo/constructor). Trong phương thức khởi tạo, chúng ta có thể cần gọi một số thuộc tính và phương thức của lớp cha và lớp con, vì vậy cần phải nắm vững [từ khóa this và super](/programming/java/basic/oo/this-super).
+Nội dung chính của kế thừa là lớp con kế thừa lớp cha và ghi đè phương thức của lớp cha. Khi sử dụng thuộc tính hoặc phương thức của lớp con, trước tiên cần tạo một đối tượng, và đối tượng này được tạo thông qua [phương thức khởi tạo (constructor)](/programming/java/oo/constructor). Trong phương thức khởi tạo, chúng ta có thể cần gọi một số thuộc tính và phương thức của lớp cha và lớp con, vì vậy cần phải nắm vững [từ khóa this và super](/programming/java/oo/this-super).
 
-Sau khi tạo đối tượng này, chúng ta có thể gọi phương thức của lớp cha đã được ghi đè. Lưu ý sự khác biệt giữa [ghi đè (override) và nạp chồng (overload)](/programming/java/basic/extra/override-overload.html).
+Sau khi tạo đối tượng này, chúng ta có thể gọi phương thức của lớp cha đã được ghi đè. Lưu ý sự khác biệt giữa [ghi đè (override) và nạp chồng (overload)](/programming/java/extra/override-overload.html).
 
 ##### Từ khóa `this` và `super`
 
-> Sẽ được giải thích chi tiết hơn ở [phần sau](/programming/java/basic/oo/this-super), ở đây chúng ta chỉ đơn giản tìm hiểu.
+> Sẽ được giải thích chi tiết hơn ở [phần sau](/programming/java/oo/this-super), ở đây chúng ta chỉ đơn giản tìm hiểu.
 
 Từ khóa `this` và `super` là các kiến thức rất quan trọng trong kế thừa, chúng lần lượt đại diện cho tham chiếu đến đối tượng hiện tại và tham chiếu đến đối tượng của lớp cha. Chúng có nhiều điểm tương đồng nhưng cũng có một số khác biệt.
 
@@ -459,7 +459,7 @@ super() // Gọi phương thức khởi tạo của lớp cha
 
 ##### Phương thức khởi tạo (Constructor)
 
-[Phương thức khởi tạo](/programming/java/basic/oo/construct.html) là một phương thức đặc biệt, **nó là một phương thức cùng tên với lớp**. Trong kế thừa, phương thức khởi tạo là một phương thức khá đặc biệt (ví dụ như không thể kế thừa), vì vậy cần hiểu và học các quy tắc và yêu cầu của phương thức khởi tạo trong kế thừa.
+[Phương thức khởi tạo](/programming/java/oo/construct) là một phương thức đặc biệt, **nó là một phương thức cùng tên với lớp**. Trong kế thừa, phương thức khởi tạo là một phương thức khá đặc biệt (ví dụ như không thể kế thừa), vì vậy cần hiểu và học các quy tắc và yêu cầu của phương thức khởi tạo trong kế thừa.
 
 Có một số điểm cần lưu ý về phương thức khởi tạo trong kế thừa:
 
@@ -495,7 +495,7 @@ class B extends A {
 Có thể đôi khi bạn viết kế thừa mà lớp con không sử dụng super() để gọi, chương trình vẫn không có vấn đề gì, thực tế là để tiết kiệm mã lệnh, hệ thống sẽ tự động thêm phương thức khởi tạo không tham số của lớp cha khi thực thi.
 ##### Ghi đè phương thức (Override)
 
-[Ghi đè phương thức](/programming/java/basic/basic-extra-meal/Overriding.html) nghĩa là trong lớp con xuất hiện một phương thức giống hệt với lớp cha (bao gồm kiểu trả về, tên phương thức, danh sách tham số), nó được xây dựng trên nền tảng của kế thừa. Bạn có thể hiểu đơn giản rằng phần **vỏ ngoài của phương thức không thay đổi, nhưng nội dung bên trong thì được viết lại**.
+[Ghi đè phương thức](/programming/java/extra/overriding) nghĩa là trong lớp con xuất hiện một phương thức giống hệt với lớp cha (bao gồm kiểu trả về, tên phương thức, danh sách tham số), nó được xây dựng trên nền tảng của kế thừa. Bạn có thể hiểu đơn giản rằng phần **vỏ ngoài của phương thức không thay đổi, nhưng nội dung bên trong thì được viết lại**.
 
 Dưới đây là một ví dụ đơn giản và dễ hiểu về ghi đè phương thức:
 
@@ -543,7 +543,7 @@ Các từ khóa trong Java có tác dụng sửa đổi hoặc giới hạn các
 
 Java cung cấp nhiều từ khóa, dùng để định nghĩa lớp, phương thức hoặc biến, thường được đặt ở đầu câu lệnh. Chúng chủ yếu được chia thành hai loại:
 
-- [Từ khóa truy cập](/programming/java/basic/oo/access-control.html), như public, private, protected, v.v.
+- [Từ khóa truy cập](/programming/java/oo/access-control.html), như public, private, protected, v.v.
 - Từ khóa không truy cập, như static, final, abstract, v.v.
 
 ##### Từ khóa quyền truy cập
@@ -605,7 +605,7 @@ class B2 extends B1 {
 
 Các từ khoá sửa đổi quyền truy cập được sử dụng để kiểm soát quyền truy cập, trong khi các từ khoá sửa đổi không phải quyền truy cập mỗi từ có vai trò riêng biệt. Dưới đây là giới thiệu về các từ khoá sửa đổi static, final, và abstract.
 
-###### [Từ Khoá Static](/programming/java/basic/oo/static.html)
+###### [Từ Khoá Static](/programming/java/oo/static.html)
 
 `static` dịch là "tĩnh", có thể được sử dụng cùng với biến, phương thức và lớp, được gọi là biến tĩnh, phương thức tĩnh (cũng được gọi là biến lớp, phương thức lớp). Nếu trong một lớp sử dụng từ khoá sửa đổi `static` để sửa đổi biến hoặc phương thức, chúng **có thể được truy cập trực tiếp thông qua lớp, không cần phải tạo một đối tượng của lớp để truy cập thành viên.**
 
@@ -630,7 +630,7 @@ class C2 extends C1 {
 }
 ```
 
-###### [Từ Khoá Final](/programming/java/basic/oo/final.html)
+###### [Từ Khoá Final](/programming/java/oo/final.html)
 
 `final` có nghĩa là "cuối cùng", có thể được sử dụng để sửa đổi biến, phương thức và lớp.
 
@@ -648,7 +648,7 @@ Lớp `final`:
 
 Vì vậy, cho dù là biến, phương thức hay lớp được sửa đổi bởi `final`, chúng đều mang ý nghĩa cuối cùng, không thể thay đổi nội dung.
 
-###### [Từ Khoá Abstract](/programming/java/basic/oo/abstract.html)
+###### [Từ Khoá Abstract](/programming/java/oo/abstract.html)
 
 `abstract` dịch là "trừu tượng", chủ yếu được sử dụng để sửa đổi lớp và phương thức, được gọi là lớp trừu tượng và phương thức trừu tượng.
 
@@ -702,7 +702,7 @@ Chuyển kiểu lên (upcasting) và chuyển kiểu xuống (downcasting) trong
 
 1.  `Object` là lớp **gốc** của cấu trúc kế thừa, tất cả các lớp đều mặc định kế thừa từ lớp `Object`.
 2.  Trong Java, tất cả các đối tượng đều có các phương thức mặc định từ lớp `Object`.
-3.  Lớp `Object` có một [phương thức khởi tạo](/programming/java/basic/oo/construct.html), và đó là **phương thức khởi tạo không tham số**.
+3.  Lớp `Object` có một [phương thức khởi tạo](/programming/java/oo/construct.html), và đó là **phương thức khởi tạo không tham số**.
 
 Lớp `Object` là lớp cha của tất cả các lớp trong Java, là đỉnh của cấu trúc kế thừa, và cũng là lớp trừu tượng nhất.
 
@@ -715,13 +715,13 @@ Phương thức `toString()` trả về chuỗi biểu diễn của đối tư�
 Phương thức `equals()` chủ yếu so sánh hai đối tượng xem chúng có bằng nhau hay không, vì sự bằng nhau của đối tượng không nhất thiết phải yêu cầu địa chỉ của hai đối tượng giống nhau, đôi khi chỉ cần nội dung của chúng giống nhau là đủ. Ví dụ, lớp `String` đã ghi đè phương thức `equals()` để so sánh nội dung của chuỗi xem có bằng nhau hay không.
 #### Chuyển Kiểu Lên
 
-**Chuyển kiểu lên**: Là quá trình tạo một đối tượng của lớp con (phạm vi hẹp hơn) và gán cho biến tham chiếu của lớp cha (phạm vi rộng hơn). Đây là quá trình chuyển đổi tự động. 
+**Chuyển kiểu lên**: Là quá trình tạo một đối tượng của lớp con (phạm vi hẹp hơn) và gán cho biến tham chiếu của lớp cha (phạm vi rộng hơn). Đây là quá trình chuyển đổi tự động.
 
 Khi biến tham chiếu của lớp cha trỏ đến đối tượng của lớp con, chỉ có thể sử dụng các phương thức đã được khai báo trong lớp cha, nhưng nếu phương thức đã bị ghi đè thì phương thức của lớp con sẽ được thực thi, nếu phương thức không bị ghi đè thì phương thức của lớp cha sẽ được thực thi.
 
 #### Chuyển Kiểu Xuống
 
-**Chuyển kiểu xuống**: Là quá trình chuyển đổi từ đối tượng của lớp cha (phạm vi rộng hơn) sang đối tượng của lớp con (phạm vi hẹp hơn), trong mã nguồn cần thêm dấu ngoặc đơn `()` để ép kiểu về lớp con. Tuy nhiên, biến tham chiếu của lớp cha phải thực sự trỏ đến đối tượng của lớp con mới có thể chuyển kiểu thành công. 
+**Chuyển kiểu xuống**: Là quá trình chuyển đổi từ đối tượng của lớp cha (phạm vi rộng hơn) sang đối tượng của lớp con (phạm vi hẹp hơn), trong mã nguồn cần thêm dấu ngoặc đơn `()` để ép kiểu về lớp con. Tuy nhiên, biến tham chiếu của lớp cha phải thực sự trỏ đến đối tượng của lớp con mới có thể chuyển kiểu thành công.
 
 Khi biến tham chiếu của lớp con trỏ đến đối tượng mà biến tham chiếu của lớp cha đang trỏ đến, thì quá trình chuyển kiểu xuống hoàn tất, và có thể gọi các phương thức đặc trưng của lớp con mà lớp cha không có.
 
@@ -909,7 +909,7 @@ class Parent {
 
 Trong chương trình trên, chúng ta đã thêm phương thức `read()` vào lớp Parent và phương thức `eat()` vào lớp Child, nhưng điều này không làm ảnh hưởng đến việc gọi `write()`.
 
-Phương thức `write()` vẫn hoạt động như trước mà không cần thay đổi mã xung quanh. 
+Phương thức `write()` vẫn hoạt động như trước mà không cần thay đổi mã xung quanh.
 
 Đặc tính tuyệt vời của đa hình là nó cho phép chúng ta "tách biệt những thay đổi và những thứ không thay đổi" khi chỉnh sửa mã.
 

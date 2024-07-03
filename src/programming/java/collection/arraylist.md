@@ -423,7 +423,7 @@ Phương thức này duyệt qua danh sách để tìm phần tử cần xóa. N
 
 **Lưu ý:**
 - Nếu có các phần tử trùng lặp, chỉ phần tử xuất hiện đầu tiên sẽ bị xóa.
-- Để biết thêm về cách so sánh hai chuỗi trong Java, tham khảo [Java String Equals](/programming/java/basic/string/equals).
+- Để biết thêm về cách so sánh hai chuỗi trong Java, tham khảo [Java String Equals](/programming/java/string/equals).
 
 Tiếp tục, hãy xem mã nguồn của phương thức `fastRemove()`:
 

@@ -135,7 +135,7 @@ Lý do chủ yếu có ba điều.
 
 Nếu muốn biết rõ hơn về các lý do này, Ba có thể đọc bài viết mà tớ từng viết.
 
-[Why are Java Strings Immutable?](/programming/java/basic/string/immutable)
+[Why are Java Strings Immutable?](/programming/java/string/immutable)
 
 Mọi thử nghiệm kế thừa từ một lớp final sẽ dẫn đến lỗi biên dịch. Hãy xem đoạn mã này.
 
@@ -169,6 +169,6 @@ Giá trị mặc định của trường name trong Writer là null, nhưng chú
 
 Về lớp không thay đổi (immutable class), chúng ta sẽ nói chi tiết sau.
 
-[Immutable Class](/programming/java/basic/oo/immutable)
+[Immutable Class](/programming/java/oo/immutable)
 
 Việc thiết kế một lớp là final có lợi cho tính an toàn, nhưng không nên làm điều này với ý định. Vì khi đánh dấu một lớp là final, nó ngụ ý rằng lớp đó không thể kế thừa, điều này sẽ gây khó khăn khi muốn sửa đổi các phương thức của lớp có vấn đề.

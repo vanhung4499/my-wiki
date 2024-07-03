@@ -2,7 +2,7 @@
 title: JVM
 index: false
 dir:
-  order: 6
+  order: 20
 ---
 
 <Catalog />

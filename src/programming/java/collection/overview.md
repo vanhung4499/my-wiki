@@ -452,7 +452,7 @@ for (String element : queue) {
 }
 ```
 
-Để có thứ tự ưu tiên, các phần tử cần phải triển khai [interface Comparable hoặc Comparator](/programming/java/basic/extra/comparable-comparator) (chúng ta sẽ thảo luận về điều này sau).
+Để có thứ tự ưu tiên, các phần tử cần phải triển khai [interface Comparable hoặc Comparator](/programming/java/extra/comparable-comparator) (chúng ta sẽ thảo luận về điều này sau).
 
 Đây là hàng ưu tiên được sắp xếp theo độ tuổi và tên gọi bằng cách triển khai interface Comparator.
 

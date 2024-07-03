@@ -38,7 +38,7 @@ Phương thức `.equals()` của lớp Object mặc định sử dụng toán t
 
 Nhưng trong thực tế, có nhiều lớp đã ghi đè phương thức `.equals()` vì việc so sánh địa chỉ bộ nhớ có yêu cầu khá khắt khe, không phù hợp với tất cả các trường hợp thực tế. Lấy lớp String làm ví dụ, khi chúng ta so sánh các chuỗi, chúng ta thực sự chỉ muốn kiểm tra xem nội dung của chúng có bằng nhau hay không, chứ không phải so sánh chúng có phải là cùng một đối tượng hay không.
 
-Hơn nữa, chuỗi còn có khái niệm [bể hằng số chuỗi (string constant pool)](/programming/java/basic/string/constant-pool.html), bản thân nó khuyến khích sử dụng cách tạo đối tượng chuỗi `String s = "abc"` thay vì dùng từ khóa `new`, vì có thể lưu trữ chuỗi trong bể hằng số, tiện lợi cho việc sử dụng lần sau mà không phải mỗi lần `new` là lại cấp phát một vùng nhớ mới trên heap.
+Hơn nữa, chuỗi còn có khái niệm [bể hằng số chuỗi (string constant pool)](/programming/java/string/constant-pool.html), bản thân nó khuyến khích sử dụng cách tạo đối tượng chuỗi `String s = "abc"` thay vì dùng từ khóa `new`, vì có thể lưu trữ chuỗi trong bể hằng số, tiện lợi cho việc sử dụng lần sau mà không phải mỗi lần `new` là lại cấp phát một vùng nhớ mới trên heap.
 
 Chúng ta hãy xem mã nguồn của phương thức `.equals()` trong lớp String:
 
@@ -153,7 +153,7 @@ new String("abc") == new String("abc")
 
 > Do `a` và `bc` đều nằm trong bể hằng số chuỗi, nên trình biên dịch sẽ tự động tối ưu hóa toán tử `+` thành `abc`, nên kết quả là true.
 
-PS: Để hiểu rõ hơn tại sao, hãy xem bài viết về [String, StringBuilder, StringBuffer](/programming/java/basic/string/builder-buffer.html).
+PS: Để hiểu rõ hơn tại sao, hãy xem bài viết về [String, StringBuilder, StringBuffer](/programming/java/string/builder-buffer.html).
 
 **Câu hỏi thứ sáu:**
 
@@ -163,7 +163,7 @@ new String("abc").intern() == "abc"
 
 > `new String("abc")` khi thực thi sẽ tạo đối tượng trong bể hằng số chuỗi trước, sau đó mới tạo đối tượng trên heap; khi gọi phương thức `intern()`, nếu phát hiện trong bể hằng số chuỗi đã có đối tượng `abc`, thì sẽ trả về tham chiếu tới đối tượng trong bể hằng số chuỗi, nên khi so sánh với đối tượng `abc` trong bể hằng số chuỗi, kết quả sẽ là true.
 
-PS: Phương thức [intern](/programming/java/basic/string/intern.html) đã được chúng ta nghiên cứu kỹ trước đây.
+PS: Phương thức [intern](/programming/java/string/intern.html) đã được chúng ta nghiên cứu kỹ trước đây.
 
 Nếu muốn so sánh nội dung của hai đối tượng chuỗi, ngoài phương thức `.equals()`, còn có hai phương án khác:
 
