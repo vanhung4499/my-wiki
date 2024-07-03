@@ -572,7 +572,7 @@ Redis đã công bố rằng, chức năng đa luồng I/O mà Redis 6.0 giới 
 
 > **_Tính năng và nguyên lý giao dịch trong Redis_**
 >
-> Chi tiết có thể tham khảo: [Redis Guide](guide)
+> Chi tiết có thể tham khảo: [Redis Guide](database/redis/guide.md)
 
 **Redis không cung cấp giao dịch đúng nghĩa, Redis chỉ đảm bảo thực thi tuần tự các lệnh và có thể đảm bảo tất cả các lệnh đều được thực thi, nhưng nếu một lệnh thực thi thất bại, nó sẽ không rollback mà vẫn tiếp tục thực thi các lệnh tiếp theo**.
 
