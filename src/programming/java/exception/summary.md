@@ -6,8 +6,9 @@ date created: 2023-07-03
 date modified: 2023-07-13
 tags:
   - java
+order: -1
 ---
-# Java Exception In Depth
+# Java Exception Summary
 ## Phân cấp ngoại lệ (Exception)
 
 **Ngoại lệ (Exception)** đề cập đến các tình huống không mong muốn xảy ra, chẳng hạn như không tìm thấy tệp, kết nối mạng thất bại, tham số không hợp lệ, v.v. Ngoại lệ là một sự kiện xảy ra trong quá trình chạy chương trình, làm gián đoạn quy trình lệnh bình thường. Trong Java, các ngoại lệ khác nhau được mô tả bằng các lớp con của lớp `Throwable` trong API. Do đó, các ngoại lệ trong Java đều là các đối tượng, là các thể hiện của lớp con của Throwable, mô tả các điều kiện lỗi xuất hiện trong đoạn mã. Khi điều kiện được tạo ra, lỗi sẽ gây ra ngoại lệ.  

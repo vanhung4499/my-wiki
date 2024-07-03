@@ -74,7 +74,7 @@ Exception có thể được chia thành checked và unchecked exception, chúng
 
 Checked exception trong mã nguồn phải được bắt hoặc ném rõ ràng, nếu không trình biên dịch sẽ nhắc bạn thực hiện thao tác tương ứng. Còn unchecked exception là runtime exception, thường có thể được tránh bằng mã hóa, không cần phải bắt hoặc ném rõ ràng.
 
-![](https://cdn.tobebetterjavaer.com/studymore/gailan-20230326090207.png)
+![image.png](https://raw.githubusercontent.com/vanhung4499/images/master/snap/20240703210645.png)
 
 Đầu tiên, cả Exception và Error đều kế thừa từ lớp Throwable. Nói cách khác, chỉ có các đối tượng của lớp Throwable (hoặc lớp con của nó) mới có thể được ném ra bằng từ khóa throw hoặc được sử dụng làm tham số của catch.
 
@@ -260,10 +260,6 @@ throw new ArithmeticException("Arithmetic Exception");
 
 Từ khóa `try` sẽ đi kèm với một cặp ngoặc nhọn `{}`, chúng ta đặt một số đoạn mã có thể xảy ra exception vào trong ngoặc nhọn này; khối `try` thường sẽ đi kèm với khối `catch`, để xử lý tình huống xảy ra exception; dĩ nhiên, exception không phải lúc nào cũng xảy ra, để đảm bảo rằng dù có xảy ra exception hay không, một số đoạn mã vẫn sẽ được thực thi, chúng ta sẽ kèm theo một khối `finally`.
 
-“Cụ thể sử dụng như thế nào, anh Hai?” Em Ba hỏi.
-
-“Đừng lo, Em Ba, anh sẽ giải thích từng bước.” Tôi nói.
-
 Cú pháp của khối `try` rất đơn giản:
 
 ```java
@@ -272,7 +268,7 @@ try{
 }
 ```
 
-“Chú ý nhé, Em Ba, nếu một số đoạn mã chắc chắn sẽ không ném ra exception, thì đừng bao bọc chúng trong khối `try`, vì mã có xử lý exception sẽ tốn thời gian hơn mã không có xử lý exception.”
+Chú ý nhé,  nếu một số đoạn mã chắc chắn sẽ không ném ra exception, thì đừng bao bọc chúng trong khối `try`, vì mã có xử lý exception sẽ tốn thời gian hơn mã không có xử lý exception.
 
 Cú pháp của khối `catch` cũng rất đơn giản:
 
@@ -307,11 +303,11 @@ static void test() {
 }
 ```
 
-“Tại sao không đặt `Exception` trước `ArithmeticException`?” Em Ba hỏi.
+Tại sao không đặt `Exception` trước `ArithmeticException`?
 
-“Vì `ArithmeticException` là một lớp con của `Exception`, nó cụ thể hơn, khi thấy exception này chúng ta biết ngay đó là lỗi toán học, còn `Exception` thì chung chung hơn, nó che giấu thông tin cụ thể về exception, khiến việc xác định loại exception gặp khó khăn.” Tôi nói, “Hơn nữa, nếu đặt exception chung chung ở phía trước, có nghĩa là các khối `catch` khác sẽ không bao giờ được thực thi, vì vậy trình biên dịch sẽ báo lỗi.”
+Vì `ArithmeticException` là một lớp con của `Exception`, nó cụ thể hơn, khi thấy exception này chúng ta biết ngay đó là lỗi toán học, còn `Exception` thì chung chung hơn, nó che giấu thông tin cụ thể về exception, khiến việc xác định loại exception gặp khó khăn. Hơn nữa, nếu đặt exception chung chung ở phía trước, có nghĩa là các khối `catch` khác sẽ không bao giờ được thực thi, vì vậy trình biên dịch sẽ báo lỗi.
 
-“Anh sẽ cho em thêm một ví dụ, chú ý xem nhé, Em Ba.”
+Thêm một ví dụ:
 
 ```java
 static void test1() {
@@ -349,9 +345,9 @@ static void test1 () {
 }
 ```
 
-“Em biết rồi, anh Hai, khối `catch` thứ hai sẽ thực thi vì không xảy ra exception toán học, nhưng mảng đã bị truy cập ngoài giới hạn.” Em Ba nói ngay trước khi tôi kịp chạy mã.
+Khối `catch` thứ hai sẽ thực thi vì không xảy ra arithmetic exception, nhưng mảng đã bị truy cập ngoài giới hạn
 
-“Em nói đúng rồi, Em Ba. Anh sẽ sửa lại mã một chút.”
+Sửa lại mã một chút:
 
 ```java
 static void test1 () {
@@ -366,9 +362,7 @@ static void test1 () {
 }
 ```
 
-“Khi có nhiều khối `catch`, cũng có thể gộp chúng lại với nhau, sử dụng dấu gạch đứng `|` để ngăn cách, như vậy đó.” Tôi nói.
-
-“Như vậy tốt hơn đấy, nhìn gọn gàng hơn.” Em Ba nói.
+Khi có nhiều khối `catch`, cũng có thể gộp chúng lại với nhau, sử dụng dấu gạch đứng `|` để ngăn cách.  Như vậy tốt hơn, nhìn gọn gàng hơn.
 
 Cú pháp của khối `finally` cũng không phức tạp.
 
@@ -382,7 +376,7 @@ try {
 }
 ```
 
-Trước khi có [`try-with-resources`](https://javabetter.cn/exception/try-with-resources.html), khối `finally` thường được dùng để đóng các tài nguyên như socket, kết nối cơ sở dữ liệu, luồng IO, v.v.
+Trước khi có [`try-with-resources`](try-with-resources), khối `finally` thường được dùng để đóng các tài nguyên như socket, kết nối cơ sở dữ liệu, luồng IO, v.v.
 
 ```java
 OutputStream osf = new FileOutputStream("filename");
@@ -395,16 +389,14 @@ try {
 }
 ```
 
-“Em Ba, chú ý, khi sử dụng khối `finally`, cần tuân thủ các quy tắc sau.”
+Chú ý, khi sử dụng khối `finally`, cần tuân thủ các quy tắc sau:
 
 - Khối `finally` phải đi kèm với khối `try`, không được sử dụng `finally` một mình. Trình biên dịch cũng không cho phép làm như vậy.
 - Khối `finally` không phải là bắt buộc, có khối `try` thì không nhất thiết phải có khối `finally`.
 - Nếu mã trong khối `finally` có thể xảy ra exception, cũng nên bao bọc bằng khối `try-catch`.
 - Ngay cả khi trong khối `try` có các câu lệnh `return`, `break`, `continue`, khối `finally` vẫn sẽ được thực thi.
 
-“Thật sao, anh Hai?” Em Ba đầy nghi ngờ về quy tắc cuối cùng.
-
-“Hãy thử xem thì biết ngay.” Tôi nói.
+Hãy thử xem thì biết ngay:
 
 ```java
 static int test2 () {
@@ -422,17 +414,38 @@ Xem kết quả xuất ra:
 Ngay cả khi khối try có return, khối finally vẫn sẽ thực thi
 ```
 
-“Có trường hợp nào mà khối `finally` không được thực thi không?” Em Ba rất tò mò.
+Có trường hợp nào mà khối `finally` không được thực thi không?
 
-“Có chứ.” Tôi trả lời dứt khoát.
+Có chứ:
 
 - Gặp phải vòng lặp vô tận.
-- Thực thi dòng mã `System.exit()`.
+- Thực thi lệnh `System.exit()`.
 
 Câu lệnh `System.exit()` và câu lệnh `return` khác nhau, cái trước dùng để thoát chương trình, cái sau chỉ quay lại phương thức gọi trước đó.
 
-“Em Ba, xem tài liệu gốc để hiểu rõ hơn nhé!”
+Xem khai báo của phương thức để hiểu rõ hơn:
 
-![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/exception/try-catch-finally-01.png)
+```java
+public static void exit(int status)
+```
 
 Về giá trị của tham số `status` cũng rất dễ hiểu, nếu là thoát do exception, đặt giá trị khác 0, thường dùng 1 để biểu thị; nếu muốn thoát chương trình bình thường, dùng 0 để biểu thị.
+
+### 06. Tóm tắt
+
+Xử lý exception trong Java là một cơ chế quan trọng, giúp chúng ta xử lý các lỗi hoặc exception xảy ra trong quá trình thực thi chương trình.
+
+Exception được chia thành hai loại: Checked Exception và Unchecked Exception, trong đó Checked Exception cần phải được xử lý hoặc khai báo rõ ràng trong mã, còn Unchecked Exception không cần phải được xử lý hoặc khai báo rõ ràng. Xử lý exception thường sử dụng các khối try-catch-finally hoặc sử dụng từ khóa throws để ném exception cho người gọi xử lý.
+
+Dưới đây là một số tóm tắt về xử lý exception trong Java:
+
+- Sử dụng khối try-catch để bắt và xử lý exception, giúp tránh việc chương trình bị sập do exception.
+- Có thể sử dụng nhiều khối catch để bắt các loại exception khác nhau và xử lý chúng một cách khác nhau.
+- Có thể sử dụng khối finally để thực hiện một số công việc dọn dẹp cần thiết, dù có hay không xảy ra exception.
+- Có thể sử dụng từ khóa throw để tự động ném exception, nhằm chỉ rõ một số tình huống exception trong chương trình.
+- Có thể sử dụng từ khóa throws để ném exception cho người gọi xử lý, được khai báo trong chữ ký phương thức.
+- Checked Exception thường là do các yếu tố bên ngoài gây ra, cần phải được xử lý hoặc khai báo rõ ràng trong mã.
+- Unchecked Exception thường là do logic hoặc dữ liệu bất thường bên trong chương trình gây ra, có thể không cần xử lý hoặc xử lý khi cần thiết.
+- Khi xử lý exception, nên xử lý theo loại exception cụ thể, chẳng hạn như có thể thử mở lại tệp, thiết lập lại kết nối mạng, v.v.
+- Xử lý exception nên dựa vào nhu cầu kinh doanh cụ thể và các nguyên tắc thiết kế, tránh việc bắt và xử lý exception quá mức, từ đó giảm hiệu suất và khả năng bảo trì của chương trình.
+
