@@ -22,11 +22,13 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/action-setup@v2
         with:
-          run_install: true
+          # choose pnpm version to use
           version: 8
+          # install deps with pnpm
+          run_install: true
 
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: pnpm
@@ -46,4 +48,3 @@ jobs:
           folder: src/.vuepress/dist
           token: ${{ secrets.ACCESS_TOKEN }}
           repository-name: vanhung4499/vanhung4499.github.io
-
