@@ -336,7 +336,7 @@ Lưu ý, dù phương thức `flush` đã ghi dữ liệu ra, cuối cùng vẫn
 
 #### 4. FileWriter viết tiếp và xuống dòng
 
-**Viết tiếp và xuống dòng**: Thao tác tương tự như [FileOutputStream](stream), hãy xem đoạn mã dưới đây:
+**Viết tiếp và xuống dòng**: Thao tác tương tự như [FileOutputStream](programming/java/io/stream.md), hãy xem đoạn mã dưới đây:
 
 ```java
 // Sử dụng tên tệp để tạo đối tượng stream, có thể viết tiếp dữ liệu
