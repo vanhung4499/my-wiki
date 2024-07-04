@@ -20,7 +20,7 @@ jobs:
           # submodules: true
 
       - name: Setup pnpm
-        uses: pnpm/action-setup@v2
+        uses: pnpm/action-setup@v4
         with:
           # choose pnpm version to use
           version: 8
