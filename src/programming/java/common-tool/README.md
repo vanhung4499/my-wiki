@@ -1,5 +1,6 @@
 ---
 title: Common Tools
 index: false
-dir: '{"order":8}'
+dir:
+  order: 8
 ---

@@ -2,7 +2,7 @@
 title: New Features
 index: false
 dir:
-  order: 9
+  order: 11
 ---
 
 <Catalog />
