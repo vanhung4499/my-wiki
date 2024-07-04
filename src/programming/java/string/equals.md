@@ -269,6 +269,6 @@ public boolean contentEquals(CharSequence cs) {
 }
 ```
 
-Dễ hiểu hơn một chút: đầu tiên kiểm tra xem độ dài của tham số có bằng độ dài của `value` không, nếu không bằng thì trả về false. Nếu tham số là một instance của AbstractStringBuilder, lấy ra mảng `char` của nó và so sánh từng phần tử của hai mảng `char`. Nếu tham số là một instance của String, thì gọi trực tiếp phương thức `equals` để so sánh hai chuỗi. Nếu tham số là một đối tượng thực hiện giao diện CharSequence khác, thì so sánh từng ký tự của hai đối tượng.
+Dễ hiểu hơn một chút: đầu tiên kiểm tra xem độ dài của tham số có bằng độ dài của `value` không, nếu không bằng thì trả về false. Nếu tham số là một instance của AbstractStringBuilder, lấy ra mảng `char` của nó và so sánh từng phần tử của hai mảng `char`. Nếu tham số là một instance của String, thì gọi trực tiếp phương thức `equals` để so sánh hai chuỗi. Nếu tham số là một đối tượng thực hiện interface CharSequence khác, thì so sánh từng ký tự của hai đối tượng.
 
 Tổng thể thì tôi vẫn thấy `Objects.equals()` là dễ sử dụng nhất.

@@ -10,7 +10,7 @@ date modified: 2024-04-18
 
 ## Giới thiệu về SPI
 
-SPI viết tắt của **Service Provider Interface**, là một cơ chế trong Java được thiết kế để cho phép các bên thứ ba triển khai hoặc mở rộng các API. Nó là một cơ chế để tải động dịch vụ. SPI trong Java có bốn yếu tố chính:
+SPI viết tắt của **Service Provider Interface**, là một cơ chế trong Java được thiết kế để cho phép các bên thứ ba triển khai hoặc kế thừa các API. Nó là một cơ chế để tải động dịch vụ. SPI trong Java có bốn yếu tố chính:
 
 - **SPI Interface**: Đây là Interface hoặc lớp trừu tượng mà các lớp triển khai dịch vụ phải tuân thủ.
 - **Lớp triển khai SPI**: Đây là các lớp cụ thể cung cấp dịch vụ.
@@ -71,7 +71,7 @@ public class RedisStorage implements DataStorage {
 Nếu muốn tìm hiểu về dịch vụ bằng cơ chế SPI Java, chúng ta cần định nghĩa logic tìm kiếm dịch vụ trong cấu hình SPI. Tệp cấu hình SPI phải được đặt trong thư mục `META-INF/services` và tên tệp phải trùng với tên đầy đủ của Interface dịch vụ. Ví dụ mã nguồn này, tên tệp cấu hình phải là `com.hnv99.javacore.spi.DataStorage` và nội dung tệp như sau:
 
 ```
-com.hnv99.javacore.spi.MysqlStorage  
+com.hnv99.javacore.spi.MysqlStorage
 com.hnv99.javacore.spi.RedisStorage
 ```
 
@@ -349,9 +349,9 @@ Tuy nhiên, **kể từ JDBC 4.0**, không cần sử dụng phương thức **`
   Ví dụ với Mysql, mã tạo kết nối cơ sở dữ liệu như sau:
 
 	```java
-	final String DB_URL = String.format("jdbc:mysql://%s:%s/%s", DB_HOST, DB_PORT, DB_SCHEMA);  
+	final String DB_URL = String.format("jdbc:mysql://%s:%s/%s", DB_HOST, DB_PORT, DB_SCHEMA);
 	connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
-	
+
 	```
 
 #### DriverManager
@@ -372,7 +372,7 @@ private static void loadInitialDrivers() {
 	} catch (Exception ex) {
 		drivers = null;
 	}
-	// Sử dụng classloader để lấy tất cả các lớp driver hiện thực java.sql.Driver
+	// Sử dụng classloader để lấy tất cả các lớp driver triển khai java.sql.Driver
 	AccessController.doPrivileged(new PrivilegedAction<Void>() {
 		public Void run() {
             // Sử dụng SPI, tải tất cả các dịch vụ Driver
@@ -425,7 +425,7 @@ Cần chú ý đến đoạn mã sau:
 ServiceLoader<Driver> loadedDrivers = ServiceLoader.load(Driver.class);
 ```
 
-Ở đây, chúng ta thực tế đang lấy một trình lặp `java.util.ServiceLoader.LazyIterator`. Khi gọi phương thức `hasNext`, nó sẽ tìm kiếm thư mục `META-INF/services` trong classpath và các file `java.sql.Driver` trong các file jar, sau đó tìm thấy tên đầy đủ của lớp driver hiện thực trong file đó. Khi gọi phương thức `next`, nó sẽ thử khởi tạo một đối tượng của lớp driver dựa trên tên đầy đủ của lớp driver.
+Ở đây, chúng ta thực tế đang lấy một trình lặp `java.util.ServiceLoader.LazyIterator`. Khi gọi phương thức `hasNext`, nó sẽ tìm kiếm thư mục `META-INF/services` trong classpath và các file `java.sql.Driver` trong các file jar, sau đó tìm thấy tên đầy đủ của lớp driver triển khai trong file đó. Khi gọi phương thức `next`, nó sẽ thử khởi tạo một đối tượng của lớp driver dựa trên tên đầy đủ của lớp driver.
 
 ### Ứng dụng SPI - Common-Logging
 

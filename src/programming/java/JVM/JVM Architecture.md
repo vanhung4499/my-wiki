@@ -57,7 +57,7 @@ Máy ảo Java có ba thành phần quan trọng quan tâm đến khi nào thự
 Có hai chỉ số hiệu suất chính của máy ảo Java:
 
 - **Thời gian tạm dừng** - Thời gian phản hồi là tốc độ mà một ứng dụng phản hồi yêu cầu. Đối với các ứng dụng quan tâm đến khả năng phản hồi, thời gian tạm dừng lâu là không chấp nhận được, điểm quan trọng là có thể phản hồi trong một khoảng thời gian ngắn.
-	- Tốc độ phản hồi sự kiện giao diện người dùng trên máy tính để bàn
+	- Tốc độ phản hồi sự kiện interface người dùng trên máy tính để bàn
 	- Tốc độ trả về trang web
 	- Tốc độ truy vấn dữ liệu trả về
 - **Khả năng xử lý** - Khả năng xử lý quan tâm đến giá trị tối đa của công việc mà một ứng dụng có thể hoàn thành trong một khoảng thời gian cụ thể. Đối với các ứng dụng quan tâm đến khả năng xử lý, thời gian tạm dừng lâu có thể chấp nhận được. Vì ứng dụng có khả năng xử lý cao quan tâm đến giá trị cơ sở trên một khoảng thời gian dài, nên thời gian phản hồi nhanh không được xem xét.

@@ -644,7 +644,7 @@ HashMap không duy trì thứ tự chèn của các cặp khóa-giá trị.
 
 #### 3) TreeMap
 
-[TreeMap](/programming/java/collection/treemap) thực hiện giao diện SortedMap, tự động sắp xếp các khóa theo thứ tự tự nhiên hoặc theo thứ tự được chỉ định bởi bộ so sánh, đảm bảo sự sắp xếp của các phần tử. Nó sử dụng cây đỏ-đen nội bộ để triển khai việc sắp xếp và tìm kiếm các khóa.
+[TreeMap](/programming/java/collection/treemap) thực hiện interface SortedMap, tự động sắp xếp các khóa theo thứ tự tự nhiên hoặc theo thứ tự được chỉ định bởi bộ so sánh, đảm bảo sự sắp xếp của các phần tử. Nó sử dụng cây đỏ-đen nội bộ để triển khai việc sắp xếp và tìm kiếm các khóa.
 
 Dưới đây là một ví dụ minh họa về thêm, sửa, xóa và truy vấn trong TreeMap:
 

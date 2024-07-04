@@ -36,7 +36,7 @@ Trong đoạn mã trên, chúng ta đầu tiên tạo một đối tượng Prio
 
 ```
 Các phần tử trong PriorityQueue:
-c a b 
+c a b
 ```
 
 Tiếp theo, hãy xem một ví dụ khác:
@@ -169,7 +169,7 @@ Sử dụng ba công thức trên, chúng ta có thể dễ dàng tính toán ch
 
 ### Phương thức `add()` và `offer()`
 
-`add(E e)` và `offer(E e)` có ý nghĩa giống nhau trong `PriorityQueue`, đều được sử dụng để chèn một phần tử vào hàng đợi ưu tiên. Sự khác biệt chính giữa chúng là cách xử lý khi thêm phần tử vào hàng đợi đã đầy: theo giao diện `Queue`, `add()` sẽ ném ra một ngoại lệ khi không thể chèn được phần tử, trong khi `offer()` sẽ trả về `false`.
+`add(E e)` và `offer(E e)` có ý nghĩa giống nhau trong `PriorityQueue`, đều được sử dụng để chèn một phần tử vào hàng đợi ưu tiên. Sự khác biệt chính giữa chúng là cách xử lý khi thêm phần tử vào hàng đợi đã đầy: theo interface `Queue`, `add()` sẽ ném ra một ngoại lệ khi không thể chèn được phần tử, trong khi `offer()` sẽ trả về `false`.
 
 ![image.png](https://raw.githubusercontent.com/vanhung4499/images/master/snap/20240630103536.png)
 
@@ -279,7 +279,7 @@ private void siftDown(int k, E x) {
 
 #### Phương thức `remove(Object o)`
 
-Phương thức `remove(Object o)` được sử dụng để xóa một phần tử trong hàng đợi có giá trị bằng với `o` (nếu có nhiều phần tử bằng nhau, chỉ xóa một phần tử đầu tiên tìm thấy). Phương thức này không phải là một phương thức của giao diện *Queue*, mà là của giao diện *Collection*. Do thao tác xóa có thể làm thay đổi cấu trúc của hàng đợi, nên cần phải thực hiện điều chỉnh thích hợp.
+Phương thức `remove(Object o)` được sử dụng để xóa một phần tử trong hàng đợi có giá trị bằng với `o` (nếu có nhiều phần tử bằng nhau, chỉ xóa một phần tử đầu tiên tìm thấy). Phương thức này không phải là một phương thức của interface *Queue*, mà là của interface *Collection*. Do thao tác xóa có thể làm thay đổi cấu trúc của hàng đợi, nên cần phải thực hiện điều chỉnh thích hợp.
 
 Phương thức `remove(Object o)` có hai trường hợp cụ thể:
 
@@ -320,4 +320,4 @@ PriorityQueue là một cấu trúc dữ liệu rất phổ biến, là một tr
 
 - Được triển khai dưới dạng một mảng, sử dụng các tính chất của Heap để duy trì thứ tự của các phần tử.
 - Khi lấy phần tử, thực hiện theo thứ tự ưu tiên (từ thấp đến cao hoặc từ cao đến thấp).
-- Để chỉ định thứ tự sắp xếp, các phần tử cần phải triển khai giao diện Comparable hoặc truyền vào một Comparator để so sánh.
+- Để chỉ định thứ tự sắp xếp, các phần tử cần phải triển khai interface Comparable hoặc truyền vào một Comparator để so sánh.

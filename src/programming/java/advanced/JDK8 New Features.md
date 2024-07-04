@@ -14,7 +14,7 @@ date modified: 2023-07-14
 
 ## Default Methods for Interfaces (Phương thức mặc định cho Interface)
 
-Java 8 cho phép chúng ta thêm các phương thức không trừu tượng vào interface bằng cách sử dụng từ khóa `default`. Tính năng này còn được gọi là phương thức mở rộng ảo.
+Java 8 cho phép chúng ta thêm các phương thức không trừu tượng vào interface bằng cách sử dụng từ khóa `default`. Tính năng này còn được gọi là phương thức kế thừa ảo.
 
 Đây là ví dụ đầu tiên của chúng ta:
 
@@ -83,11 +83,11 @@ names.sort((a, b) -> b.compareTo(a));
 
 Danh sách hiện có một phương thức `sort`. Hơn nữa, trình biên dịch Java biết về kiểu dữ liệu của tham số, vì vậy bạn không cần chỉ định kiểu dữ liệu của tham số đầu vào. Hãy khám phá sâu hơn về cách sử dụng biểu thức lambda.
 
-## Giao diện phương thức (Functional Interfaces)
+## Functional Interfaces
 
-Làm thế nào lambda expression phù hợp với hệ thống kiểu dữ liệu của Java? Mỗi lambda tương ứng với một loại được chỉ định bởi một giao diện. Một *giao diện phương thức* phải chứa một **khai báo phương thức trừu tượng**. Mỗi lambda expression của loại này sẽ khớp với phương thức trừu tượng này. Vì các phương thức mặc định không phải là trừu tượng, bạn có thể tự do thêm các phương thức mặc định vào giao diện phương thức của bạn.
+Làm thế nào lambda expression phù hợp với hệ thống kiểu dữ liệu của Java? Mỗi lambda tương ứng với một loại được chỉ định bởi một interface. Một *interface phương thức* phải chứa một **khai báo phương thức trừu tượng**. Mỗi lambda expression của loại này sẽ khớp với phương thức trừu tượng này. Vì các phương thức mặc định không phải là trừu tượng, bạn có thể tự do thêm các phương thức mặc định vào interface phương thức của bạn.
 
-Chỉ cần đảm bảo giao diện chỉ chứa một phương thức trừu tượng, bạn có thể sử dụng bất kỳ giao diện nào làm lambda expression. Để đảm bảo giao diện của bạn đáp ứng yêu cầu, bạn nên thêm chú thích `@FunctionalInterface`. Khi trình biên dịch nhận thấy chú thích này, nếu bạn cố gắng thêm một khai báo phương thức trừu tượng thứ hai vào giao diện, trình biên dịch sẽ báo lỗi.
+Chỉ cần đảm bảo interface chỉ chứa một phương thức trừu tượng, bạn có thể sử dụng bất kỳ interface nào làm lambda expression. Để đảm bảo interface của bạn đáp ứng yêu cầu, bạn nên thêm chú thích `@FunctionalInterface`. Khi trình biên dịch nhận thấy chú thích này, nếu bạn cố gắng thêm một khai báo phương thức trừu tượng thứ hai vào interface, trình biên dịch sẽ báo lỗi.
 
 Ví dụ:
 
@@ -149,7 +149,7 @@ class Person {
 }
 ```
 
-Sau đó, chúng ta chỉ định một giao diện PersonFactory để tạo đối tượng Person.
+Sau đó, chúng ta chỉ định một interface PersonFactory để tạo đối tượng Person.
 
 ```java
 interface PersonFactory<P extends Person> {
@@ -226,9 +226,9 @@ class Lambda4 {
 }
 ```
 
-### Truy cập các phương thức mặc định của giao diện (Accessing Default Interface Methods)
+### Truy cập các phương thức mặc định của interface (Accessing Default Interface Methods)
 
-Nhớ lại ví dụ về `formula` ở phần đầu, giao diện `Formula` định nghĩa một phương thức mặc định `sqrt` có thể được truy cập bởi mọi instance của formula (bao gồm cả đối tượng vô danh). Tính năng này không áp dụng cho lambda expression.
+Nhớ lại ví dụ về `formula` ở phần đầu, interface `Formula` định nghĩa một phương thức mặc định `sqrt` có thể được truy cập bởi mọi instance của formula (bao gồm cả đối tượng vô danh). Tính năng này không áp dụng cho lambda expression.
 
 Phương thức mặc định **không thể** được truy cập bởi lambda expression. Đoạn mã dưới đây sẽ không biên dịch được:
 
@@ -236,15 +236,15 @@ Phương thức mặc định **không thể** được truy cập bởi lambda 
 Formula formula = (a) -> sqrt(a * 100);
 ```
 
-## Giao diện chức năng tích hợp sẵn (Built-in Functional Interfaces)
+## interface chức năng tích hợp sẵn (Built-in Functional Interfaces)
 
-API JDK 1.8 bao gồm nhiều giao diện chức năng tích hợp sẵn. Một số trong số chúng đã được biết đến trong các phiên bản Java trước đây (như `Comparator` hoặc `Runnable`). Các giao diện hiện có được mở rộng để hỗ trợ Lambda bằng cách chú thích `@FunctionalInterface`.
+API JDK 1.8 bao gồm nhiều interface chức năng tích hợp sẵn. Một số trong số chúng đã được biết đến trong các phiên bản Java trước đây (như `Comparator` hoặc `Runnable`). Các interface hiện có được kế thừa để hỗ trợ Lambda bằng cách chú thích `@FunctionalInterface`.
 
-Tuy nhiên, API Java 8 cũng cung cấp nhiều giao diện chức năng mới. Một số giao diện mới này đã được biết đến trong thư viện [Google Guava](https://code.google.com/p/guava-libraries/). Ngay cả khi bạn đã quen thuộc với thư viện này, bạn nên chú ý đến cách mở rộng các giao diện này bằng cách sử dụng các phương thức hữu ích.
+Tuy nhiên, API Java 8 cũng cung cấp nhiều interface chức năng mới. Một số interface mới này đã được biết đến trong thư viện [Google Guava](https://code.google.com/p/guava-libraries/). Ngay cả khi bạn đã quen thuộc với thư viện này, bạn nên chú ý đến cách kế thừa các interface này bằng cách sử dụng các phương thức hữu ích.
 
 ### Predicates
 
-`Predicate` là một hàm boolean với một tham số. Giao diện này bao gồm các phương thức mặc định khác nhau để kết hợp các điều kiện thành các biểu thức logic phức tạp (AND, OR, NOT).
+`Predicate` là một hàm boolean với một tham số. interface này bao gồm các phương thức mặc định khác nhau để kết hợp các điều kiện thành các biểu thức logic phức tạp (AND, OR, NOT).
 
 ```java
 Predicate<String> predicate = (s) -> s.length() > 0;
@@ -290,7 +290,7 @@ greeter.accept(new Person("Luke", "Skywalker"));
 
 ### Comparators
 
-Comparators đã được biết đến trong các phiên bản Java cũ. Java 8 đã thêm các phương thức mặc định khác nhau cho giao diện này.
+Comparators đã được biết đến trong các phiên bản Java cũ. Java 8 đã thêm các phương thức mặc định khác nhau cho interface này.
 
 ```java
 Comparator<Person> comparator = (p1, p2) -> p1.firstName.compareTo(p2.firstName);
@@ -304,7 +304,7 @@ comparator.reversed().compare(p1, p2);  // < 0
 
 ## Optional (Tùy chọn)
 
-`Optional` không phải là một giao diện chức năng, mà là một công cụ tốt để ngăn chặn `NullPointerException`. Đây là một khái niệm quan trọng trong phần tiếp theo, vì vậy hãy xem nhanh cách `Optional` hoạt động.
+`Optional` không phải là một interface chức năng, mà là một công cụ tốt để ngăn chặn `NullPointerException`. Đây là một khái niệm quan trọng trong phần tiếp theo, vì vậy hãy xem nhanh cách `Optional` hoạt động.
 
 `Optional` là một container đơn giản, giá trị của nó có thể là null hoặc không null. Hãy tưởng tượng một phương thức có thể trả về một kết quả không null, nhưng đôi khi không trả về gì cả. Thay vì trả về null, chúng ta trả về `Optional` trong Java 8.
 
@@ -338,7 +338,7 @@ stringCollection.add("bbb2");
 stringCollection.add("ddd1");
 ```
 
-Trong Java 8, các bộ sưu tập đã được mở rộng để bạn có thể tạo luồng bằng cách gọi `Collection.stream()` hoặc `Collection.parallelStream()` một cách đơn giản. Các phần sau giới thiệu các hoạt động luồng phổ biến nhất.
+Trong Java 8, các bộ sưu tập đã được kế thừa để bạn có thể tạo luồng bằng cách gọi `Collection.stream()` hoặc `Collection.parallelStream()` một cách đơn giản. Các phần sau giới thiệu các hoạt động luồng phổ biến nhất.
 
 ### Filter (Lọc)
 
@@ -499,7 +499,7 @@ Như bạn có thể thấy, hai đoạn mã gần như giống nhau, nhưng s�
 
 ## Maps (Ánh xạ)
 
-Như đã đề cập trước đó, map không hỗ trợ trực tiếp luồng. Giao diện Map không có phương thức `stream()` sẵn có, nhưng bạn có thể tạo luồng cụ thể bằng cách sử dụng `map.keySet().stream()` , `map.values().stream()` và `map.entrySet().stream()`.
+Như đã đề cập trước đó, map không hỗ trợ trực tiếp luồng. interface Map không có phương thức `stream()` sẵn có, nhưng bạn có thể tạo luồng cụ thể bằng cách sử dụng `map.keySet().stream()` , `map.values().stream()` và `map.entrySet().stream()`.
 
 Ngoài ra, map hỗ trợ nhiều phương thức mới và hữu ích để xử lý các tác vụ thông thường.
 
@@ -745,7 +745,7 @@ System.out.println(hints2.length);          // 2
 
 Mặc dù chúng ta không khai báo chú thích `@Hints` trên lớp Person, nhưng chúng ta vẫn có thể đọc nó thông qua `getAnnotation(Hints.class)`. Tuy nhiên, cách tiện lợi hơn là sử dụng `getAnnotationsByType`, nó cho phép truy cập trực tiếp vào tất cả các chú thích `@Hint`.
 
-Ngoài ra, chú thích trong Java 8 sử dụng hai mục tiêu mới mở rộng:
+Ngoài ra, chú thích trong Java 8 sử dụng hai mục tiêu mới kế thừa:
 
 ```java
 @Target({ElementType.TYPE_PARAMETER, ElementType.TYPE_USE})
@@ -818,11 +818,11 @@ Sửa đổi tham số javac trong tệp cấu hình của resin.
 
 ### Vấn đề thiếu gói sun.\*
 
-JDK 8 không cung cấp gói `sun.*` cho các nhà phát triển sử dụng, vì các giao diện này không phải là giao diện công khai và không đảm bảo hoạt động trên tất cả các nền tảng tương thích Java.
+JDK 8 không cung cấp gói `sun.*` cho các nhà phát triển sử dụng, vì các interface này không phải là interface công khai và không đảm bảo hoạt động trên tất cả các nền tảng tương thích Java.
 
 Nếu chương trình sử dụng các API này và muốn nâng cấp lên JDK 1.8, cần tìm các giải pháp thay thế.
 
-Mặc dù có thể tự nhập gói chứa các giao diện `sun.*` vào thư mục classpath, nhưng đây không phải là một cách tốt.
+Mặc dù có thể tự nhập gói chứa các interface `sun.*` vào thư mục classpath, nhưng đây không phải là một cách tốt.
 
 Cần hiểu rõ tại sao không nên sử dụng `sun.*`, có thể tham khảo tài liệu chính thức: [Why Developers Should Not Write Programs That Call 'sun' Packages](http://www.oracle.com/technetwork/java/faq-sun-packages-142232.html)
 
@@ -899,9 +899,9 @@ http://asm.ow2.org/history.html
 
 ### Lỗi kết nối Java với Redis: Error redis clients jedis HostAndPort cant resolve localhost address
 
-Môi trường lỗi:  
-Môi trường phát triển trên Windows không gặp vấn đề. Khi triển khai trên môi trường Linux, gặp sự cố.  
-Thông báo lỗi:  
+Môi trường lỗi:
+Môi trường phát triển trên Windows không gặp vấn đề. Khi triển khai trên môi trường Linux, gặp sự cố.
+Thông báo lỗi:
 Error redis clients jedis HostAndPort cant resolve localhost address
 
 Giải pháp:

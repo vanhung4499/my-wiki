@@ -73,7 +73,7 @@ Phương thức đầu tiên `compare(T o1, T o2)` trả về một giá trị c
 
 Phương thức thứ hai `equals(Object obj)` nhận vào một Object làm đối số và xác định xem đối tượng này có khớp với Comparator không.
 
-Đôi khi, chúng ta muốn giữ nguyên một lớp như ban đầu mà không muốn triển khai giao diện Comparable, nhưng vẫn cần có cách để so sánh chúng. Đây là lúc Comparator trở nên hữu ích, hãy xem một ví dụ.
+Đôi khi, chúng ta muốn giữ nguyên một lớp như ban đầu mà không muốn triển khai interface Comparable, nhưng vẫn cần có cách để so sánh chúng. Đây là lúc Comparator trở nên hữu ích, hãy xem một ví dụ.
 
 #### 1) Lớp Cmower ban đầu.
 

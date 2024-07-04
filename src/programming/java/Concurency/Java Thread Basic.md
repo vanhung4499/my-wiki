@@ -31,8 +31,8 @@ Luồng là đơn vị cơ bản để hệ điều hành lập lịch. Luồng 
 Có ba cách để tạo luồng:
 
 - Kế thừa lớp `Thread`
-- Thực hiện giao diện `Runnable`
-- Thực hiện giao diện `Callable`
+- Thực hiện interface `Runnable`
+- Thực hiện interface `Callable`
 
 ### Thread
 
@@ -77,14 +77,14 @@ public class ThreadDemo {
 
 ### Runnable
 
-**Việc triển khai giao diện `Runnable` tốt hơn việc kế thừa lớp `Thread`**, vì:
+**Việc triển khai interface `Runnable` tốt hơn việc kế thừa lớp `Thread`**, vì:
 
-- Java không hỗ trợ đa kế thừa, mỗi lớp chỉ được phép kế thừa một lớp cha, nhưng có thể triển khai nhiều giao diện. Nếu kế thừa lớp `Thread`, không thể kế thừa các lớp khác, điều này không thuận lợi cho việc mở rộng.
+- Java không hỗ trợ đa kế thừa, mỗi lớp chỉ được phép kế thừa một lớp cha, nhưng có thể triển khai nhiều interface. Nếu kế thừa lớp `Thread`, không thể kế thừa các lớp khác, điều này không thuận lợi cho việc mở rộng.
 - Có thể chỉ cần một khả năng thực thi, không cần kế thừa toàn bộ lớp `Thread` làm tăng chi phí.
 
-Cách tạo luồng bằng cách triển khai giao diện `Runnable`:
+Cách tạo luồng bằng cách triển khai interface `Runnable`:
 
-1. Định nghĩa một lớp triển khai giao diện `Runnable` và ghi đè phương thức `run` của giao diện đó. Phần thân của phương thức `run` đại diện cho nhiệm vụ mà luồng sẽ thực hiện.
+1. Định nghĩa một lớp triển khai interface `Runnable` và ghi đè phương thức `run` của interface đó. Phần thân của phương thức `run` đại diện cho nhiệm vụ mà luồng sẽ thực hiện.
 2. Tạo một thể hiện của lớp triển khai `Runnable` và sử dụng nó làm mục tiêu (`target`) cho việc tạo đối tượng `Thread`, đối tượng `Thread` mới này sẽ là đối tượng luồng thực sự.
 3. Gọi phương thức `start` của đối tượng luồng để khởi động luồng.
 
@@ -119,13 +119,13 @@ public class RunnableDemo {
 
 ### Callable, Future, FutureTask
 
-**Kế thừa lớp Thread và triển khai giao diện Runnable đều không có giá trị trả về**. Do đó, sau khi luồng thực thi xong, không thể nhận được kết quả thực thi. Nhưng nếu muốn nhận được kết quả thực thi, làm cách nào?
+**Kế thừa lớp Thread và triển khai interface Runnable đều không có giá trị trả về**. Do đó, sau khi luồng thực thi xong, không thể nhận được kết quả thực thi. Nhưng nếu muốn nhận được kết quả thực thi, làm cách nào?
 
-Để giải quyết vấn đề này, từ Java 1.5 trở đi, đã cung cấp giao diện `Callable` và `Future`, thông qua chúng ta có thể nhận lại kết quả sau khi luồng đã hoàn thành việc thực thi.
+Để giải quyết vấn đề này, từ Java 1.5 trở đi, đã cung cấp interface `Callable` và `Future`, thông qua chúng ta có thể nhận lại kết quả sau khi luồng đã hoàn thành việc thực thi.
 
 #### Callable
 
-Giao diện `Callable` chỉ khai báo một phương thức, phương thức đó được gọi là `call()`:
+interface `Callable` chỉ khai báo một phương thức, phương thức đó được gọi là `call()`:
 
 ```java
 public interface Callable<V> {
@@ -139,7 +139,7 @@ public interface Callable<V> {
 }
 ```
 
-Để sử dụng `Callable`, thường kết hợp với `ExecutorService`. Trong giao diện `ExecutorService`, có nhiều phiên bản nạp chồng của phương thức `submit`:
+Để sử dụng `Callable`, thường kết hợp với `ExecutorService`. Trong interface `ExecutorService`, có nhiều phiên bản nạp chồng của phương thức `submit`:
 
 ```java
 <T> Future<T> submit(Callable<T> task);
@@ -166,7 +166,7 @@ public interface Future<V> {
 
 #### FutureTask
 
-Lớp `FutureTask` triển khai giao diện `RunnableFuture`, `RunnableFuture` kế thừa cả giao diện `Runnable` và `Future`.
+Lớp `FutureTask` triển khai interface `RunnableFuture`, `RunnableFuture` kế thừa cả interface `Runnable` và `Future`.
 
 Vì vậy, `FutureTask` có thể được thực thi như một `Runnable` bởi một luồng, và cũng có thể nhận được giá trị trả về từ `Callable`.
 
@@ -182,13 +182,13 @@ public interface RunnableFuture<V> extends Runnable, Future<V> {
 }
 ```
 
-Thực tế, `FutureTask` là một lớp cài đặt duy nhất của giao diện `Future`.
+Thực tế, `FutureTask` là một lớp cài đặt duy nhất của interface `Future`.
 
 #### Ví dụ Callable + Future + FutureTask
 
 Cách tạo luồng bằng cách triển khai `Callable`:
 
-1. Tạo một lớp triển khai giao diện `Callable` và triển khai phương thức `call`. Phương thức `call` sẽ là nơi thực hiện công việc của luồng và trả về kết quả.
+1. Tạo một lớp triển khai interface `Callable` và triển khai phương thức `call`. Phương thức `call` sẽ là nơi thực hiện công việc của luồng và trả về kết quả.
 2. Tạo một đối tượng của lớp triển khai `Callable` và sử dụng `FutureTask` để đóng gói đối tượng `Callable`, `FutureTask` sẽ đóng gói phương thức `call` của `Callable` và giá trị trả về của nó.
 3. Sử dụng `FutureTask` làm mục tiêu (`target`) cho việc tạo đối tượng `Thread` và khởi động luồng.
 4. Sử dụng phương thức `get` của `FutureTask` để nhận kết quả sau khi luồng thực thi xong.
@@ -643,7 +643,7 @@ public class ThreadJoinDemo {
 
 ### Pipe
 
-Dòng luồng đầu vào/đầu ra của ống và dòng đầu vào/đầu ra thông thường hoặc dòng đầu vào/đầu ra mạng khác biệt là nó chủ yếu được sử dụng để truyền dữ liệu giữa các luồng, với phương tiện truyền là bộ nhớ.  
+Dòng luồng đầu vào/đầu ra của ống và dòng đầu vào/đầu ra thông thường hoặc dòng đầu vào/đầu ra mạng khác biệt là nó chủ yếu được sử dụng để truyền dữ liệu giữa các luồng, với phương tiện truyền là bộ nhớ.
 Dòng luồng đầu vào/đầu ra của ống chủ yếu bao gồm 4 cài đặt cụ thể sau: `PipedOutputStream`, `PipedInputStream`, `PipedReader` và `PipedWriter`, hai cái đầu tiên hướng tới byte, trong khi hai cái sau hướng tới ký tự.
 
 ```java

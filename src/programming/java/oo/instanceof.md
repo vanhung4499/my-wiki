@@ -37,16 +37,16 @@ Ring ring = new Ring();
 System.out.println(ring instanceof Round);
 ```
 
-Đoạn mã này sẽ in ra true, vì lớp Ring kế thừa từ Round và thỏa mãn quan hệ "là một" (is-a). Từ khoá instanceof dựa trên mối quan hệ kế thừa giữa các lớp và mối quan hệ triển khai giữa lớp và giao diện để thực hiện việc kiểm tra.
+Đoạn mã này sẽ in ra true, vì lớp Ring kế thừa từ Round và thỏa mãn quan hệ "là một" (is-a). Từ khoá instanceof dựa trên mối quan hệ kế thừa giữa các lớp và mối quan hệ triển khai giữa lớp và interface để thực hiện việc kiểm tra.
 
-Tiếp theo, chúng ta tạo một giao diện Shape:
+Tiếp theo, chúng ta tạo một interface Shape:
 
 ```java
 interface Shape {
 }
 ```
 
-Sau đó, chúng ta tạo lớp Circle, lớp này triển khai giao diện Shape và kế thừa từ Round:
+Sau đó, chúng ta tạo lớp Circle, lớp này triển khai interface Shape và kế thừa từ Round:
 
 ```java
 class Circle extends Round implements Shape {
@@ -66,15 +66,15 @@ Ví dụ này rất rõ ràng, chức năng của từ khoá instanceof như v�
 System.out.println(circle instanceof Round);
 ```
 
-Kết quả ở đây cũng là true, vì lớp Circle là lớp con của Round, vẫn thỏa mãn quan hệ "là một" (is-a). Tiếp theo, nếu muốn kiểm tra xem một đối tượng có triển khai một giao diện nhất định không?
+Kết quả ở đây cũng là true, vì lớp Circle là lớp con của Round, vẫn thỏa mãn quan hệ "là một" (is-a). Tiếp theo, nếu muốn kiểm tra xem một đối tượng có triển khai một interface nhất định không?
 
 ```java
 System.out.println(circle instanceof Shape);
 ```
 
-Kết quả ở đây cũng là true, vì Circle triển khai giao diện Shape, cũng thỏa mãn quan hệ "là một" (is-a).
+Kết quả ở đây cũng là true, vì Circle triển khai interface Shape, cũng thỏa mãn quan hệ "là một" (is-a).
 
-Để chứng minh điều này, chúng ta sẽ tạo một lớp Triangle, triển khai giao diện Shape nhưng không có mối liên hệ gì đến lớp Circle:
+Để chứng minh điều này, chúng ta sẽ tạo một lớp Triangle, triển khai interface Shape nhưng không có mối liên hệ gì đến lớp Circle:
 
 ```java
 class Triangle implements Shape {
@@ -136,4 +136,3 @@ if (obj instanceof String s) {
 ```
 
 Bạn có thể đặt một biến ngay trong điều kiện if để xác định kiểu mà không cần phải ép kiểu hoặc khai báo một biến mới.
-

@@ -11,7 +11,7 @@ order: -1
 # Java Exception Summary
 ## Phân cấp ngoại lệ (Exception)
 
-**Ngoại lệ (Exception)** đề cập đến các tình huống không mong muốn xảy ra, chẳng hạn như không tìm thấy tệp, kết nối mạng thất bại, tham số không hợp lệ, v.v. Ngoại lệ là một sự kiện xảy ra trong quá trình chạy chương trình, làm gián đoạn quy trình lệnh bình thường. Trong Java, các ngoại lệ khác nhau được mô tả bằng các lớp con của lớp `Throwable` trong API. Do đó, các ngoại lệ trong Java đều là các đối tượng, là các thể hiện của lớp con của Throwable, mô tả các điều kiện lỗi xuất hiện trong đoạn mã. Khi điều kiện được tạo ra, lỗi sẽ gây ra ngoại lệ.  
+**Ngoại lệ (Exception)** đề cập đến các tình huống không mong muốn xảy ra, chẳng hạn như không tìm thấy tệp, kết nối mạng thất bại, tham số không hợp lệ, v.v. Ngoại lệ là một sự kiện xảy ra trong quá trình chạy chương trình, làm gián đoạn quy trình lệnh bình thường. Trong Java, các ngoại lệ khác nhau được mô tả bằng các lớp con của lớp `Throwable` trong API. Do đó, các ngoại lệ trong Java đều là các đối tượng, là các thể hiện của lớp con của Throwable, mô tả các điều kiện lỗi xuất hiện trong đoạn mã. Khi điều kiện được tạo ra, lỗi sẽ gây ra ngoại lệ.
 
 Sơ đồ cấu trúc lớp ngoại lệ trong Java:
 
@@ -55,12 +55,12 @@ Những lỗi này không phải là ngoại lệ kiểm tra, không phải là 
 Các `Exception` phổ biến:
 
 - `ClassNotFoundException` - Thrown khi ứng dụng cố gắng tải một lớp nhưng không tìm thấy lớp đó.
-- `CloneNotSupportedException` - Thrown khi gọi phương thức clone của một đối tượng nhưng lớp đó không thể triển khai giao diện Cloneable.
+- `CloneNotSupportedException` - Thrown khi gọi phương thức clone của một đối tượng nhưng lớp đó không thể triển khai interface Cloneable.
 - `IllegalAccessException` - Thrown khi truy cập vào một lớp bị từ chối.
-- `InstantiationException` - Thrown khi cố gắng tạo một thể hiện của một lớp mà đối tượng của lớp đó không thể được tạo ra vì nó là một giao diện hoặc một lớp trừu tượng.
+- `InstantiationException` - Thrown khi cố gắng tạo một thể hiện của một lớp mà đối tượng của lớp đó không thể được tạo ra vì nó là một interface hoặc một lớp trừu tượng.
 - `InterruptedException` - Thrown khi một luồng khác đã ngắt một luồng hiện tại.
 - `NoSuchFieldException` - Thrown khi truy cập vào một trường không tồn tại.
-- `NoSuchMethodException` - Thrown khi truy cập vào một phương thức không tồn tại.  
+- `NoSuchMethodException` - Thrown khi truy cập vào một phương thức không tồn tại.
 
 Ví dụ:
 
@@ -142,25 +142,25 @@ Là ngoại lệ khác `RuntimeException`, nó thuộc loại `Exception` và c�
 Trong Java, mọi câu lệnh đang thực thi phải thuộc về một phương thức nào đó. Trình thông dịch Java gọi phương thức `main` để bắt đầu thực thi chương trình. Nếu phương thức chứa ngoại lệ kiểm tra và không bắt nó, thì phải khai báo rõ ràng ngoại lệ đó trong phần đầu của phương thức, để thông báo cho trình gọi biết phương thức có ngoại lệ và cần xử lý. Để khai báo một ngoại lệ trong phương thức, sử dụng từ khóa throws sau đó là các ngoại lệ cần khai báo. Nếu có nhiều ngoại lệ, sử dụng dấu phẩy để phân tách. Ví dụ:
 
 ```java
-public static void method() throws IOException, FileNotFoundException{  
+public static void method() throws IOException, FileNotFoundException{
     //something statements
-} 
+}
 ```
 
-Lưu ý: Nếu phương thức cha không khai báo ngoại lệ, thì phương thức con kế thừa từ phương thức cha cũng không thể khai báo ngoại lệ.  
+Lưu ý: Nếu phương thức cha không khai báo ngoại lệ, thì phương thức con kế thừa từ phương thức cha cũng không thể khai báo ngoại lệ.
 
 Thông thường, nên bắt các ngoại lệ mà biết cách xử lý, và tiếp tục ném các ngoại lệ không biết cách xử lý. Việc ném ngoại lệ có thể được thực hiện bằng cách sử dụng từ khóa `throws` trong khai báo phương thức.
 
 ```java
-private static void readFile(String filePath) throws IOException {  
-    File file = new File(filePath);  
-    String result;  
-    BufferedReader reader = new BufferedReader(new FileReader(file));  
-    while((result = reader.readLine())!=null) {  
-        System.out.println(result);  
-    }  
-    reader.close();  
-} 
+private static void readFile(String filePath) throws IOException {
+    File file = new File(filePath);
+    String result;
+    BufferedReader reader = new BufferedReader(new FileReader(file));
+    while((result = reader.readLine())!=null) {
+        System.out.println(result);
+    }
+    reader.close();
+}
 ```
 
 Quy tắc ném ngoại lệ bằng từ khóa `throws`:
@@ -175,11 +175,11 @@ Quy tắc ném ngoại lệ bằng từ khóa `throws`:
 Nếu mã có thể gây ra lỗi, có thể tạo một thể hiện của lớp ngoại lệ thích hợp và ném nó, đó là ném ngoại lệ. Ví dụ:
 
 ```java
-public static double method(int value) {  
-    if(value == 0) {  
-        throw new ArithmeticException("Tham số không thể là 0"); //ném một ngoại lệ runtime  
-    }  
-    return 5.0 / value;  
+public static double method(int value) {
+    if(value == 0) {
+        throw new ArithmeticException("Tham số không thể là 0"); //ném một ngoại lệ runtime
+    }
+    return 5.0 / value;
 }
 ```
 
@@ -188,14 +188,14 @@ Trong hầu hết các trường hợp, không cần phải ném ngoại lệ th
 Đôi khi chúng ta có thể ném một ngoại lệ từ khối `catch`, với mục đích thay đổi loại ngoại lệ. Thường được sử dụng trong việc tích hợp nhiều hệ thống, khi một hệ thống con gặp sự cố, có thể có nhiều loại ngoại lệ, có thể sử dụng một loại ngoại lệ thống nhất để tiếp tục truyền ra bên ngoài, không cần tiết lộ quá nhiều chi tiết ngoại lệ nội bộ.
 
 ```java
-private static void readFile(String filePath) throws MyException {  
-    try {  
-        // code  
-    } catch (IOException e) {  
-        MyException ex = new MyException("read file failed.");  
-        ex.initCause(e);  
-        throw ex;  
-    }  
+private static void readFile(String filePath) throws MyException {
+    try {
+        // code
+    } catch (IOException e) {
+        MyException ex = new MyException("read file failed.");
+        ex.initCause(e);
+        throw ex;
+    }
 }
 ```
 
@@ -204,12 +204,12 @@ private static void readFile(String filePath) throws MyException {
 Thông thường, khi định nghĩa một lớp ngoại lệ, nên bao gồm hai hàm tạo, một là hàm tạo không tham số và một là hàm tạo có mô tả chi tiết (phương thức `toString` của `Throwable` sẽ in ra các thông tin chi tiết này, rất hữu ích trong quá trình gỡ lỗi), ví dụ như `MyException` đã sử dụng ở trên:
 
 ```java
-public class MyException extends Exception {  
-    public MyException(){ }  
-    public MyException(String msg){  
-        super(msg);  
-    }  
-    // …  
+public class MyException extends Exception {
+    public MyException(){ }
+    public MyException(String msg){
+        super(msg);
+    }
+    // …
 }
 ```
 
@@ -258,18 +258,18 @@ private static void readFile(String filePath) {
 
 ```java
 try {
-    // mã lệnh có thể gây ra ngoại lệ              
-} catch(Exception e) {  
-    // bắt ngoại lệ và xử lý  
-} finally {  
-    // mã lệnh luôn được thực thi  
-}  
+    // mã lệnh có thể gây ra ngoại lệ
+} catch(Exception e) {
+    // bắt ngoại lệ và xử lý
+} finally {
+    // mã lệnh luôn được thực thi
+}
 ```
 
-- Thứ tự thực thi  
+- Thứ tự thực thi
 	- Khi không có ngoại lệ được bắt trong khối `try`: Các câu lệnh trong khối try `được` thực thi tuần tự, chương trình sẽ bỏ qua khối `catch` và thực thi khối `finally` và các câu lệnh sau đó.
 	- Khi có ngoại lệ được bắt trong khối `try`, nhưng không có khối `catch` xử lý ngoại lệ này: Khi một câu lệnh trong khối `try` gây ra ngoại lệ và không có khối `catch` xử lý ngoại lệ này, ngoại lệ sẽ được ném cho JVM xử lý, khối `finally` vẫn được thực thi, nhưng các câu lệnh sau khối `finally` sẽ không được thực thi.
-	- Khi có ngoại lệ được bắt trong khối `try` và có khối `catch` xử lý ngoại lệ này: Trong khối `try`, các câu lệnh được thực thi theo thứ tự, khi một câu lệnh gây ra ngoại lệ, chương trình sẽ nhảy đến khối `catch` và so khớp từng khối `catch` để tìm chương trình xử lý phù hợp, các khối `catch` khác sẽ không được thực thi, các câu lệnh sau khối `try` cũng sẽ không được thực thi, sau khi khối `catch` được thực thi, khối `finally` sẽ được thực thi, cuối cùng là các câu lệnh sau khối `finally`.  
+	- Khi có ngoại lệ được bắt trong khối `try` và có khối `catch` xử lý ngoại lệ này: Trong khối `try`, các câu lệnh được thực thi theo thứ tự, khi một câu lệnh gây ra ngoại lệ, chương trình sẽ nhảy đến khối `catch` và so khớp từng khối `catch` để tìm chương trình xử lý phù hợp, các khối `catch` khác sẽ không được thực thi, các câu lệnh sau khối `try` cũng sẽ không được thực thi, sau khi khối `catch` được thực thi, khối `finally` sẽ được thực thi, cuối cùng là các câu lệnh sau khối `finally`.
 
 ![Pasted image 20230703164928](https://raw.githubusercontent.com/vanhung4499/images/master/snap/Pasted%20image%2020230703164928.png)
 
@@ -313,12 +313,12 @@ Khi khối `try` gây ra ngoại lệ, các câu lệnh sau mã lỗi không đ�
 
 ```java
 // Ví dụ về sử dụng Lock trong try-finally
-ReentrantLock lock = new ReentrantLock();  
-try {  
-    // mã lệnh cần khóa  
-} finally {  
-    lock.unlock(); // đảm bảo rằng khóa sẽ được giải phóng  
-}  
+ReentrantLock lock = new ReentrantLock();
+try {
+    // mã lệnh cần khóa
+} finally {
+    lock.unlock(); // đảm bảo rằng khóa sẽ được giải phóng
+}
 ```
 
 `finally` không được thực thi trong các trường hợp sau:
@@ -332,18 +332,18 @@ try {
 
 > `try-with-resource` được giới thiệu trong Java 7 và thường bị bỏ qua.
 
-Trong ví dụ trên, phần `finally` có phương thức `close` cũng có thể gây ra `IOException`, ghi đè lên ngoại lệ ban đầu. Java 7 cung cấp một cách tinh vi hơn để tự động giải phóng tài nguyên, tài nguyên tự động giải phóng phải là một lớp triển khai giao diện `AutoCloseable`.
+Trong ví dụ trên, phần `finally` có phương thức `close` cũng có thể gây ra `IOException`, ghi đè lên ngoại lệ ban đầu. Java 7 cung cấp một cách tinh vi hơn để tự động giải phóng tài nguyên, tài nguyên tự động giải phóng phải là một lớp triển khai interface `AutoCloseable`.
 
 - Cú pháp của nó như sau:
 
 ```java
-private static void tryWithResourceTest(){  
-    try (Scanner scanner = new Scanner(new FileInputStream("c:/abc"),"UTF-8")){  
-        // mã lệnh  
-    } catch (IOException e){  
-        // xử lý ngoại lệ  
-    }  
-}  
+private static void tryWithResourceTest(){
+    try (Scanner scanner = new Scanner(new FileInputStream("c:/abc"),"UTF-8")){
+        // mã lệnh
+    } catch (IOException e){
+        // xử lý ngoại lệ
+    }
+}
 ```
 
 - Chú ý vào scanner
@@ -434,8 +434,8 @@ if (obj != null) {
 - Mã lỗi 2
 
 ```java
-try { 
-  obj.method(); 
+try {
+  obj.method();
 } catch (NullPointerException e) {
   //...
 }
@@ -501,7 +501,7 @@ public void closeResourceInFinally() {
 
 - Phương pháp 2: Cú pháp try-with-resource của Java 7
 
-Nếu tài nguyên của bạn triển khai giao diện `AutoCloseable`, bạn có thể sử dụng cú pháp này. Hầu hết các tài nguyên tiêu chuẩn của Java đều kế thừa giao diện này. Khi bạn mở tài nguyên trong mệnh đề `try`, tài nguyên sẽ tự động đóng sau khi mệnh đề `try` hoặc xử lý ngoại lệ kết thúc.
+Nếu tài nguyên của bạn triển khai interface `AutoCloseable`, bạn có thể sử dụng cú pháp này. Hầu hết các tài nguyên tiêu chuẩn của Java đều kế thừa interface này. Khi bạn mở tài nguyên trong mệnh đề `try`, tài nguyên sẽ tự động đóng sau khi mệnh đề `try` hoặc xử lý ngoại lệ kết thúc.
 
 ```java
 public void automaticallyCloseResource() {
@@ -551,7 +551,7 @@ Thêm `@throws` vào Javadoc và mô tả các tình huống ngoại lệ đư�
 ```java
 /**
 * Method description
-* 
+*
 * @throws MyBusinessException - businuess exception description
 */
 public void doSomething(String input) throws MyBusinessException {
@@ -921,56 +921,56 @@ public static java.lang.String tryCatchReturn();
 Nói về tốc độ chậm của việc sử dụng ngoại lệ, trước tiên hãy xem xét nơi mà nó chậm như thế nào và chậm bao nhiêu. Dưới đây là một số trường hợp kiểm thử đơn giản để so sánh thời gian mất để tạo đối tượng, tạo đối tượng ngoại lệ và ném và bắt đối tượng ngoại lệ:
 
 ```java
-public class ExceptionTest {  
-  
-    private int testTimes;  
-  
-    public ExceptionTest(int testTimes) {  
-        this.testTimes = testTimes;  
-    }  
-  
-    public void newObject() {  
-        long l = System.nanoTime();  
-        for (int i = 0; i < testTimes; i++) {  
-            new Object();  
-        }  
-        System.out.println("Tạo đối tượng: " + (System.nanoTime() - l));  
-    }  
-  
-    public void newException() {  
-        long l = System.nanoTime();  
-        for (int i = 0; i < testTimes; i++) {  
-            new Exception();  
-        }  
-        System.out.println("Tạo đối tượng ngoại lệ: " + (System.nanoTime() - l));  
-    }  
-  
-    public void catchException() {  
-        long l = System.nanoTime();  
-        for (int i = 0; i < testTimes; i++) {  
-            try {  
-                throw new Exception();  
-            } catch (Exception e) {  
-            }  
-        }  
-        System.out.println("Tạo, ném và bắt đối tượng ngoại lệ: " + (System.nanoTime() - l));  
-    }  
-  
-    public static void main(String[] args) {  
-        ExceptionTest test = new ExceptionTest(10000);  
-        test.newObject();  
-        test.newException();  
-        test.catchException();  
-    }  
-}  
+public class ExceptionTest {
+
+    private int testTimes;
+
+    public ExceptionTest(int testTimes) {
+        this.testTimes = testTimes;
+    }
+
+    public void newObject() {
+        long l = System.nanoTime();
+        for (int i = 0; i < testTimes; i++) {
+            new Object();
+        }
+        System.out.println("Tạo đối tượng: " + (System.nanoTime() - l));
+    }
+
+    public void newException() {
+        long l = System.nanoTime();
+        for (int i = 0; i < testTimes; i++) {
+            new Exception();
+        }
+        System.out.println("Tạo đối tượng ngoại lệ: " + (System.nanoTime() - l));
+    }
+
+    public void catchException() {
+        long l = System.nanoTime();
+        for (int i = 0; i < testTimes; i++) {
+            try {
+                throw new Exception();
+            } catch (Exception e) {
+            }
+        }
+        System.out.println("Tạo, ném và bắt đối tượng ngoại lệ: " + (System.nanoTime() - l));
+    }
+
+    public static void main(String[] args) {
+        ExceptionTest test = new ExceptionTest(10000);
+        test.newObject();
+        test.newException();
+        test.catchException();
+    }
+}
 ```
 
 Kết quả chạy:
 
 ```bash
-Tạo đối tượng: 575817  
-Tạo đối tượng ngoại lệ: 9589080  
-Tạo, ném và bắt đối tượng ngoại lệ: 47394475  
+Tạo đối tượng: 575817
+Tạo đối tượng ngoại lệ: 9589080
+Tạo, ném và bắt đối tượng ngoại lệ: 47394475
 ```
 
 Tạo một đối tượng ngoại lệ mất khoảng 20 lần thời gian so với việc tạo một đối tượng thông thường (thực tế, khoảng cách này sẽ lớn hơn nhiều vì vòng lặp cũng mất thời gian, độc giả muốn chính xác hơn có thể đo thời gian của vòng lặp trống và trừ đi phần này trước khi so sánh), trong khi việc ném và bắt đối tượng ngoại lệ mất khoảng 4 lần thời gian so với việc tạo đối tượng ngoại lệ.

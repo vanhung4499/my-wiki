@@ -56,7 +56,7 @@ public boolean equals(Object anObject) {
 }
 ```
 
-“Thứ tư, [String và StringBuffer, StringBuilder](/programming/java/string/builder-buffer.html) đều thực thi giao diện CharSequence, vì vậy chúng là những người anh em gần gũi nhau. Bởi vì String là không thay đổi, vì vậy khi cần ghép chuỗi, bạn có thể xem xét hai người anh em tốt hơn là StringBuffer và StringBuilder, vì chúng là có thể thay đổi.”
+“Thứ tư, [String và StringBuffer, StringBuilder](/programming/java/string/builder-buffer.html) đều thực thi interface CharSequence, vì vậy chúng là những người anh em gần gũi nhau. Bởi vì String là không thay đổi, vì vậy khi cần ghép chuỗi, bạn có thể xem xét hai người anh em tốt hơn là StringBuffer và StringBuilder, vì chúng là có thể thay đổi.”
 
 ### Tại sao String sau này được tối ưu hóa từ mảng char sang mảng byte
 

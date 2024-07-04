@@ -12,13 +12,13 @@ date modified: 2023-07-17
 >
 > Sau đó, giới thiệu về cơ chế cốt lõi của khóa là AQS.
 >
-> Tiếp theo, tập trung giới thiệu hai giao diện Lock và Condition và các cài đặt của chúng. Lập trình đồng thời có hai vấn đề cốt lõi: đồng bộ và mutex.
+> Tiếp theo, tập trung giới thiệu hai interface Lock và Condition và các cài đặt của chúng. Lập trình đồng thời có hai vấn đề cốt lõi: đồng bộ và mutex.
 >
 > **Mutex** có nghĩa là chỉ cho phép một luồng truy cập tài nguyên chung vào cùng một thời điểm;
 >
 > **Đồng bộ** là cách các luồng giao tiếp và hợp tác với nhau.
 >
-> Cả hai vấn đề này đều có thể được giải quyết bằng cách sử dụng cơ chế quản lý (synchronized). **Gói J.U.C cung cấp hai giao diện Lock và Condition để triển khai cơ chế quản lý, trong đó Lock được sử dụng để giải quyết vấn đề tương hỗ và Condition được sử dụng để giải quyết vấn đề đồng bộ**.
+> Cả hai vấn đề này đều có thể được giải quyết bằng cách sử dụng cơ chế quản lý (synchronized). **Gói J.U.C cung cấp hai interface Lock và Condition để triển khai cơ chế quản lý, trong đó Lock được sử dụng để giải quyết vấn đề tương hỗ và Condition được sử dụng để giải quyết vấn đề đồng bộ**.
 
 ## Giới thiệu về khóa đồng thời
 
@@ -190,7 +190,7 @@ Dưới đây là so sánh giữa khóa hiển thị và khóa nội tại:
 
 ### Tại sao cần sử dụng Lock và Condition
 
-Trong lĩnh vực lập trình đa luồng, có hai vấn đề cốt lõi: **đồng bộ hóa** và **tương tác**. Đồng bộ hóa đảm bảo chỉ có một luồng được phép truy cập vào tài nguyên chung trong cùng một thời điểm. Tương tác xảy ra khi các luồng cần giao tiếp và cộng tác với nhau. Để giải quyết hai vấn đề này, Java SDK cung cấp giao diện `Lock` và `Condition` để triển khai mô hình quản lý tài nguyên.
+Trong lĩnh vực lập trình đa luồng, có hai vấn đề cốt lõi: **đồng bộ hóa** và **tương tác**. Đồng bộ hóa đảm bảo chỉ có một luồng được phép truy cập vào tài nguyên chung trong cùng một thời điểm. Tương tác xảy ra khi các luồng cần giao tiếp và cộng tác với nhau. Để giải quyết hai vấn đề này, Java SDK cung cấp interface `Lock` và `Condition` để triển khai mô hình quản lý tài nguyên.
 
 Synchronized là một cách triển khai của mô hình quản lý tài nguyên, vậy tại sao lại cần Lock và Condition.
 
@@ -204,9 +204,9 @@ Ngược lại, Lock cung cấp một tập hợp các hoạt động khóa khô
 - **Hỗ trợ thời gian chờ**. Nếu một luồng không thể lấy khóa trong một khoảng thời gian nhất định, nó sẽ không chuyển sang trạng thái chờ đợi, mà sẽ trả về một lỗi. Điều này cũng có thể phá vỡ điều kiện không thể tranh giành.
 - **Không chặn khi lấy khóa**. Nếu không thể lấy khóa, luồng không chuyển sang trạng thái chờ đợi mà trả về trực tiếp. Điều này cũng có thể phá vỡ điều kiện không thể tranh giành.
 
-### Giao diện Lock
+### interface Lock
 
-Giao diện Lock được định nghĩa như sau:
+interface Lock được định nghĩa như sau:
 
 ```java
 public interface Lock {
@@ -230,7 +230,7 @@ public interface Lock {
 
 **Condition triển khai biến điều kiện trong mô hình quản lý tài nguyên**.
 
-Như đã đề cập trước đó, giao diện Lock có một phương thức `newCondition()` để trả về một đối tượng Condition được liên kết với Lock. Condition là gì? Nó có tác dụng gì? Phần này sẽ giải thích từng phần một.
+Như đã đề cập trước đó, interface Lock có một phương thức `newCondition()` để trả về một đối tượng Condition được liên kết với Lock. Condition là gì? Nó có tác dụng gì? Phần này sẽ giải thích từng phần một.
 
 Trong một luồng đơn, việc thực thi một đoạn mã có thể phụ thuộc vào một trạng thái nào đó. Nếu không đáp ứng điều kiện trạng thái, mã sẽ không được thực thi (một ví dụ điển hình là câu lệnh `if … else …`). Trong môi trường đa luồng, khi một luồng kiểm tra điều kiện trạng thái, trạng thái có thể thay đổi do hoạt động của các luồng khác. Do đó, cần có cơ chế phối hợp để đảm bảo rằng cùng một lúc, dữ liệu chỉ được sửa đổi bởi một luồng và tất cả các luồng đều nhận biết trạng thái dữ liệu đã được sửa đổi.
 
@@ -240,7 +240,7 @@ Trước JDK 1.5, chúng ta sử dụng các phương thức `wait`、`notify`�
 
 #### Đặc điểm của Condition
 
-Giao diện Condition được định nghĩa như sau:
+interface Condition được định nghĩa như sau:
 
 ```java
 public interface Condition {
@@ -405,7 +405,7 @@ public class LockConditionDemo {
 
 ## ReentrantLock
 
-Lớp `ReentrantLock` là một triển khai cụ thể của giao diện `Lock` và, giống như khóa nội tại `synchronized`, nó là một **khóa có thể tái nhập**.
+Lớp `ReentrantLock` là một triển khai cụ thể của interface `Lock` và, giống như khóa nội tại `synchronized`, nó là một **khóa có thể tái nhập**.
 
 ### Đặc điểm của ReentrantLock
 
@@ -413,7 +413,7 @@ Các đặc điểm của `ReentrantLock` như sau:
 
 - `ReentrantLock` cung cấp tính năng **đồng bộ, khả năng nhìn thấy bộ nhớ và khả năng tái nhập** tương tự như `synchronized`.
 - `ReentrantLock` hỗ trợ hai chế độ khóa: **khóa công bằng** (fair) và **khóa không công bằng** (non-fair) (mặc định).
-- `ReentrantLock` triển khai giao diện `Lock`, cung cấp **tính linh hoạt** mà `synchronized` không có.
+- `ReentrantLock` triển khai interface `Lock`, cung cấp **tính linh hoạt** mà `synchronized` không có.
 	- `synchronized` không thể ngắt một luồng đang chờ lấy khóa.
 	- `synchronized` không thể chờ vô thời hạn khi yêu cầu lấy một khóa.
 
@@ -654,11 +654,11 @@ private final Sync sync;
 - `ReentrantLock.FairSync` - Khóa công bằng.
 - `ReentrantLock.NonfairSync` - Khóa không công bằng.
 
-Khi xem mã nguồn, ta có thể thấy rằng `ReentrantLock` thực hiện giao diện `Lock` bằng cách gọi các phương thức tương ứng trong `ReentrantLock.FairSync` hoặc `ReentrantLock.NonfairSync`, không cần liệt kê từng phương thức một.
+Khi xem mã nguồn, ta có thể thấy rằng `ReentrantLock` thực hiện interface `Lock` bằng cách gọi các phương thức tương ứng trong `ReentrantLock.FairSync` hoặc `ReentrantLock.NonfairSync`, không cần liệt kê từng phương thức một.
 
 #### Lấy khóa và giải phóng khóa của ReentrantLock
 
-Giao diện lấy khóa và giải phóng khóa của ReentrantLock, từ bề ngoài, là gọi các phương thức tương ứng trong `ReentrantLock.FairSync` hoặc `ReentrantLock.NonfairSync`; từ bản chất, nó dựa trên AQS.
+interface lấy khóa và giải phóng khóa của ReentrantLock, từ bề ngoài, là gọi các phương thức tương ứng trong `ReentrantLock.FairSync` hoặc `ReentrantLock.NonfairSync`; từ bản chất, nó dựa trên AQS.
 
 Đọc mã nguồn cẩn thận, ta dễ dàng nhận thấy:
 
@@ -747,12 +747,12 @@ Một điểm khác biệt quan trọng giữa khóa đọc/ghi và khóa độc
 
 Các tính năng của ReentrantReadWriteLock như sau:
 
-- **`ReentrantReadWriteLock` phù hợp với các tình huống đọc nhiều, ghi ít**. Nếu tình huống là ghi nhiều, đọc ít, việc triển khai `ReentrantReadWriteLock` có thể phức tạp hơn so với `ReentrantLock` và có thể làm giảm hiệu suất. Trong trường hợp này, cần phân tích cụ thể từng trường hợp. Vì cả khóa đọc (`ReadLock`) và khóa ghi (`WriteLock`) của `ReentrantReadWriteLock` đều triển khai giao diện `Lock`, việc thay thế bằng `ReentrantLock` cũng khá dễ dàng.
-- `ReentrantReadWriteLock` triển khai giao diện `ReadWriteLock`, hỗ trợ việc tách biệt khóa đọc và khóa ghi so với `ReentrantLock`. `ReentrantReadWriteLock` duy trì một cặp khóa đọc và ghi (`ReadLock`, `WriteLock`). Tách biệt khóa đọc và khóa ghi giúp tăng hiệu suất đồng thời. Chiến lược khóa của `ReentrantReadWriteLock` là: **cho phép nhiều hoạt động đọc cùng thời điểm, nhưng chỉ cho phép một hoạt động ghi tại một thời điểm**.
+- **`ReentrantReadWriteLock` phù hợp với các tình huống đọc nhiều, ghi ít**. Nếu tình huống là ghi nhiều, đọc ít, việc triển khai `ReentrantReadWriteLock` có thể phức tạp hơn so với `ReentrantLock` và có thể làm giảm hiệu suất. Trong trường hợp này, cần phân tích cụ thể từng trường hợp. Vì cả khóa đọc (`ReadLock`) và khóa ghi (`WriteLock`) của `ReentrantReadWriteLock` đều triển khai interface `Lock`, việc thay thế bằng `ReentrantLock` cũng khá dễ dàng.
+- `ReentrantReadWriteLock` triển khai interface `ReadWriteLock`, hỗ trợ việc tách biệt khóa đọc và khóa ghi so với `ReentrantLock`. `ReentrantReadWriteLock` duy trì một cặp khóa đọc và ghi (`ReadLock`, `WriteLock`). Tách biệt khóa đọc và khóa ghi giúp tăng hiệu suất đồng thời. Chiến lược khóa của `ReentrantReadWriteLock` là: **cho phép nhiều hoạt động đọc cùng thời điểm, nhưng chỉ cho phép một hoạt động ghi tại một thời điểm**.
 - `ReentrantReadWriteLock` cung cấp khả năng khóa có thể lặp lại cho cả khóa đọc và khóa ghi.
 - `ReentrantReadWriteLock` hỗ trợ cả khóa công bằng và khóa không công bằng (mặc định là không công bằng) hai chế độ.
 
-Giao diện `ReadWriteLock` được định nghĩa như sau:
+interface `ReadWriteLock` được định nghĩa như sau:
 
 ```java
 public interface ReadWriteLock {
@@ -790,7 +790,7 @@ public ReentrantReadWriteLock(boolean fair) {}
 
 #### Ví dụ về cách sử dụng ReentrantReadWriteLock
 
-Trong phần Tính năng của `ReentrantReadWriteLock`, chúng ta đã giới thiệu rằng khóa đọc/ghi (ReadLock, WriteLock) của `ReentrantReadWriteLock` cũng triển khai giao diện `Lock`, do đó cách sử dụng riêng của chúng tương tự như `ReentrantLock` và không được trình bày ở đây.
+Trong phần Tính năng của `ReentrantReadWriteLock`, chúng ta đã giới thiệu rằng khóa đọc/ghi (ReadLock, WriteLock) của `ReentrantReadWriteLock` cũng triển khai interface `Lock`, do đó cách sử dụng riêng của chúng tương tự như `ReentrantLock` và không được trình bày ở đây.
 
 Sự khác biệt chính giữa `ReentrantReadWriteLock` và `ReentrantLock` nằm ở cách sử dụng khóa đọc và khóa ghi cùng nhau. Ví dụ dưới đây sẽ giải thích điều này thông qua một tình huống sử dụng điển hình.
 
@@ -1245,7 +1245,7 @@ Deadlock là một trạng thái cụ thể của chương trình, trong đó c�
 
 ### Cách xác định Deadlock
 
-Cách phổ biến nhất để xác định deadlock là sử dụng các công cụ như jstack để lấy stack trace của các luồng, sau đó xác định các phụ thuộc lẫn nhau giữa chúng để tìm ra deadlock. Nếu deadlock rõ ràng, thì thường có thể xác định trực tiếp bằng jstack, và các công cụ như JConsole thậm chí có thể phát hiện deadlock trong giao diện đồ họa có hạn.
+Cách phổ biến nhất để xác định deadlock là sử dụng các công cụ như jstack để lấy stack trace của các luồng, sau đó xác định các phụ thuộc lẫn nhau giữa chúng để tìm ra deadlock. Nếu deadlock rõ ràng, thì thường có thể xác định trực tiếp bằng jstack, và các công cụ như JConsole thậm chí có thể phát hiện deadlock trong interface đồ họa có hạn.
 
 Nếu bạn đang phát triển công cụ quản lý riêng của mình, cần quét quy trình dịch vụ, xác định deadlock một cách tự động, bạn có thể xem xét sử dụng API quản lý chuẩn của Java, `ThreadMXBean`, nó cung cấp trực tiếp phương thức `findDeadlockedThreads()` để xác định deadlock.
 

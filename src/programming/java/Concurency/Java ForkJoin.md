@@ -30,15 +30,15 @@ Các phương thức không chỉ định Executor sẽ sử dụng ForkJoinPool
 
 ## CompletionStage
 
-Giao diện CompletionStage có thể mô tả rõ ràng mối quan hệ thời gian giữa các nhiệm vụ, chẳng hạn như mối quan hệ tuần tự, song song, tổng hợp và hợp nhất.
+interface CompletionStage có thể mô tả rõ ràng mối quan hệ thời gian giữa các nhiệm vụ, chẳng hạn như mối quan hệ tuần tự, song song, tổng hợp và hợp nhất.
 
 ### Mối quan hệ tuần tự
 
-Giao diện CompletionStage mô tả mối quan hệ tuần tự, chủ yếu là các phương thức thenApply, thenAccept, thenRun và thenCompose.
+interface CompletionStage mô tả mối quan hệ tuần tự, chủ yếu là các phương thức thenApply, thenAccept, thenRun và thenCompose.
 
-Các phương thức loạt thenApply có tham số fn có kiểu giao diện `Function<T, R>`, giao diện này có phương thức liên quan đến CompletionStage là `R apply(T t)`, phương thức này không chỉ nhận tham số mà còn hỗ trợ giá trị trả về, vì vậy các phương thức loạt thenApply trả về `CompletionStage`.
+Các phương thức loạt thenApply có tham số fn có kiểu interface `Function<T, R>`, interface này có phương thức liên quan đến CompletionStage là `R apply(T t)`, phương thức này không chỉ nhận tham số mà còn hỗ trợ giá trị trả về, vì vậy các phương thức loạt thenApply trả về `CompletionStage`.
 
-Trong khi đó, các phương thức loạt thenAccept có tham số consumer có kiểu giao diện `Consumer<T>`, giao diện này có phương thức liên quan đến `CompletionStage` là void `accept(T t)`, phương thức này hỗ trợ tham số nhưng không hỗ trợ giá trị trả về, vì vậy các phương thức loạt thenAccept trả về `CompletionStage<Void>`.
+Trong khi đó, các phương thức loạt thenAccept có tham số consumer có kiểu interface `Consumer<T>`, interface này có phương thức liên quan đến `CompletionStage` là void `accept(T t)`, phương thức này hỗ trợ tham số nhưng không hỗ trợ giá trị trả về, vì vậy các phương thức loạt thenAccept trả về `CompletionStage<Void>`.
 
 Các phương thức loạt thenRun có tham số action là Runnable, vì vậy action không nhận tham số và không hỗ trợ giá trị trả về, vì vậy các phương thức loạt thenRun trả về `CompletionStage<Void>`.
 
@@ -46,7 +46,7 @@ Các phương thức này có thể được thực hiện bất đồng bộ b�
 
 ### Mô tả mối quan hệ tổng hợp AND
 
-Giao diện CompletionStage mô tả mối quan hệ tổng hợp AND, chủ yếu là các phương thức thenCombine, thenAcceptBoth và runAfterBoth.
+interface CompletionStage mô tả mối quan hệ tổng hợp AND, chủ yếu là các phương thức thenCombine, thenAcceptBoth và runAfterBoth.
 
 ```java
 CompletionStage<R> thenCombine(other, fn);
@@ -59,7 +59,7 @@ CompletionStage<Void> runAfterBothAsync(other, action);
 
 ### Mô tả mối quan hệ tổng hợp OR
 
-Giao diện CompletionStage mô tả mối quan hệ tổng hợp OR, chủ yếu là các phương thức applyToEither, acceptEither và runAfterEither.
+interface CompletionStage mô tả mối quan hệ tổng hợp OR, chủ yếu là các phương thức applyToEither, acceptEither và runAfterEither.
 
 ```java
 CompletionStage applyToEither(other, fn);
@@ -105,7 +105,7 @@ CompletableFuture<Integer>
 System.out.println(f0.join());
 ```
 
-Giao diện CompletionStage cung cấp một giải pháp rất đơn giản để xử lý ngoại lệ, so sánh với try{}catch{}, phương pháp này còn đơn giản hơn. Dưới đây là các phương thức liên quan, chúng hỗ trợ xử lý ngoại lệ và cho phép viết theo kiểu chuỗi.
+interface CompletionStage cung cấp một giải pháp rất đơn giản để xử lý ngoại lệ, so sánh với try{}catch{}, phương pháp này còn đơn giản hơn. Dưới đây là các phương thức liên quan, chúng hỗ trợ xử lý ngoại lệ và cho phép viết theo kiểu chuỗi.
 
 ```java
 CompletionStage exceptionally(fn);

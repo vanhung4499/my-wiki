@@ -12,7 +12,7 @@ date modified: 2023-07-19
 
 > Lớp được tải vào trong quá trình chạy.
 
-Tải lớp đề cập đến việc đọc dữ liệu nhị phân từ tệp `.class` của lớp vào bộ nhớ, đặt nó trong phần dữ liệu chạy thời gian của khu vực phương thức, sau đó tạo một đối tượng `java.lang.Class` trong heap, được sử dụng để đóng gói cấu trúc dữ liệu của lớp trong khu vực phương pháp và cung cấp một giao diện cho người lập trình Java để truy cập vào cấu trúc dữ liệu trong khu vực phương pháp.
+Tải lớp đề cập đến việc đọc dữ liệu nhị phân từ tệp `.class` của lớp vào bộ nhớ, đặt nó trong phần dữ liệu chạy thời gian của khu vực phương thức, sau đó tạo một đối tượng `java.lang.Class` trong heap, được sử dụng để đóng gói cấu trúc dữ liệu của lớp trong khu vực phương pháp và cung cấp một interface cho người lập trình Java để truy cập vào cấu trúc dữ liệu trong khu vực phương pháp.
 
 Lớp không cần phải chờ đến khi lớp được "sử dụng lần đầu tiên một cách chủ động" mới tải nó, quy định của JVM cho phép bộ tải lớp tải lớp trước khi dự đoán một lớp sẽ được sử dụng. Nếu trong quá trình tải trước, tệp `.class` bị thiếu hoặc có lỗi, bộ tải lớp phải báo cáo lỗi chỉ khi lớp được sử dụng lần đầu tiên bởi chương trình (lỗi LinkageError). Nếu lớp không bao giờ được sử dụng bởi chương trình, bộ tải lớp sẽ không báo cáo lỗi.
 
@@ -45,7 +45,7 @@ Quá trình tải hoàn thành ba công việc sau:
 
 - Sử dụng tên đầy đủ của một lớp để lấy dòng byte mô tả lớp này.
 - Chuyển đổi cấu trúc lưu trữ tĩnh này thành cấu trúc lưu trữ thời gian chạy của khu vực phương pháp.
-- Tạo một đối tượng `Class` trong bộ nhớ, đại diện cho cấu trúc dữ liệu của lớp trong khu vực phương pháp và cung cấp một giao diện để truy cập vào cấu trúc dữ liệu trong khu vực phương pháp.
+- Tạo một đối tượng `Class` trong bộ nhớ, đại diện cho cấu trúc dữ liệu của lớp trong khu vực phương pháp và cung cấp một interface để truy cập vào cấu trúc dữ liệu trong khu vực phương pháp.
 
 Dòng byte có thể được lấy từ các nguồn sau:
 
@@ -111,7 +111,7 @@ Khi biên dịch, Javac sẽ tạo thuộc tính ConstantValue cho value, trong 
 
 Trước khi tệp `.class` được tải vào JVM, lớp không thể biết địa chỉ cụ thể của các lớp và phương thức, trường hợp thậm chí không biết địa chỉ của chính nó. Do đó, mỗi khi cần tham chiếu đến các thành viên này, trình biên dịch Java sẽ tạo ra một tham chiếu biểu tượng. Trong quá trình chạy, tham chiếu biểu tượng này thường có thể xác định một cách chính xác đến mục tiêu.
 
-Giải quyết là giai đoạn để thay thế các tham chiếu biểu tượng trong bộ nhớ hằng số bằng các tham chiếu trực tiếp. Giải quyết chủ yếu áp dụng cho 7 loại tham chiếu biểu tượng: lớp hoặc giao diện, trường, phương thức lớp, phương thức giao diện, kiểu phương thức, xử lý phương thức và bộ giới hạn điểm gọi.
+Giải quyết là giai đoạn để thay thế các tham chiếu biểu tượng trong bộ nhớ hằng số bằng các tham chiếu trực tiếp. Giải quyết chủ yếu áp dụng cho 7 loại tham chiếu biểu tượng: lớp hoặc interface, trường, phương thức lớp, phương thức interface, kiểu phương thức, xử lý phương thức và bộ giới hạn điểm gọi.
 
 - **Tham chiếu biểu tượng (Symbolic References)** - Tham chiếu biểu tượng mô tả một tập hợp các biểu tượng tham chiếu và được sử dụng để chỉ định mục tiêu tham chiếu.
 - **Tham chiếu trực tiếp (Direct References)** - Tham chiếu trực tiếp có thể là con trỏ trực tiếp đến mục tiêu, địa chỉ tương đối hoặc một con trỏ có thể xác định mục tiêu một cách gián tiếp.
@@ -146,7 +146,7 @@ Chỉ khi lớp được chủ động tham chiếu mới gây ra việc khởi 
 Tham chiếu chủ động của lớp bao gồm sáu trường hợp sau:
 
 - **Tạo một phiên bản của lớp** - cũng là `new` đối tượng
-- **Truy cập biến tĩnh** - truy cập biến tĩnh của một lớp hoặc giao diện hoặc gán giá trị cho biến tĩnh đó
+- **Truy cập biến tĩnh** - truy cập biến tĩnh của một lớp hoặc interface hoặc gán giá trị cho biến tĩnh đó
 - **Truy cập phương thức tĩnh**
 - **Phản chiếu** - như `Class.forName("com.shengsiyuan.Test")`
 - **Khởi tạo lớp con** - khởi tạo một lớp con của một lớp, lớp cha cũng sẽ được khởi tạo
@@ -210,9 +210,9 @@ public static void main(String[] args) {
 }
 ```
 
-- Phương thức `<clinit>()` không bắt buộc cho các lớp hoặc giao diện, nếu một lớp không chứa khối mã tĩnh, cũng không có gán giá trị cho biến lớp, trình biên dịch có thể không tạo phương thức `<clinit>()`.
-- Giao diện không thể sử dụng khối mã tĩnh, nhưng vẫn có khởi tạo biến lớp, do đó, giao diện và lớp giải quyết trong quá trình khởi tạo không cần phải thực hiện phương thức `<clinit>()` của giao diện. Ngoài ra, các lớp thực hiện giao diện cũng không thực hiện phương thức `<clinit>()` của giao diện.
-- Máy ảo sẽ đảm bảo rằng phương thức `<clinit>()` của một lớp được khóa và đồng bộ đúng trong môi trường đa luồng. Nếu nhiều luồng cùng khởi tạo một lớp, chỉ có một luồng thực hiện phương thức `<clinit>()`, các luồng khác sẽ bị chặn và chờ đợi cho đến khi luồng hoạt động hoàn tất phương thức `<clinit>()`. Nếu có một hoạt động tốn thời gian trong phương thức `<clinit>()`, nó có thể gây ra nhiều luồng bị chặn trong quá trình thực hiện thực tế này.
+- Phương thức `<clinit>()` không bắt buộc cho các lớp hoặc interface, nếu một lớp không chứa khối mã tĩnh, cũng không có gán giá trị cho biến lớp, trình biên dịch có thể không tạo phương thức `<clinit>()`.
+- interface không thể sử dụng khối mã tĩnh, nhưng vẫn có khởi tạo biến lớp, do đó, interface và lớp giải quyết trong quá trình khởi tạo không cần phải thực hiện phương thức `<clinit>()` của interface. Ngoài ra, các lớp thực hiện interface cũng không thực hiện phương thức `<clinit>()` của interface.
+- Máy ảo sẽ đảm bảo rằng phương thức `<clinit>()` của một lớp được khóa và đồng bộ đúng trong môi trường đa luồng. Nếu nhiều luồng cùng khởi tạo một lớp, chỉ có một luồng thực hiện phương thức `<clinit>()`, các luồng khác sẽ bị chặn và chờ đợi cho đến khi luồng hoạt động hoàn tất phương thức `<clinit>()`. Nếu có một hoạt động tốn thời gian trong phương thức `<clinit>()`, nó có thể gây ra nhiều luồng bị chặn trong quá trình thực triển khai tế này.
 
 # ClassLoader
 

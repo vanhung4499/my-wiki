@@ -127,10 +127,10 @@ Mục tiêu chính của việc thu gom rác trong khu vực này là thu gom r�
 
 ### Bảng hằng số thời gian chạy
 
-**`Bảng hằng số thời gian chạy (Runtime Constant Pool)` là một phần của khu vực phương thức** trong không gian phương thức. Trong tệp Class, ngoài thông tin về phiên bản lớp, trường, phương thức, giao diện, còn có một mục thông tin khác là bảng hằng số (Constant Pool Table), **được sử dụng để lưu trữ các literal và tham chiếu tượng trưng được tạo bởi trình biên dịch**. Nội dung này sẽ được đưa vào khu vực này sau khi lớp được tải.
+**`Bảng hằng số thời gian chạy (Runtime Constant Pool)` là một phần của khu vực phương thức** trong không gian phương thức. Trong tệp Class, ngoài thông tin về phiên bản lớp, trường, phương thức, interface, còn có một mục thông tin khác là bảng hằng số (Constant Pool Table), **được sử dụng để lưu trữ các literal và tham chiếu tượng trưng được tạo bởi trình biên dịch**. Nội dung này sẽ được đưa vào khu vực này sau khi lớp được tải.
 
 - **Literal** - Chuỗi văn bản, giá trị hằng số được khai báo là `final`, v.v.
-- **Tham chiếu tượng trưng** - Tên đầy đủ của lớp và giao diện (Fully Qualified Name), tên và mô tả của trường (Descriptor), tên và mô tả của phương thức.
+- **Tham chiếu tượng trưng** - Tên đầy đủ của lớp và interface (Fully Qualified Name), tên và mô tả của trường (Descriptor), tên và mô tả của phương thức.
 
 Ngoài các hằng số được tạo ra trong quá trình biên dịch, còn cho phép tạo ra động, ví dụ như `intern()` của lớp `String`. Các hằng số này cũng sẽ được đưa vào bảng hằng số thời chạy.
 

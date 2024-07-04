@@ -13,7 +13,7 @@ order: 3
 
 ## Tại sao cần Generics
 
-> Bản chất của Generics là tham số hóa kiểu dữ liệu (cho phép kiểm soát kiểu dữ liệu cụ thể của tham số mà không cần tạo ra kiểu dữ liệu mới). Nghĩa là trong quá trình sử dụng Generics, kiểu dữ liệu được chỉ định là một tham số, tham số này có thể được sử dụng trong lớp, giao diện và phương thức, tương ứng được gọi là lớp Generics, giao diện Generics và Generics method.
+> Bản chất của Generics là tham số hóa kiểu dữ liệu (cho phép kiểm soát kiểu dữ liệu cụ thể của tham số mà không cần tạo ra kiểu dữ liệu mới). Nghĩa là trong quá trình sử dụng Generics, kiểu dữ liệu được chỉ định là một tham số, tham số này có thể được sử dụng trong lớp, interface và phương thức, tương ứng được gọi là lớp Generics, interface Generics và Generics method.
 
 Ý nghĩa của Generics là:
 
@@ -75,53 +75,53 @@ List<String> list = new ArrayList<String>();
 - Bắt đầu với một generics class đơn giản:
 
 ```java
-class Point<T>{         // Có thể viết định danh tuỳ ý，T viết tắt của type  
-    private T var ;     // biến var kiểu T  
-    public T getVar(){  
-        return var ;  
-    }  
+class Point<T>{         // Có thể viết định danh tuỳ ý，T viết tắt của type
+    private T var ;     // biến var kiểu T
+    public T getVar(){
+        return var ;
+    }
     public void setVar(T var){
-        this.var = var ;  
-    }  
-}  
-public class GenericsDemo06{  
-    public static void main(String args[]){  
-        Point<String> p = new Point<String>() ;     // kiểu của var là String  
-        p.setVar("it") ;                            // đặt giá trị var  
+        this.var = var ;
+    }
+}
+public class GenericsDemo06{
+    public static void main(String args[]){
+        Point<String> p = new Point<String>() ;     // kiểu của var là String
+        p.setVar("it") ;                            // đặt giá trị var
         System.out.println(p.getVar().length()) ;   // lấy độ dài chuỗi
-    }  
+    }
 }
 ```
 
 - Generics class đa kiểu dữ liệu
 
 ```java
-class Notepad<K,V>{       // Hai kiểu được dùng  
+class Notepad<K,V>{       // Hai kiểu được dùng
     private K key ;
     private V value ;
-    public K getKey(){  
-        return this.key ;  
-    }  
-    public V getValue(){  
-        return this.value ;  
-    }  
-    public void setKey(K key){  
-        this.key = key ;  
-    }  
-    public void setValue(V value){  
-        this.value = value ;  
-    }  
-} 
-public class GenericsDemo09{  
-    public static void main(String args[]){  
-        Notepad<String,Integer> t = null ;        // Định nghĩa  
-        t = new Notepad<String,Integer>() ;       // key kiểu String，value kiểu Integer  
-        t.setKey("Tom") ; 
+    public K getKey(){
+        return this.key ;
+    }
+    public V getValue(){
+        return this.value ;
+    }
+    public void setKey(K key){
+        this.key = key ;
+    }
+    public void setValue(V value){
+        this.value = value ;
+    }
+}
+public class GenericsDemo09{
+    public static void main(String args[]){
+        Notepad<String,Integer> t = null ;        // Định nghĩa
+        t = new Notepad<String,Integer>() ;       // key kiểu String，value kiểu Integer
+        t.setKey("Tom") ;
         t.setValue(20) ;
         System.out.print("Key；" + t.getKey()) ;
         System.out.print("，Value；" + t.getValue()) ;
-  
-    }  
+
+    }
 }
 ```
 
@@ -132,26 +132,26 @@ public class GenericsDemo09{
 ```java
 interface Info<T>{
     public T getVar() ;
-}  
-class InfoImpl<T> implements Info<T>{ 
-    private T var ; 
+}
+class InfoImpl<T> implements Info<T>{
+    private T var ;
     public InfoImpl(T var){
-        this.setVar(var) ;    
-    }  
-    public void setVar(T var){  
-        this.var = var ;  
-    }  
-    public T getVar(){  
-        return this.var ;  
-    }  
-} 
-public class GenericsDemo24{  
-    public static void main(String arsg[]){  
-        Info<String> i = null; 
+        this.setVar(var) ;
+    }
+    public void setVar(T var){
+        this.var = var ;
+    }
+    public T getVar(){
+        return this.var ;
+    }
+}
+public class GenericsDemo24{
+    public static void main(String arsg[]){
+        Info<String> i = null;
         i = new InfoImpl<String>("Hung") ;
-        System.out.println("var：" + i.getVar()) ;  
-    }  
-}  
+        System.out.println("var：" + i.getVar()) ;
+    }
+}
 ```
 
 ### Generics Method
@@ -197,20 +197,20 @@ class B extends A {}
 
 // Hai phương thức dưới đây không gây lỗi
 public static void funA(A a) {
-    // ...          
+    // ...
 }
 public static void funB(B b) {
     funA(b);
-    // ...             
+    // ...
 }
 
 // Phương thức funD dưới đây sẽ gây lỗi
 public static void funC(List<A> listA) {
-    // ...          
+    // ...
 }
 public static void funD(List<B> listB) {
     funC(listB); // Unresolved compilation problem: The method doPrint(List<A>) in the type test is not applicable for the arguments (List<B>)
-    // ...             
+    // ...
 }
 ```
 
@@ -220,17 +220,17 @@ Làm thế nào để giải quyết vấn đề này?
 
 ```java
 public static void funC(List<? extends A> listA) {
-    // ...          
+    // ...
 }
 public static void funD(List<B> listB) {
     funC(listB); // OK
-    // ...             
+    // ...
 }
 ```
 
 - **Giới thiệu các giới hạn trên và dưới Generics**
 
-Giới hạn trên và dưới của Generics được sử dụng khi sử dụng Generics, chúng ta có thể giới hạn kiểu tham số kiểu được truyền vào, ví dụ: chỉ cho phép tham số kiểu được truyền vào là một lớp cha nào đó hoặc một lớp con của một lớp nào đó.  
+Giới hạn trên và dưới của Generics được sử dụng khi sử dụng Generics, chúng ta có thể giới hạn kiểu tham số kiểu được truyền vào, ví dụ: chỉ cho phép tham số kiểu được truyền vào là một lớp cha nào đó hoặc một lớp con của một lớp nào đó.
 
 Giới hạn trên:
 
@@ -290,7 +290,7 @@ public class GenericsDemo21{
 - `<? extends E>` sử dụng từ khóa `extends` để chỉ định giới hạn trên, đại diện cho kiểu tham số hóa có thể là kiểu được chỉ định hoặc một lớp con của kiểu đó.
 - `<? super E>` sử dụng từ khóa `super` để chỉ định giới hạn dưới, đại diện cho kiểu tham số hóa có thể là kiểu được chỉ định hoặc một lớp cha của kiểu đó.
 
-Nguyên tắc sử dụng:《Effictive Java》  
+Nguyên tắc sử dụng:《Effictive Java》
 
 Để có sự linh hoạt tối đa, hãy sử dụng ký tự đại diện cho tham số đầu vào của lớp sản xuất hoặc lớp tiêu thụ.
 
@@ -326,7 +326,7 @@ Phạm vi của tham số kiểu E trong đoạn mã trên là `<E extends Comp
 
 **Nhiều hạn chế**
 
-Sử dụng dấu `&`  
+Sử dụng dấu `&`
 
 Ví dụ thực tế khác để làm rõ hơn:
 
@@ -384,8 +384,8 @@ public class GenericsDemo30 {
 - Sử dụng một cách hợp lý:
 
 ```java
-public ArrayWithTypeToken(Class<T> type, int size) {  
-    array = (T[]) Array.newInstance(type, size);  
+public ArrayWithTypeToken(Class<T> type, int size) {
+    array = (T[]) Array.newInstance(type, size);
 }
 ```
 
@@ -399,7 +399,7 @@ public ArrayWithTypeToken(Class<T> type, int size) {
 
 > Type erasure trong Generics của Java là một tính năng được thêm vào từ JDK 1.5. Do đó, để tương thích với các phiên bản trước đó, cài đặt Generics của Java sử dụng một chiến lược được gọi là "**pseudo-generics**" (giả Generics). Điều này có nghĩa là Java hỗ trợ Generics trong cú pháp, nhưng trong quá trình biên dịch, sẽ thực hiện "**type erasure**" (loại bỏ kiểu dữ liệu), thay thế tất cả các biểu thức Generics (nằm trong dấu ngoặc nhọn) bằng các kiểu dữ liệu cụ thể (kiểu nguyên thủy tương ứng), giống như không sử dụng Generics hoàn toàn. Hiểu rõ về "type erasure" là rất hữu ích để sử dụng Generics một cách hiệu quả, đặc biệt là khi gặp phải các vấn đề phức tạp.
 
-**Nguyên tắc của "type erasure" trong Generics là:**  
+**Nguyên tắc của "type erasure" trong Generics là:**
 
 - Loại bỏ khai báo tham số kiểu, tức là xóa bỏ phần tử `<>` và các phần kèm theo.
 - Dựa vào giới hạn trên và dưới của tham số kiểu để suy ra và thay thế tất cả các tham số kiểu bằng kiểu nguyên thủy tương ứng: nếu tham số kiểu là một wildcard không giới hạn hoặc không có giới hạn, thì thay thế bằng Object; nếu có giới hạn trên và dưới, thì thay thế bằng giới hạn trên hoặc giới hạn dưới của tham số kiểu (ví dụ: được thay thế bằng Number, được thay thế bằng Object).
@@ -412,7 +412,7 @@ Tham khảo từ: http://softlab.sdut.edu.cn/blog/subaochen/2017/01/generics-typ
 
 - Loại bỏ tham số kiểu trong định nghĩa lớp - Loại bỏ kiểu không giới hạn
 
-Khi không có bất kỳ giới hạn nào cho tham số kiểu trong định nghĩa lớp, nó được thay thế trực tiếp bằng Object, tức là các tham số kiểu như và đều được thay thế bằng Object.  
+Khi không có bất kỳ giới hạn nào cho tham số kiểu trong định nghĩa lớp, nó được thay thế trực tiếp bằng Object, tức là các tham số kiểu như và đều được thay thế bằng Object.
 
 ![Pasted image 20230703002117](https://raw.githubusercontent.com/vanhung4499/images/master/snap/Pasted%20image%2020230703002117.png)
 
@@ -479,28 +479,28 @@ Kiểu nguyên thủy là kiểu biến thực sự của biến trong `bytecode
 - Kiểu nguyên thuỷ của T là Object
 
 ```java
-class Pair<T> {  
-    private T value;  
-    public T getValue() {  
-        return value;  
-    }  
-    public void setValue(T  value) {  
-        this.value = value;  
-    }  
-} 
+class Pair<T> {
+    private T value;
+    public T getValue() {
+        return value;
+    }
+    public void setValue(T  value) {
+        this.value = value;
+    }
+}
 ```
 
 Kiểu nguyên thủy của Pair là:
 
 ```java
-class Pair {  
-    private Object value;  
-    public Object getValue() {  
-        return value;  
-    }  
-    public void setValue(Object  value) {  
-        this.value = value;  
-    }  
+class Pair {
+    private Object value;
+    public Object getValue() {
+        return value;
+    }
+    public void setValue(Object  value) {
+        this.value = value;
+    }
 }
 ```
 
@@ -524,8 +524,8 @@ Cần phân biệt giữa kiểu nguyên thủy và kiểu biến generic. Khi g
 - Khi chỉ định generic, các kiểu trong phương thức phải là loại cụ thể của generic đó hoặc là lớp con của nó.
 
 ```java
-public class Test {  
-    public static void main(String[] args) {  
+public class Test {
+    public static void main(String[] args) {
 
 	    /** Khi không chỉ định generic */
 	    int i = Test.add(1, 2); // Cả hai tham số đều là Integer, vì vậy T là Integer
@@ -550,11 +550,11 @@ Thực tế trong lớp generic, khi không chỉ định kiểu generic thì n�
 - Kiểu generic là Object:
 
 ```java
-public static void main(String[] args) {  
-    ArrayList list = new ArrayList();  
-    list.add(1);  
-    list.add("121");  
-    list.add(new Date());  
+public static void main(String[] args) {
+    ArrayList list = new ArrayList();
+    list.add(1);
+    list.add("121");
+    list.add(new Date());
 }
 ```
 
@@ -565,7 +565,7 @@ public static void main(String[] args) {
 Trình biên dịch Java kiểm tra kiểu của generic trước khi loại bỏ thông tin loại và biên dịch. Ví dụ:
 
 ```java
-public static  void main(String[] args) {  
+public static  void main(String[] args) {
 
     ArrayList<String> list = new ArrayList<String>();
 	list.add("123");
@@ -580,7 +580,7 @@ Vậy kiểm tra kiểu này áp dụng cho ai? Hãy xem sự tương thích gi�
 Ví dụ với `ArrayList`, cách viết trước đây là:
 
 ```java
-ArrayList list = new ArrayList();  
+ArrayList list = new ArrayList();
 ```
 
 Cách viết hiện tại:
@@ -638,9 +638,9 @@ ArrayList<Object> list2 = new ArrayList<String>(); // Lỗi biên dịch
 - Trước tiên, hãy giả sử trường hợp thứ nhất được mở rộng thành:
 
 ```java
-ArrayList<Object> list1 = new ArrayList<Object>();  
-list1.add(new Object());  
-list1.add(new Object());  
+ArrayList<Object> list1 = new ArrayList<Object>();
+list1.add(new Object());
+list1.add(new Object());
 ArrayList<String> list2 = list1; // Lỗi biên dịch
 ```
 
@@ -649,14 +649,14 @@ Thực tế là ở dòng mã thứ 4, sẽ có lỗi biên dịch. Nếu nó kh
 - Trong trường hợp thứ hai, mở rộng trường hợp đó thành:
 
 ```java
-ArrayList<String> list1 = new ArrayList<String>();  
-list1.add(new String());  
+ArrayList<String> list1 = new ArrayList<String>();
+list1.add(new String());
 list1.add(new String());
 
 ArrayList<Object> list2 = list1; // Lỗi biên dịch
 ```
 
-Đúng vậy, trong trường hợp này tốt hơn so với trường hợp thứ nhất, ít nhất khi chúng ta lấy giá trị từ `list2`, không xảy ra lỗi `ClassCastException` vì chúng ta chuyển đổi từ `String` sang `Object`. Tuy nhiên, việc làm này có ý nghĩa gì? Lý do generic xuất hiện là để giải quyết vấn đề chuyển đổi kiểu.  
+Đúng vậy, trong trường hợp này tốt hơn so với trường hợp thứ nhất, ít nhất khi chúng ta lấy giá trị từ `list2`, không xảy ra lỗi `ClassCastException` vì chúng ta chuyển đổi từ `String` sang `Object`. Tuy nhiên, việc làm này có ý nghĩa gì? Lý do generic xuất hiện là để giải quyết vấn đề chuyển đổi kiểu.
 
 Chúng ta đã sử dụng generic, nhưng cuối cùng lại phải tự ép kiểu, vi phạm mục đích thiết kế generic ban đầu. Vì vậy, Java không cho phép làm như vậy. Hơn nữa, nếu chúng ta sử dụng `list2` để thêm đối tượng mới vào, khi lấy giá trị, làm sao chúng ta biết rằng chúng ta đang lấy ra kiểu `String` hay kiểu `Object`?
 
@@ -672,11 +672,11 @@ Giả sử chúng ta có một lớp generic như sau:
 class Pair<T> {
 
 	private T value;
-	
+
     public T getValue() {
         return value;
     }
-    
+
     public void setValue(T value) {
         this.value = value;
     }
@@ -704,23 +704,23 @@ class DateInter extends Pair<Date> {
 Trong lớp con này, chúng ta đặt giới hạn kiểu generic của lớp cha là `Pair<Date>`. Trong lớp con, chúng ta ghi đè hai phương thức của lớp cha. Ý định ban đầu của chúng ta là giới hạn kiểu generic của lớp cha là `Date`, vì vậy cả hai tham số của phương thức trong lớp cha đều là kiểu `Date`.
 
 ```java
-public Date getValue() {  
-    return value;  
+public Date getValue() {
+    return value;
 }
 
-public void setValue(Date value) {  
-    this.value = value;  
+public void setValue(Date value) {
+    this.value = value;
 }
 ```
 
 Vì vậy, chúng ta không gặp vấn đề khi ghi đè hai phương thức này trong lớp con, và thậm chí chú thích `@Override` của chúng ta cũng có thể thấy rằng không có vấn đề nào.
 
-Nhưng thực tế là như thế nào?  
+Nhưng thực tế là như thế nào?
 
 Phân tích: Sau khi xóa thông tin kiểu, kiểu generic của lớp cha trở thành kiểu nguyên thủy `Object`, vì vậy lớp cha sau khi biên dịch trở thành:
 
 ```java
-class Pair {  
+class Pair {
     private Object value;
 
     public Object getValue() {
@@ -737,35 +737,35 @@ class Pair {
 Tiếp theo, xem xét kiểu của hai phương thức trong lớp con:
 
 ```java
-@Override  
-public void setValue(Date value) {  
-    super.setValue(value);  
+@Override
+public void setValue(Date value) {
+    super.setValue(value);
 }
 
-@Override  
-public Date getValue() {  
-    return super.getValue();  
+@Override
+public Date getValue() {
+    return super.getValue();
 }
 ```
 
 Hãy phân tích phương thức `setValue` trước, kiểu của lớp cha là `Object`, trong khi kiểu của lớp con là `Date`, kiểu tham số không giống nhau, nếu đây là một quan hệ kế thừa thông thường, thì đây không phải là việc ghi đè (override) mà là việc nạp chồng (overload). Hãy kiểm tra bằng cách sử dụng một phương thức `main`:
 
 ```java
-public static void main(String[] args) throws ClassNotFoundException {  
-    DateInter dateInter = new DateInter();  
-    dateInter.setValue(new Date());  
-    dateInter.setValue(new Object()); // Lỗi biên dịch  
+public static void main(String[] args) throws ClassNotFoundException {
+    DateInter dateInter = new DateInter();
+    dateInter.setValue(new Date());
+    dateInter.setValue(new Object()); // Lỗi biên dịch
 }
 ```
 
 Nếu đây là việc nạp chồng, thì trong lớp con có hai phương thức `setValue`, một với tham số kiểu `Object` và một với tham số kiểu `Date`, nhưng chúng ta thấy rằng không có phương thức với tham số kiểu `Object` trong lớp con. Vì vậy, đây là việc ghi đè, không phải việc nạp chồng.
 
-**Vì sao lại như vậy?**  
+**Vì sao lại như vậy?**
 
 Lý do là, chúng ta truyền vào kiểu generic của lớp cha là `Date`, `Pair<Date>`, ý định ban đầu của chúng ta là biến lớp generic thành:
 
 ```java
-class Pair {  
+class Pair {
     private Date value;
 
     public Date getValue() {
@@ -788,40 +788,40 @@ Nhưng vì một số lý do, máy ảo không thể biến kiểu generic thàn
 Đầu tiên, chúng ta sẽ sử dụng lệnh `javap -c className` để giải mã lại mã byte của lớp con `DateInter`, kết quả như sau:
 
 ```java
-class com.tao.test.DateInter extends com.tao.test.Pair<java.util.Date> {  
-  com.tao.test.DateInter();  
-    Code:  
-       0: aload_0  
-       1: invokespecial #8 // Method com/tao/test/Pair."<init>":()V  
-       4: return  
+class com.tao.test.DateInter extends com.tao.test.Pair<java.util.Date> {
+  com.tao.test.DateInter();
+    Code:
+       0: aload_0
+       1: invokespecial #8 // Method com/tao/test/Pair."<init>":()V
+       4: return
 
-  public void setValue(java.util.Date); // Phương thức setValue mà chúng ta ghi đè  
-    Code:  
-       0: aload_0  
-       1: aload_1  
-       2: invokespecial #16 // Method com/tao/test/Pair.setValue:(Ljava/lang/Object;)V  
-       5: return  
+  public void setValue(java.util.Date); // Phương thức setValue mà chúng ta ghi đè
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokespecial #16 // Method com/tao/test/Pair.setValue:(Ljava/lang/Object;)V
+       5: return
 
-  public java.util.Date getValue(); // Phương thức getValue mà chúng ta ghi đè  
-    Code:  
-       0: aload_0  
-       1: invokespecial #23 // Method com/tao/test/Pair.getValue:()Ljava/lang/Object;  
-       4: checkcast #26 // class java/util/Date  
-       7: areturn  
+  public java.util.Date getValue(); // Phương thức getValue mà chúng ta ghi đè
+    Code:
+       0: aload_0
+       1: invokespecial #23 // Method com/tao/test/Pair.getValue:()Ljava/lang/Object;
+       4: checkcast #26 // class java/util/Date
+       7: areturn
 
-  public java.lang.Object getValue(); // Phương thức cầu nối được tạo bởi trình biên dịch  
-    Code:  
-       0: aload_0  
-       1: invokevirtual #28 // Method getValue:()Ljava/util/Date; để gọi phương thức getValue mà chúng ta ghi đè  
-       4: areturn  
+  public java.lang.Object getValue(); // Phương thức cầu nối được tạo bởi trình biên dịch
+    Code:
+       0: aload_0
+       1: invokevirtual #28 // Method getValue:()Ljava/util/Date; để gọi phương thức getValue mà chúng ta ghi đè
+       4: areturn
 
-  public void setValue(java.lang.Object); // Phương thức cầu nối được tạo bởi trình biên dịch  
-    Code:  
-       0: aload_0  
-       1: aload_1  
-       2: checkcast #26 // class java/util/Date  
-       5: invokevirtual #30 // Method setValue:(Ljava/util/Date;) để gọi phương thức setValue mà chúng ta ghi đè  
-       8: return  
+  public void setValue(java.lang.Object); // Phương thức cầu nối được tạo bởi trình biên dịch
+    Code:
+       0: aload_0
+       1: aload_1
+       2: checkcast #26 // class java/util/Date
+       5: invokevirtual #30 // Method setValue:(Ljava/util/Date;) để gọi phương thức setValue mà chúng ta ghi đè
+       8: return
 }
 ```
 
@@ -838,16 +838,16 @@ Trong khi đó, phương thức `getValue` có ý nghĩa phổ quát, nếu đâ
 Khi đó phương thức `getValue` của lớp cha như sau:
 
 ```java
-public Object getValue() {  
-    return super.getValue();  
+public Object getValue() {
+    return super.getValue();
 }
 ```
 
 Và phương thức được ghi đè bởi lớp con là:
 
 ```java
-public Date getValue() {  
-    return super.getValue();  
+public Date getValue() {
+    return super.getValue();
 }
 ```
 
@@ -868,15 +868,15 @@ Một điều thú vị là trong trường hợp này, phương thức cầu n�
 Chúng ta có thể thấy mã sau sẽ báo lỗi trong trình biên dịch Java:
 
 ```java
-T test = new T(); // LỖI. 
+T test = new T(); // LỖI.
 ```
 
 Vì trong quá trình biên dịch Java không thể xác định được kiểu tham số hóa của kiểu thông thường, cũng không thể tìm thấy tệp mã `bytecode` của lớp tương ứng, vì vậy tự nhiên không thể khởi tạo. Ngoài ra, vì `T` bị loại bỏ thành `Object`, nếu có thể `new T()` thì nó sẽ trở thành `new Object()`, mất đi ý nghĩa ban đầu. Nếu chúng ta thực sự cần khởi tạo một kiểu generic, chúng ta có thể sử dụng `reflection` để thực hiện:
 
 ```java
-static <T> T newTclass (Class < T > clazz) throws InstantiationException, IllegalAccessException {  
-    T obj = clazz.newInstance();  
-    return obj;  
+static <T> T newTclass (Class < T > clazz) throws InstantiationException, IllegalAccessException {
+    T obj = clazz.newInstance();
+    return obj;
 }
 ```
 
@@ -915,11 +915,11 @@ Tài liệu chính thức của Oracle: https://docs.oracle.com/javase/tutorial/
 Để hiểu sâu hơn, chúng ta hãy xem đoạn mã sau:
 
 ```java
-List<String>[] list11 = new ArrayList<String>[10]; // Lỗi biên dịch, tạo không hợp lệ  
-List<String>[] list12 = new ArrayList<?>[10]; // Lỗi biên dịch, cần chuyển đổi kiểu rõ ràng  
-List<String>[] list13 = (List<String>[]) new ArrayList<?>[10]; // OK, nhưng sẽ có cảnh báo  
-List<?>[] list14 = new ArrayList<String>[10]; // Lỗi biên dịch, tạo không hợp lệ  
-List<?>[] list15 = new ArrayList<?>[10]; // OK  
+List<String>[] list11 = new ArrayList<String>[10]; // Lỗi biên dịch, tạo không hợp lệ
+List<String>[] list12 = new ArrayList<?>[10]; // Lỗi biên dịch, cần chuyển đổi kiểu rõ ràng
+List<String>[] list13 = (List<String>[]) new ArrayList<?>[10]; // OK, nhưng sẽ có cảnh báo
+List<?>[] list14 = new ArrayList<String>[10]; // Lỗi biên dịch, tạo không hợp lệ
+List<?>[] list15 = new ArrayList<?>[10]; // OK
 List<String>[] list6 = new ArrayList[10]; // OK, nhưng sẽ có cảnh báo
 ```
 
@@ -932,7 +932,7 @@ Vì trong Java không thể tạo một mảng của một kiểu cụ thể c�
 Trong các tình huống sử dụng mảng generic, chúng ta nên cố gắng sử dụng danh sách `List` để thay cho `Array`. Ngoài ra, chúng ta cũng có thể sử dụng phương thức `Array.newInstance(Class<T> componentType, int length)` trong `java.lang.reflect.Array` để tạo một mảng có kiểu và kích thước được chỉ định, như sau:
 
 ```java
-public class ArrayWithTypeToken<T> {  
+public class ArrayWithTypeToken<T> {
     private T[] array;
 
     public ArrayWithTypeToken(Class<T> type, int size) {
@@ -955,7 +955,7 @@ public class ArrayWithTypeToken<T> {
 
 //…
 
-ArrayWithTypeToken<Integer> arrayToken = new ArrayWithTypeToken<Integer>(Integer.class, 100);  
+ArrayWithTypeToken<Integer> arrayToken = new ArrayWithTypeToken<Integer>(Integer.class, 100);
 Integer[] array = arrayToken.create();
 ```
 
@@ -968,11 +968,11 @@ Vì vậy, sử dụng `reflection` để khởi tạo một mảng generic đư
 Ví dụ minh họa:
 
 ```java
-public class Test2<T> {  
-    public static T one; // Lỗi biên dịch  
-    public static T show(T one) { // Lỗi biên dịch  
-        return null;  
-    }  
+public class Test2<T> {
+    public static T one; // Lỗi biên dịch
+    public static T show(T one) { // Lỗi biên dịch
+        return null;
+    }
 }
 ```
 
@@ -1022,7 +1022,7 @@ try {
 
 } catch (Problem<Object> e2) {
 
-}  
+}
 ```
 
 Điều này tất nhiên là không thể.
@@ -1030,26 +1030,26 @@ try {
 - **Không thể sử dụng biến kiểu generic trong khối catch**:
 
 ```java
-public static <T extends Throwable> void doWork(Class<T> t) {  
-    try {  
-        …  
-    } catch (T e) { // Lỗi biên dịch  
-        …  
-    }  
+public static <T extends Throwable> void doWork(Class<T> t) {
+    try {
+        …
+    } catch (T e) { // Lỗi biên dịch
+        …
+    }
 }
 ```
 
 Vì thông tin kiểu đã trở thành kiểu nguyên thủy trong quá trình biên dịch, điều đó có nghĩa là `T` ở trên sẽ trở thành `Throwable` nguyên thủy. Vậy nếu có thể sử dụng biến kiểu thông thường trong khối catch, thì định nghĩa dưới đây sẽ như thế nào:
 
 ```java
-public static <T extends Throwable> void doWork(Class<T> t){  
+public static <T extends Throwable> void doWork(Class<T> t){
     try {
 
     } catch (T e) { // Lỗi biên dịch
 
     } catch (IndexOutOfBounds e) {
 
-    }                         
+    }
 
 }
 ```
@@ -1059,13 +1059,13 @@ Theo nguyên tắc bắt ngoại lệ, lớp con phải đứng trước, lớp 
 - **Tuy nhiên, bạn có thể sử dụng biến kiểu generic trong khai báo ngoại lệ. Phương thức dưới đây là hợp lệ**:
 
 ```java
-public static<T extends Throwable> void doWork(T t) throws T {  
-    try{  
-        …  
-    } catch(Throwable realCause) {  
-        t.initCause(realCause);  
-        throw t;  
-    }  
+public static<T extends Throwable> void doWork(T t) throws T {
+    try{
+        …
+    } catch(Throwable realCause) {
+        t.initCause(realCause);
+        throw t;
+    }
 }
 ```
 
@@ -1075,10 +1075,10 @@ Việc sử dụng như trên là hợp lệ.
 
 > Vì kiểu generic đã bị xóa, vậy làm thế nào để lấy được kiểu tham số của kiểu generic? Chúng ta có thể sử dụng phản chiếu (`java.lang.reflect.Type`) để lấy kiểu tham số.
 
-`java.lang.reflect.Type` là một giao diện cao cấp chung cho tất cả các kiểu trong Java, đại diện cho tất cả các kiểu trong Java. Các kiểu trong hệ thống `Type` bao gồm: `GenericArrayType` (kiểu mảng chung), `ParameterizedType` (kiểu tham số hóa), `TypeVariable` (biến kiểu), `WildcardType` (kiểu đại diện), `Class` (kiểu nguyên thủy), `Class` (kiểu cơ bản), tất cả các loại này đều triển khai giao diện `Type`.
+`java.lang.reflect.Type` là một interface cao cấp chung cho tất cả các kiểu trong Java, đại diện cho tất cả các kiểu trong Java. Các kiểu trong hệ thống `Type` bao gồm: `GenericArrayType` (kiểu mảng chung), `ParameterizedType` (kiểu tham số hóa), `TypeVariable` (biến kiểu), `WildcardType` (kiểu đại diện), `Class` (kiểu nguyên thủy), `Class` (kiểu cơ bản), tất cả các loại này đều triển khai interface `Type`.
 
 ```java
-public class GenericType<T> {  
+public class GenericType<T> {
     private T data;
 
     public T getData() {
@@ -1093,22 +1093,22 @@ public class GenericType<T> {
         GenericType<String> genericType = new GenericType<String>() {};
         Type superclass = genericType.getClass().getGenericSuperclass();
         // getActualTypeArguments trả về các tham số kiểu chính xác, ví dụ như Map<String, Integer> trả về [String, Integer]
-        Type type = ((ParameterizedType) superclass).getActualTypeArguments()[0]; 
+        Type type = ((ParameterizedType) superclass).getActualTypeArguments()[0];
         System.out.println(type); // class java.lang.String
     }
 }
 ```
 
-Trong đó, `ParameterizedType` là một giao diện được định nghĩa như sau:
+Trong đó, `ParameterizedType` là một interface được định nghĩa như sau:
 
 ```java
-public interface ParameterizedType extends Type {  
-    // Trả về các tham số kiểu chính xác, ví dụ như Map<String, Integer> trả về [String, Integer]  
+public interface ParameterizedType extends Type {
+    // Trả về các tham số kiểu chính xác, ví dụ như Map<String, Integer> trả về [String, Integer]
     Type[] getActualTypeArguments();
 
-    // Trả về kiểu được khai báo hiện tại của lớp hoặc giao diện, ví dụ như List<?> trả về List
+    // Trả về kiểu được khai báo hiện tại của lớp hoặc interface, ví dụ như List<?> trả về List
     Type getRawType();
-    
+
     // Trả về kiểu chủ sở hữu. Ví dụ, nếu kiểu hiện tại là O<T>.I<S>, thì trả về O<T>. Kiểu cấp cao nhất sẽ trả về null
     Type getOwnerType();
 

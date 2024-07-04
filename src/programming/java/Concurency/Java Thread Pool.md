@@ -32,7 +32,7 @@ Chính vì vấn đề này, việc sử dụng Thread Pool là cần thiết. C
 
 Executor Framework có các API cốt lõi sau:
 
-- `Executor` - Giao diện đơn giản để chạy các nhiệm vụ.
+- `Executor` - interface đơn giản để chạy các nhiệm vụ.
 - `ExecutorService` - Mở rộng `Executor` interface. Mở rộng khả năng:
   - Hỗ trợ luồng có giá trị trả về;
   - Hỗ trợ quản lý vòng đời của luồng.
@@ -46,7 +46,7 @@ Executor Framework có các API cốt lõi sau:
 
 ### Executor
 
-Giao diện `Executor` chỉ định một phương thức `execute`, được sử dụng để chấp nhận một đối tượng `Runnable`.
+interface `Executor` chỉ định một phương thức `execute`, được sử dụng để chấp nhận một đối tượng `Runnable`.
 
 ```java
 public interface Executor {
@@ -56,7 +56,7 @@ public interface Executor {
 
 ### ExecutorService
 
-Giao diện `ExecutorService` mở rộng giao diện `Executor`, nó cung cấp các phương thức `invokeAll`, `invokeAny`, `shutdown`, `submit` và nhiều phương thức khác.
+interface `ExecutorService` mở rộng interface `Executor`, nó cung cấp các phương thức `invokeAll`, `invokeAny`, `shutdown`, `submit` và nhiều phương thức khác.
 
 ```java
 public interface ExecutorService extends Executor {
@@ -94,14 +94,14 @@ public interface ExecutorService extends Executor {
 }
 ```
 
-So với giao diện `Executor`, giao diện `ExecutorService` mở rộng chức năng như sau:
+So với interface `Executor`, interface `ExecutorService` mở rộng chức năng như sau:
 
 - Hỗ trợ luồng có giá trị trả về - các phương thức `submit`, `invokeAll`, `invokeAny` đều hỗ trợ truyền vào đối tượng `Callable`.
 - Hỗ trợ quản lý vòng đời của luồng - các phương thức `shutdown`, `shutdownNow`, `isShutdown`, `isTerminated`, `awaitTermination` đều hỗ trợ quản lý vòng đời của luồng.
 
 ### ScheduledExecutorService
 
-Giao diện `ScheduledExecutorService` mở rộng giao diện `ExecutorService`.
+Interface `ScheduledExecutorService` kế thừa interface `ExecutorService`.
 
 Nó không chỉ hỗ trợ tất cả các chức năng của `ExecutorService`, mà còn hỗ trợ lập lịch thực hiện các nhiệm vụ.
 
@@ -127,7 +127,7 @@ public interface ScheduledExecutorService extends ExecutorService {
 }
 ```
 
-Giao diện này cung cấp các chức năng sau:
+interface này cung cấp các chức năng sau:
 
 - Phương thức `schedule` cho phép thực hiện một nhiệm vụ `Runnable` hoặc `Callable` sau một khoảng thời gian nhất định.
 - Phương thức `scheduleAtFixedRate` và `scheduleWithFixedDelay` cho phép thực hiện các nhiệm vụ định kỳ theo khoảng thời gian nhất định.
@@ -224,7 +224,7 @@ Giải thích các tham số:
 	- `DiscardPolicy` - Từ chối nhiệm vụ, nhưng không ném ra ngoại lệ.
 	- `DiscardOldestPolicy` - Từ chối nhiệm vụ đứng đầu hàng đợi, sau đó thử lại việc thực thi nhiệm vụ (lặp lại quá trình này).
 	- `CallerRunsPolicy` - Gọi trực tiếp phương thức `run` và chặn việc thực thi.
-	- Nếu không có chiến lược nào phù hợp, cũng có thể tự định nghĩa một chiến lược xử lý bằng cách triển khai giao diện `RejectedExecutionHandler`. Ví dụ: ghi log hoặc lưu trữ các nhiệm vụ không thể xử lý được.
+	- Nếu không có chiến lược nào phù hợp, cũng có thể tự định nghĩa một chiến lược xử lý bằng cách triển khai interface `RejectedExecutionHandler`. Ví dụ: ghi log hoặc lưu trữ các nhiệm vụ không thể xử lý được.
 
 ### Phương thức `execute`
 

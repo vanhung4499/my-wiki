@@ -596,7 +596,7 @@ Có lẽ print stream là thứ mà lập trình viên Java sử dụng nhiều 
 System.out.println("hello world！");
 ```
 
-`PrintStream` cuối cùng sẽ xuất ra dữ liệu dạng byte, trong khi `PrintWriter` thì mở rộng từ giao diện `Writer`, vì vậy các phương thức `print()/println()` của nó cuối cùng sẽ xuất ra dữ liệu dạng ký tự. Việc sử dụng `PrintWriter` gần như tương tự với `PrintStream`.
+`PrintStream` cuối cùng sẽ xuất ra dữ liệu dạng byte, trong khi `PrintWriter` thì mở rộng từ interface `Writer`, vì vậy các phương thức `print()/println()` của nó cuối cùng sẽ xuất ra dữ liệu dạng ký tự. Việc sử dụng `PrintWriter` gần như tương tự với `PrintStream`.
 
 ```java
 StringWriter buffer = new StringWriter();
@@ -618,7 +618,7 @@ ByteArrayOutputStream buffer = new ByteArrayOutputStream();
 
 // Sử dụng câu lệnh try-with-resources để tạo một đối tượng ObjectOutputStream output, và liên kết nó với buffer
 try (ObjectOutputStream output = new ObjectOutputStream(buffer)) {
-    
+
     // Sử dụng phương thức writeUTF() để ghi chuỗi "abcdef" vào bộ đệm
     output.writeUTF("abcdef");
 }

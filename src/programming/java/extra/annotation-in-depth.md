@@ -12,7 +12,7 @@ order: 5
 
 ## Khái niệm cơ bản về Annotation
 
-annotation (Annotation) là một tính năng được giới thiệu từ phiên bản JDK 1.5, được sử dụng để giải thích mã nguồn, có thể áp dụng cho gói, lớp, giao diện, trường, tham số phương thức, biến cục bộ và nhiều thứ khác. Nó là một trong những khái niệm cơ bản mà các nhà phát triển và thiết kế framework cần phải nắm vững.
+annotation (Annotation) là một tính năng được giới thiệu từ phiên bản JDK 1.5, được sử dụng để giải thích mã nguồn, có thể áp dụng cho gói, lớp, interface, trường, tham số phương thức, biến cục bộ và nhiều thứ khác. Nó là một trong những khái niệm cơ bản mà các nhà phát triển và thiết kế framework cần phải nắm vững.
 
 Annotation có các vai trò chính sau đây:
 
@@ -148,7 +148,7 @@ Trong JDK 1.5, có 4 meta-annotation chuẩn được cung cấp: `@Target`, `@R
 
 > `@Target` được sử dụng để mô tả phạm vi sử dụng của annotation (tức là nơi mà annotation có thể được sử dụng).
 
-`@Target` được sử dụng để chỉ ra các đối tượng mà annotation có thể được áp dụng: packages (gói), types (lớp, giao diện, enum, annotation class), class members (phương thức, constructor, biến thành viên, giá trị enum), method parameters (tham số của phương thức) và local variables (biến cục bộ, ví dụ như biến trong vòng lặp hoặc biến trong khối catch). Khi định nghĩa một annotation class và sử dụng `@Target`, ta có thể biết rõ được annotation đó có thể được sử dụng để annotation những đối tượng nào. Các giá trị của `@Target` được định nghĩa trong `enum ElementType`.
+`@Target` được sử dụng để chỉ ra các đối tượng mà annotation có thể được áp dụng: packages (gói), types (lớp, interface, enum, annotation class), class members (phương thức, constructor, biến thành viên, giá trị enum), method parameters (tham số của phương thức) và local variables (biến cục bộ, ví dụ như biến trong vòng lặp hoặc biến trong khối catch). Khi định nghĩa một annotation class và sử dụng `@Target`, ta có thể biết rõ được annotation đó có thể được sử dụng để annotation những đối tượng nào. Các giá trị của `@Target` được định nghĩa trong `enum ElementType`.
 
 ```java
 public enum ElementType {
@@ -352,9 +352,9 @@ Khi sử dụng Annotation `@Native` để annotation một biến thành viên,
 
 #### Annotation and Reflection
 
-> Sau khi định nghĩa một Annotation và sử dụng giao diện phản chiếu (reflection) trong gói `java.lang.reflect`, chúng ta có thể sử dụng các phương thức của giao diện `AnnotatedElement` để truy cập nội dung của Annotation. Lưu ý rằng chỉ khi Annotation được định nghĩa với `RetentionPolicy.RUNTIME`, Annotation đó mới có thể được nhìn thấy trong runtime, và Annotation được lưu trữ trong tệp class khi nó được tải vào bởi máy ảo Java.
+> Sau khi định nghĩa một Annotation và sử dụng interface phản chiếu (reflection) trong gói `java.lang.reflect`, chúng ta có thể sử dụng các phương thức của interface `AnnotatedElement` để truy cập nội dung của Annotation. Lưu ý rằng chỉ khi Annotation được định nghĩa với `RetentionPolicy.RUNTIME`, Annotation đó mới có thể được nhìn thấy trong runtime, và Annotation được lưu trữ trong tệp class khi nó được tải vào bởi máy ảo Java.
 
-Giao diện `AnnotatedElement` là giao diện cha của tất cả các thành phần chương trình (Class, Method và Constructor), do đó khi sử dụng phản chiếu, chúng ta có thể gọi các phương thức của đối tượng `AnnotatedElement` để truy cập thông tin Annotation. Dưới đây là một số phương thức quan trọng của giao diện `AnnotatedElement`:
+interface `AnnotatedElement` là interface cha của tất cả các thành phần chương trình (Class, Method và Constructor), do đó khi sử dụng phản chiếu, chúng ta có thể gọi các phương thức của đối tượng `AnnotatedElement` để truy cập thông tin Annotation. Dưới đây là một số phương thức quan trọng của interface `AnnotatedElement`:
 
 - `boolean isAnnotationPresent(Class<? extends Annotation> annotationClass)`
 	- Kiểm tra xem thành phần chương trình có chứa loại Annotation chỉ định không. Nếu tồn tại, trả về true, ngược lại trả về false.
@@ -375,7 +375,7 @@ Những phương thức này cho phép chúng ta truy cập thông tin Annotatio
 
 ### Customize Annotation
 
-> Khi đã hiểu về các Annotation tích hợp sẵn, các Annotation meta và giao diện phản chiếu để truy cập thông tin Annotation, chúng ta có thể bắt đầu tự định nghĩa Annotation của chúng ta. Dưới đây là một ví dụ đơn giản mà tôi sẽ kết hợp tất cả các kiến thức trên vào đó:
+> Khi đã hiểu về các Annotation tích hợp sẵn, các Annotation meta và interface phản chiếu để truy cập thông tin Annotation, chúng ta có thể bắt đầu tự định nghĩa Annotation của chúng ta. Dưới đây là một ví dụ đơn giản mà tôi sẽ kết hợp tất cả các kiến thức trên vào đó:
 
 Định nghĩa Customize Annotation:
 
@@ -433,7 +433,7 @@ public class TestMethodAnnotation {
 }
 ```
 
-Sử dụng giao diện phản chiếu để lấy thông tin Annotation, thêm phương thức main vào lớp `TestMethodAnnotation` để kiểm tra:
+Sử dụng interface phản chiếu để lấy thông tin Annotation, thêm phương thức main vào lớp `TestMethodAnnotation` để kiểm tra:
 
 ```java
 public static void main(String[] args) {
@@ -483,7 +483,7 @@ Annotation in Method 'public java.lang.String com.hnv99.java.annotation.TestMeth
 toStringMethod
 ```
 
-Trong ví dụ trên, chúng ta đã định nghĩa một Annotation tùy chỉnh là `MyMethodAnnotation` và sử dụng nó trên các phương thức trong lớp `TestMethodAnnotation`. Sau đó, chúng ta sử dụng giao diện phản chiếu để lấy thông tin Annotation. Kết quả cho thấy chúng ta đã thành công trong việc truy cập và hiển thị thông tin của các Annotation được sử dụng trong mã.
+Trong ví dụ trên, chúng ta đã định nghĩa một Annotation tùy chỉnh là `MyMethodAnnotation` và sử dụng nó trên các phương thức trong lớp `TestMethodAnnotation`. Sau đó, chúng ta sử dụng interface phản chiếu để lấy thông tin Annotation. Kết quả cho thấy chúng ta đã thành công trong việc truy cập và hiển thị thông tin của các Annotation được sử dụng trong mã.
 
 ## Hiểu sâu về annotation
 
@@ -539,9 +539,9 @@ public class TypeParameterAndTypeUseAnnotation<@MyNotEmpty T>{
 
 > Annotation không hỗ trợ kế thừa
 
-Annotation không hỗ trợ kế thừa bằng từ khóa `extends` để kế thừa một `@interface` khác. Tuy nhiên, khi biên dịch, trình biên dịch sẽ tự động kế thừa giao diện `java.lang.annotation.Annotation`.
+Annotation không hỗ trợ kế thừa bằng từ khóa `extends` để kế thừa một `@interface` khác. Tuy nhiên, khi biên dịch, trình biên dịch sẽ tự động kế thừa interface `java.lang.annotation.Annotation`.
 
-Mặc dù giao diện Java có thể triển khai đa kế thừa, nhưng khi định nghĩa Annotation, không thể sử dụng từ khóa `extends` để kế thừa `@interface`.
+Mặc dù interface Java có thể triển khai đa kế thừa, nhưng khi định nghĩa Annotation, không thể sử dụng từ khóa `extends` để kế thừa `@interface`.
 
 Để kế thừa Annotation từ lớp cha, chúng ta có thể sử dụng `@Inherited`: Nếu một lớp sử dụng Annotation được đánh dấu bằng `@Inherited`, thì các lớp con của nó sẽ tự động kế thừa Annotation đó.
 

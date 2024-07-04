@@ -9,7 +9,7 @@ order: 2
 
 ### Về Package
 
-Trong các đoạn mã trước, chúng ta đặt tên cho các lớp và giao diện là `Person`, `Student`, `Hello`, v.v.
+Trong các đoạn mã trước, chúng ta đặt tên cho các lớp và interface là `Person`, `Student`, `Hello`, v.v.
 
 Trong phát triển theo nhóm, nếu Tiểu Minh viết một lớp `Person`, Tiểu Hồng cũng viết một lớp `Person`, và bây giờ Tiểu Bạch muốn sử dụng cả `Person` của Tiểu Minh và `Person` của Tiểu Hồng, thì phải làm sao?
 

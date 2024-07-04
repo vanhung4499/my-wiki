@@ -66,7 +66,7 @@ Chạy lệnh `java -version`, nếu cài đặt thành công, phiên bản Java
 
 Để làm việc với Java, chọn một IDE phù hợp là rất cần thiết.
 
-IDE (Integrated Development Environment - Môi trường phát triển tích hợp) là một ứng dụng cung cấp môi trường phát triển cho việc lập trình, bao gồm trình soạn thảo mã (code editor), trình biên dịch (compiler), trình gỡ lỗi (debugger) và giao diện người dùng đồ họa (user interface).
+IDE (Integrated Development Environment - Môi trường phát triển tích hợp) là một ứng dụng cung cấp môi trường phát triển cho việc lập trình, bao gồm trình soạn thảo mã (code editor), trình biên dịch (compiler), trình gỡ lỗi (debugger) và interface người dùng đồ họa (user interface).
 
 Dưới đây là một số IDE phổ biến cho Java:
 

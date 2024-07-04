@@ -32,12 +32,12 @@ Khác với ngôn ngữ C/C++, bạn chỉ cần tạo một đối tượng b�
 
 ## Ba đặc điểm chính của OOP
 
-> [!NOTE]+ Tại sao lại là 3, phải là 4 chứ?  
+> [!NOTE]+ Tại sao lại là 3, phải là 4 chứ?
 > Bởi vì tôi xem trừu tượng (abstraction) là một phần trong đóng gói (encapsulation)
 
 ### Đóng gói (Encapsulation)
 
-Sử dụng kiểu dữ liệu trừu tượng để đóng gói dữ liệu và các hoạt động dựa trên dữ liệu thành một thực thể độc lập không thể tách rời. Dữ liệu được bảo vệ trong phạm vi của kiểu dữ liệu trừu tượng, ẩn các chi tiết bên trong càng nhiều càng tốt, chỉ giữ lại một số giao diện bên ngoài để liên kết với bên ngoài. Người dùng không cần biết chi tiết bên trong của đối tượng, nhưng có thể truy cập vào đối tượng đó thông qua các giao diện mà đối tượng cung cấp.  
+Sử dụng kiểu dữ liệu trừu tượng để đóng gói dữ liệu và các hoạt động dựa trên dữ liệu thành một thực thể độc lập không thể tách rời. Dữ liệu được bảo vệ trong phạm vi của kiểu dữ liệu trừu tượng, ẩn các chi tiết bên trong càng nhiều càng tốt, chỉ giữ lại một số interface bên ngoài để liên kết với bên ngoài. Người dùng không cần biết chi tiết bên trong của đối tượng, nhưng có thể truy cập vào đối tượng đó thông qua các interface mà đối tượng cung cấp.
 
 > **Encapsulation  =  Data Hiding + Abstraction.**
 
@@ -89,9 +89,9 @@ Chó và chim đều là động vật. Nếu chúng ta xem chó và chim là c�
 
 ![image.png](https://raw.githubusercontent.com/vanhung4499/images/master/snap/20230712220146.png)
 
-Kế thừa thực hiện mối quan hệ **IS-A**, ví dụ như Cat Dog Animal là một mối quan hệ IS-A, vì vậy Dog có thể kế thừa từ Animal để có được các thuộc tính và phương thức không phải private của Animal.  
+Kế thừa thực hiện mối quan hệ **IS-A**, ví dụ như Cat Dog Animal là một mối quan hệ IS-A, vì vậy Dog có thể kế thừa từ Animal để có được các thuộc tính và phương thức không phải private của Animal.
 
-Kế thừa nên tuân theo nguyên tắc thay thế Liskov, đối tượng của lớp con phải có thể thay thế cho tất cả các đối tượng của lớp cha.  
+Kế thừa nên tuân theo nguyên tắc thay thế Liskov, đối tượng của lớp con phải có thể thay thế cho tất cả các đối tượng của lớp cha.
 
 Cat có thể được sử dụng như một Animal, có nghĩa là có thể sử dụng tham chiếu Animal để tham chiếu đối tượng Cat. Tham chiếu của lớp cha trỏ đến đối tượng của lớp con được gọi là **upcasting**.
 
@@ -330,7 +330,7 @@ Khi chạy lệnh `javac MultiClassDemo.java`, sẽ tạo ra bốn tệp `MultiC
 - **Mỗi tệp cho phép có một public class và bất kỳ số lớp non-public nào**.
 - **Tên public class phải giống với tên tệp .java, bao gồm cả chữ hoa và chữ thường**.
 
-Chương trình thường không chỉ do một người viết, nó sẽ gọi lệnh hệ thống, mã của bên thứ ba, mã được viết bởi người khác trong dự án, v.v. Vì mục đích khác nhau, cùng một tên lớp / giao diện có thể được định nghĩa bởi nhiều người, đây là xung đột tên.
+Chương trình thường không chỉ do một người viết, nó sẽ gọi lệnh hệ thống, mã của bên thứ ba, mã được viết bởi người khác trong dự án, v.v. Vì mục đích khác nhau, cùng một tên lớp / interface có thể được định nghĩa bởi nhiều người, đây là xung đột tên.
 
 Trong Java, để giải quyết vấn đề xung đột tên, cung cấp cơ chế gói (package) và cơ chế nhập (import).
 
@@ -338,7 +338,7 @@ Trong Java, để giải quyết vấn đề xung đột tên, cung cấp cơ ch
 
 Nguyên tắc của gói (package):
 
-- Gói tương tự như thư mục, tệp được đặt trong thư mục, lớp và giao diện được đặt trong gói. Để dễ dàng tổ chức, thư mục thường là một cấu trúc cây có cấu trúc.
+- Gói tương tự như thư mục, tệp được đặt trong thư mục, lớp và interface được đặt trong gói. Để dễ dàng tổ chức, thư mục thường là một cấu trúc cây có cấu trúc.
 - **Tên gói được phân tách bằng dấu chấm (.) để chỉ ra cấu trúc cây**.
 - Một quy ước phổ biến để đặt tên gói là sử dụng tên miền làm tiền tố, vì tên miền là duy nhất, thông thường, tên gói được định nghĩa theo thứ tự ngược của tên miền, ví dụ, tên miền là: apache.org, tên gói bắt đầu bằng org.apache.
 - **Tên gói và cấu trúc thư mục phải khớp hoàn toàn**. Quá trình thực thi Java như sau:
@@ -391,13 +391,13 @@ public > protected > quyền truy cập gói (không có từ khóa) > private
 - `protected` - Cho phép lớp con truy cập, ngoài ra, các lớp khác trong cùng một gói cũng có thể truy cập, ngay cả khi chúng không phải là lớp con.
 - `private` - Không cho phép bất kỳ lớp nào khác truy cập.
 
-## Giao diện (Interface)
+## interface (Interface)
 
-Giao diện là một trừu tượng hóa của hành vi, nó là một tập hợp các phương thức trừu tượng. Giao diện cho phép tách biệt định nghĩa API và việc triển khai.
+interface là một trừu tượng hóa của hành vi, nó là một tập hợp các phương thức trừu tượng. interface cho phép tách biệt định nghĩa API và việc triển khai.
 
-Giao diện không thể được khởi tạo; không thể chứa bất kỳ thành viên nào không phải là hằng số, tất cả các trường đều được ngầm định là `public static final`; đồng thời, không có phương thức nào không phải là phương thức trừu tượng hoặc phương thức tĩnh.
+interface không thể được khởi tạo; không thể chứa bất kỳ thành viên nào không phải là hằng số, tất cả các trường đều được ngầm định là `public static final`; đồng thời, không có phương thức nào không phải là phương thức trừu tượng hoặc phương thức tĩnh.
 
-Trong thư viện lớp tiêu chuẩn của Java, đã định nghĩa rất nhiều giao diện như `java.util.List`.
+Trong thư viện lớp tiêu chuẩn của Java, đã định nghĩa rất nhiều interface như `java.util.List`.
 
 ```java
 public interface Comparable<T> {

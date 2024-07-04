@@ -37,7 +37,7 @@ Tuy nhiên, nếu đi sâu vào, cách tiếp cận hướng đối tượng th�
 
 ### 02. Lớp (Class)
 
-Các đối tượng có thể là bất kỳ vật thể hiện thực nào, ví dụ như một con lợn mồi đơn lẻ; hoặc có thể là bất kỳ đối tượng ảo nào trong tưởng tượng, như Sun Wukong có thể biến 72 hình.
+Các đối tượng có thể là bất kỳ vật thể triển khai nào, ví dụ như một con lợn mồi đơn lẻ; hoặc có thể là bất kỳ đối tượng ảo nào trong tưởng tượng, như Sun Wukong có thể biến 72 hình.
 
 Trong Java, các đối tượng này được định nghĩa thông qua các lớp (class), mô tả trạng thái của chúng bằng các trường dữ liệu, ví dụ như màu lông của con lợn có phải là màu sắc hay họa tiết; và mô tả hành vi của chúng bằng các phương thức, ví dụ như con lợn có thể ăn và ngủ.
 

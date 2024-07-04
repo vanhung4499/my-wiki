@@ -23,7 +23,7 @@ Cú pháp định nghĩa phương thức:
 <access_modifier> <return_type> <method_name>(list_of_parameters)
 {
     //body
-    
+
     return <return_value>;
 }
 ```
@@ -215,9 +215,9 @@ public class FinalMethodDemo {
 
 ### default
 
-Từ JDK 8, chúng ta có thể định nghĩa phương thức `default` trong giao diện (interface). **Phương thức `default` chỉ có thể xuất hiện trong giao diện (interface).**
+Từ JDK 8, chúng ta có thể định nghĩa phương thức `default` trong interface (interface). **Phương thức `default` chỉ có thể xuất hiện trong interface (interface).**
 
-Phương thức `default` trong giao diện được gọi là phương thức mặc định. Nếu một lớp triển khai giao diện mà không ghi đè phương thức mặc định này, nó sẽ kế thừa phương thức này mà không cần phải cài đặt.
+Phương thức `default` trong interface được gọi là phương thức mặc định. Nếu một lớp triển khai interface mà không ghi đè phương thức mặc định này, nó sẽ kế thừa phương thức này mà không cần phải cài đặt.
 
 Ví dụ về phương thức `default`:
 

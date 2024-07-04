@@ -47,7 +47,7 @@ Nếu có nhiều đối tượng sống ngắn hạn trong bộ nhớ heap, vi�
 
 So với Minor GC, Full GC tốn nhiều thời gian hơn. Giảm số lượng đối tượng vào thế hệ già có thể giảm đáng kể tần suất Full GC.
 
-**Giảm số lượng đối tượng lớn:** Nếu một đối tượng chiếm nhiều bộ nhớ, sau khi được tạo trong khu vực Eden, nó sẽ được chuyển trực tiếp vào thế hệ già. Trong các kịch bản kinh doanh thông thường, chúng ta thường lấy một đối tượng lớn từ cơ sở dữ liệu để hiển thị trên giao diện web. Ví dụ, tôi đã gặp một trường hợp nơi một hoạt động kinh doanh truy vấn cùng lúc 60 trường dữ liệu, đối tượng lớn như vậy nếu vượt quá ngưỡng đối tượng lớn tối đa của thế hệ trẻ, sẽ được tạo trực tiếp trong thế hệ già; ngay cả khi nó được tạo trong thế hệ trẻ, do không gian thế hệ trẻ có giới hạn, sau khi trải qua Minor GC, nó cũng sẽ được chuyển vào thế hệ già. Điều này dễ dẫn đến tình trạng Full GC nhiều.
+**Giảm số lượng đối tượng lớn:** Nếu một đối tượng chiếm nhiều bộ nhớ, sau khi được tạo trong khu vực Eden, nó sẽ được chuyển trực tiếp vào thế hệ già. Trong các kịch bản kinh doanh thông thường, chúng ta thường lấy một đối tượng lớn từ cơ sở dữ liệu để hiển thị trên interface web. Ví dụ, tôi đã gặp một trường hợp nơi một hoạt động kinh doanh truy vấn cùng lúc 60 trường dữ liệu, đối tượng lớn như vậy nếu vượt quá ngưỡng đối tượng lớn tối đa của thế hệ trẻ, sẽ được tạo trực tiếp trong thế hệ già; ngay cả khi nó được tạo trong thế hệ trẻ, do không gian thế hệ trẻ có giới hạn, sau khi trải qua Minor GC, nó cũng sẽ được chuyển vào thế hệ già. Điều này dễ dẫn đến tình trạng Full GC nhiều.
 
 Chúng ta có thể tách đối tượng lớn này ra, chỉ truy vấn các trường quan trọng ban đầu, nếu cần xem các trường khác để hỗ trợ, thực hiện truy vấn thứ hai để hiển thị các trường còn lại.
 
@@ -150,7 +150,7 @@ Trước khi chạy JVM, bạn có thể đặt các tham số để in nhật k
 -verbose:gc -Xloggc:../logs/gc.log Đường dẫn đến tệp nhật ký
 ```
 
-Nếu nhật ký GC kéo dài trong thời gian dài, chúng ta khó có thể xem xét hiệu suất GC tổng thể dưới dạng văn bản. Trong trường hợp này, chúng ta có thể sử dụng công cụ [GCView](https://sourceforge.net/projects/gcviewer/) để mở tệp nhật ký và xem hiệu suất GC tổng thể dưới giao diện đồ họa.
+Nếu nhật ký GC kéo dài trong thời gian dài, chúng ta khó có thể xem xét hiệu suất GC tổng thể dưới dạng văn bản. Trong trường hợp này, chúng ta có thể sử dụng công cụ [GCView](https://sourceforge.net/projects/gcviewer/) để mở tệp nhật ký và xem hiệu suất GC tổng thể dưới interface đồ họa.
 
 【Ví dụ】Cài đặt Tomcat
 
@@ -163,16 +163,16 @@ JAVA_OPTS="-server -Xms2000m -Xmx2000m -Xmn800m -XX:PermSize=64m -XX:MaxPermSize
 -XX:+UseConcMarkSweepGC -XX:MaxTenuringThreshold=15"
 ```
 
-- `-Xms2000m -Xmx2000m -Xmn800m -XX:PermSize=64m -XX:MaxPermSize=256m`  
+- `-Xms2000m -Xmx2000m -Xmn800m -XX:PermSize=64m -XX:MaxPermSize=256m`
   Xms là kích thước heap ban đầu của JVM khi khởi động, Xmx là kích thước heap tối đa của JVM, xmn là kích thước của thế hệ trẻ, permsize là kích thước ban đầu của permgen, MaxPermSize là kích thước tối đa của permgen.
-- `-XX:SurvivorRatio=4`  
+- `-XX:SurvivorRatio=4`
   SurvivorRatio là tỷ lệ kích thước của khu vực Eden và khu vực Survivor trong không gian mới, mặc định là 8, tức là tỷ lệ giữa hai khu vực Survivor và một khu vực Eden là 2: 8, một khu vực Survivor chiếm 1/10 của không gian trẻ. Giảm tham số này sẽ làm tăng kích thước khu vực survivor, giúp đối tượng ở lại khu vực survivor lâu hơn, giảm số lượng đối tượng vào thế hệ già. Ý tưởng của việc loại bỏ khu vực survivor là để đưa nhanh chóng các dữ liệu không thể thu gom được vào thế hệ già, tăng tần suất thu gom của thế hệ già, giảm khả năng thế hệ già bùng nổ, điều này được thực hiện bằng cách đặt -XX:SurvivorRatio thành một giá trị lớn (ví dụ: 65536).
-- `-verbose:gc -Xloggc:$CATALINA_HOME/logs/gc.log`  
+- `-verbose:gc -Xloggc:$CATALINA_HOME/logs/gc.log`
   Ghi thông tin về mỗi lần thu gom rác của máy ảo vào tệp nhật ký, tên tệp được chỉ định bởi file, định dạng tệp là tệp phẳng, nội dung giống với -verbose:gc.
 - `-Djava.awt.headless=true` Chế độ Headless là một chế độ cấu hình của hệ thống. Trong chế độ này, hệ thống thiếu thiết bị hiển thị, bàn phím hoặc chuột.
-- `-XX:+PrintGCTimeStamps -XX:+PrintGCDetails`  
+- `-XX:+PrintGCTimeStamps -XX:+PrintGCDetails`
   Đặt định dạng nhật ký GC
-- `-Dsun.rmi.dgc.server.gcInterval=600000 -Dsun.rmi.dgc.client.gcInterval=600000`  
+- `-Dsun.rmi.dgc.server.gcInterval=600000 -Dsun.rmi.dgc.client.gcInterval=600000`
   Xác định khoảng thời gian gc khi gọi rmi
 - `-XX:+UseConcMarkSweepGC -XX:MaxTenuringThreshold=15` Sử dụng cách thu gom song song, sau 15 lần gc nhỏ, nó sẽ vào thế hệ già
 

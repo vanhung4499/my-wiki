@@ -124,7 +124,7 @@ Trong Java, tham số biến đổi được sử dụng để truyền một s�
 void varargsMethod(String... varargs) {}
 ```
 
-Phương thức này có thể nhận bất kỳ số lượng tham số chuỗi nào, có thể là 0 hoặc N tham số. Bản chất, tham số biến đổi được hiện thực thông qua mảng. Để chứng minh điều này, chúng ta có thể xem mã bytecode sau khi được dịch ngược:
+Phương thức này có thể nhận bất kỳ số lượng tham số chuỗi nào, có thể là 0 hoặc N tham số. Bản chất, tham số biến đổi được triển khai thông qua mảng. Để chứng minh điều này, chúng ta có thể xem mã bytecode sau khi được dịch ngược:
 
 ```java
 public class VarargsDemo
@@ -218,7 +218,7 @@ Stream<String> aStream = Arrays.stream(anArray);
 Nếu muốn sắp xếp mảng, bạn có thể sử dụng phương thức `sort()` của lớp Arrays.
 
 - Các kiểu dữ liệu cơ bản sẽ được sắp xếp theo thứ tự tăng dần.
-- Các đối tượng đã hiện thực giao diện Comparable sẽ được sắp xếp theo phương thức `compareTo()` của chúng.
+- Các đối tượng đã triển khai interface Comparable sẽ được sắp xếp theo phương thức `compareTo()` của chúng.
 
 Hãy xem ví dụ đầu tiên:
 

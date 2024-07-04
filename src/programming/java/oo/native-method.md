@@ -12,7 +12,7 @@ Ví dụ như phương thức `private native start0()` trong lớp Thread;
 
 Hoặc các phương thức trong lớp Object như getClass(), hashCode(), clone(), với các chữ ký như sau:
 
-```java 
+```java
 public final native Class<?> getClass();
 public native int hashCode();
 protected native Object clone() throws CloneNotSupportedException;
@@ -46,7 +46,7 @@ A --> B
 B --> C
 ```
 
-Thông qua JNI, chúng ta có thể gọi các hàm thư viện được thực hiện bởi các công nghệ và hệ thống liên quan đến hệ điều hành thông qua chương trình Java (mã). Đồng thời, các công nghệ và hệ thống khác cũng có thể sử dụng các giao diện nguyên bản cung cấp bởi JNI để gọi các chức năng được triển khai nội bộ trong hệ thống ứng dụng Java.
+Thông qua JNI, chúng ta có thể gọi các hàm thư viện được thực hiện bởi các công nghệ và hệ thống liên quan đến hệ điều hành thông qua chương trình Java (mã). Đồng thời, các công nghệ và hệ thống khác cũng có thể sử dụng các interface nguyên bản cung cấp bởi JNI để gọi các chức năng được triển khai nội bộ trong hệ thống ứng dụng Java.
 
 "Ba muội, chờ đã, Java không phải là một nền tảng đa nền tảng sao? Nếu sử dụng JNI, liệu chương trình có không còn lợi thế đa nền tảng nữa không?" Câu hỏi của ba muội thực sự làm nổi bật điều này.
 
@@ -125,9 +125,9 @@ Sau khi thực hiện, sẽ tạo ra tệp tiêu đề tên là HelloJNI.h trong
 
 Không cần hiểu rõ mã này, chỉ cần biết rằng nó được tạo tự động là được.
 
-#### 04) Sử dụng ngôn ngữ C để hiện thực phương thức gốc
+#### 04) Sử dụng ngôn ngữ C để triển khai phương thức gốc
 
-Tạo một tệp C, HelloJNI.c, để hiện thực phương thức gốc sayHello.
+Tạo một tệp C, HelloJNI.c, để triển khai phương thức gốc sayHello.
 
 ```c
 #include <stdio.h>
@@ -140,7 +140,7 @@ JNIEXPORT void JNICALL Java_HelloJNI_helloJNI(JNIEnv *env, jobject obj) {
 }
 ```
 
-Lưu ý, ở đây cần bao gồm tệp tiêu đề JNI và tên phương thức hiện thực cần phải nhất quán với tên đã khai báo trong Java (`HelloJNI_helloJNI`, phương thức helloJNI của lớp HelloJNI).
+Lưu ý, ở đây cần bao gồm tệp tiêu đề JNI và tên phương thức triển khai cần phải nhất quán với tên đã khai báo trong Java (`HelloJNI_helloJNI`, phương thức helloJNI của lớp HelloJNI).
 
 #### 05) Viết kịch bản biên dịch compile.sh
 
@@ -183,7 +183,7 @@ Thực thi lệnh `java HelloJNI` để chạy HelloJNI, nếu mọi thứ đề
 
 ### **4. Từ khóa native**
 
-Từ khóa native được sử dụng để khai báo phương thức, các phương thức được khai báo bằng native nghĩa là phương thức này được hiện thực bên ngoài, có thể sử dụng bất kỳ ngôn ngữ nào để hiện thực nó, ví dụ như C/C++. Nói một cách đơn giản, một phương thức native là một giao diện để Java gọi mã không phải Java.
+Từ khóa native được sử dụng để khai báo phương thức, các phương thức được khai báo bằng native nghĩa là phương thức này được triển khai bên ngoài, có thể sử dụng bất kỳ ngôn ngữ nào để triển khai nó, ví dụ như C/C++. Nói một cách đơn giản, một phương thức native là một interface để Java gọi mã không phải Java.
 
 Cú pháp của native:
 

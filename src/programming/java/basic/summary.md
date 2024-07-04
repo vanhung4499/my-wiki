@@ -347,7 +347,7 @@ Có thể áp dụng từ khóa quyền truy cập cho lớp hoặc thành viên
 
 Từ khóa `protected` được sử dụng để chỉ ra rằng thành viên có thể được truy cập từ các lớp con trong hệ thống kế thừa, nhưng từ khóa này không có ý nghĩa đối với lớp.
 
-Một module tốt được thiết kế để ẩn tất cả các chi tiết cài đặt, tách rời giao diện (interface) của nó và cài đặt một cách rõ ràng. Các module chỉ giao tiếp thông qua giao diện (interface) của chúng, một module không cần biết về cách thức hoạt động bên trong của các module khác, điều này được gọi là ẩn thông tin hoặc đóng gói. Do đó, quyền truy cập nên được sử dụng để giới hạn việc truy cập từ bên ngoài cho mỗi lớp hoặc thành viên.
+Một module tốt được thiết kế để ẩn tất cả các chi tiết cài đặt, tách rời interface của nó và cài đặt một cách rõ ràng. Các module chỉ giao tiếp thông qua interface của chúng, một module không cần biết về cách thức hoạt động bên trong của các module khác, điều này được gọi là ẩn thông tin hoặc đóng gói. Do đó, quyền truy cập nên được sử dụng để giới hạn việc truy cập từ bên ngoài cho mỗi lớp hoặc thành viên.
 
 Nếu một phương thức trong lớp con ghi đè phương thức trong lớp cha, thì quyền truy cập của phương thức trong lớp con không được phép thấp hơn quyền truy cập của phương thức trong lớp cha. Điều này đảm bảo rằng mọi nơi mà một thể hiện của lớp cha có thể được sử dụng, một thể hiện của lớp con cũng có thể được sử dụng, đồng nghĩa với việc tuân thủ **nguyên tắc thay thế Liskov**.
 
@@ -433,13 +433,13 @@ ac2.func1();
 
 ### Inteface
 
-Giao diện (Interface) là một mở rộng của lớp trừu tượng. Trước Java 8, giao diện được coi là một lớp hoàn toàn trừu tượng, có nghĩa là không có phương thức được triển khai.
+Interface là một mở rộng của lớp trừu tượng. Trước Java 8, interface được coi là một lớp hoàn toàn trừu tượng, có nghĩa là không có phương thức được triển khai.
 
-Từ Java 8 trở đi, giao diện cũng có thể có các phương thức mặc định, vì việc duy trì giao diện không hỗ trợ phương thức mặc định là không hiệu quả. Trước Java 8, nếu một giao diện muốn thêm các phương thức mới, tất cả các lớp đã triển khai giao diện đó phải được sửa đổi.
+Từ Java 8 trở đi, interface cũng có thể có các phương thức mặc định, vì việc duy trì interface không hỗ trợ phương thức mặc định là không hiệu quả. Trước Java 8, nếu một interface muốn thêm các phương thức mới, tất cả các lớp đã triển khai interface đó phải được sửa đổi.
 
-Các thành viên của giao diện (trường + phương thức) mặc định đều là `public` và không được phép định nghĩa là `private` hoặc `protected`.
+Các thành viên của interface (trường + phương thức) mặc định đều là `public` và không được phép định nghĩa là `private` hoặc `protected`.
 
-Các trường của giao diện mặc định là `static` và `final`.
+Các trường của interface mặc định là `static` và `final`.
 
 ```java
 public interface InterfaceExample {
@@ -476,22 +476,22 @@ System.out.println(InterfaceExample.x);s
 
 #### So sánh
 
-- Từ góc nhìn thiết kế, lớp trừu tượng cung cấp một mối quan hệ IS-A, điều này đòi hỏi đối tượng con phải có thể thay thế tất cả các đối tượng cha. Trong khi đó, giao diện giống như một mối quan hệ LIKE-A, nó chỉ cung cấp một hợp đồng thực hiện phương thức và không yêu cầu giao diện và lớp thực hiện giao diện có mối quan hệ IS-A.
-- Về việc sử dụng, một lớp có thể thực hiện nhiều giao diện nhưng không thể kế thừa nhiều lớp trừu tượng.
-- Trường của giao diện chỉ có thể là kiểu `static` và `final`, trong khi trường của lớp trừu tượng không có ràng buộc này.
-- Thành viên của giao diện chỉ có thể là `public`, trong khi thành viên của lớp trừu tượng có thể có nhiều quyền truy cập khác nhau.
+- Từ góc nhìn thiết kế, lớp trừu tượng cung cấp một mối quan hệ IS-A, điều này đòi hỏi đối tượng con phải có thể thay thế tất cả các đối tượng cha. Trong khi đó, interface giống như một mối quan hệ LIKE-A, nó chỉ cung cấp một hợp đồng thực hiện phương thức và không yêu cầu interface và lớp thực hiện interface có mối quan hệ IS-A.
+- Về việc sử dụng, một lớp có thể thực hiện nhiều interface nhưng không thể kế thừa nhiều lớp trừu tượng.
+- Trường của interface chỉ có thể là kiểu `static` và `final`, trong khi trường của lớp trừu tượng không có ràng buộc này.
+- Thành viên của interface chỉ có thể là `public`, trong khi thành viên của lớp trừu tượng có thể có nhiều quyền truy cập khác nhau.
 
 #### Lựa chọn sử dụng
 
-- Sử dụng giao diện khi:
-	- Cần để các lớp không liên quan cùng thực hiện một phương thức, ví dụ như các lớp không liên quan có thể thực hiện phương thức `compareTo()` trong giao diện `Comparable`
+- Sử dụng interface khi:
+	- Cần để các lớp không liên quan cùng thực hiện một phương thức, ví dụ như các lớp không liên quan có thể thực hiện phương thức `compareTo()` trong interface `Comparable`
 	- Cần sử dụng đa kế thừa.
 - Sử dụng lớp trừu tượng khi:
 	- Cần chia sẻ mã giữa một số lớp liên quan
 	- Cần kiểm soát quyền truy cập của thành viên được kế thừa, không nhất thiết phải là public
 	- Cần kế thừa các trường không phải là static và hằng số.
 
-Trong nhiều trường hợp, giao diện được ưu tiên hơn lớp trừu tượng vì giao diện không yêu cầu một cấu trúc lớp chặt chẽ như lớp trừu tượng, cho phép linh hoạt thêm hành vi cho một lớp. Và từ Java 8 trở đi, giao diện cũng có thể có các phương thức mặc định, làm giảm chi phí sửa đổi giao diện.
+Trong nhiều trường hợp, interface được ưu tiên hơn lớp trừu tượng vì interface không yêu cầu một cấu trúc lớp chặt chẽ như lớp trừu tượng, cho phép linh hoạt thêm hành vi cho một lớp. Và từ Java 8 trở đi, interface cũng có thể có các phương thức mặc định, làm giảm chi phí sửa đổi interface.
 
 - [IBM Developer](https://www.ibm.com/developerworks/java/l-javainterface-abstract/)
 - [When to Use Abstract Class and Interface](https://dzone.com/articles/when-to-use-abstract-class-and-intreface)
@@ -778,9 +778,9 @@ try {
 java.lang.CloneNotSupportedException: CloneExample
 ```
 
-Ở trên, `CloneNotSupportedException` được thả vì `CloneExample` không triển khai giao diện `Cloneable`.
+Ở trên, `CloneNotSupportedException` được thả vì `CloneExample` không triển khai interface `Cloneable`.
 
-Cần lưu ý rằng phương thức `clone()` không phải là một phương thức của giao diện `Cloneable`, mà là một phương thức `protected` của `Object`. Giao diện `Cloneable` chỉ quy định rằng nếu một lớp không triển khai giao diện `Cloneable` và gọi phương thức `clone()`, `CloneNotSupportedException` sẽ được thả.
+Cần lưu ý rằng phương thức `clone()` không phải là một phương thức của interface `Cloneable`, mà là một phương thức `protected` của `Object`. interface `Cloneable` chỉ quy định rằng nếu một lớp không triển khai interface `Cloneable` và gọi phương thức `clone()`, `CloneNotSupportedException` sẽ được thả.
 
 ```java
 public class CloneExample implements Cloneable {
@@ -1185,7 +1185,7 @@ Chú thích (Annotation) trong Java là các thông tin bổ sung được đín
 - Java sử dụng máy ảo để đạt được tính chất đa nền tảng, trong khi C++ phụ thuộc vào nền tảng cụ thể.
 - Java không có con trỏ, thay vào đó, tham chiếu trong Java có thể hiểu là con trỏ an toàn, trong khi C++ có con trỏ giống như C.
 - Java hỗ trợ thu gom rác tự động, trong khi C++ cần phải thu gom rác thủ công.
-- Java không hỗ trợ đa kế thừa, chỉ có thể đạt được cùng mục đích thông qua việc triển khai nhiều giao diện, trong khi C++ hỗ trợ đa kế thừa.
+- Java không hỗ trợ đa kế thừa, chỉ có thể đạt được cùng mục đích thông qua việc triển khai nhiều interface, trong khi C++ hỗ trợ đa kế thừa.
 - Java không hỗ trợ nạp chồng toán tử, mặc dù có thể thực hiện phép cộng cho hai đối tượng String, nhưng đây là một phép toán được hỗ trợ sẵn trong ngôn ngữ, không thuộc về nạp chồng toán tử, trong khi C++ có thể.
 - Từ khóa `goto` trong Java là từ khóa được dành riêng nhưng không sử dụng được, trong khi C++ có thể sử dụng `goto`.
 - Java không hỗ trợ biên dịch có điều kiện, C++ sử dụng các lệnh tiền xử lý như `#ifdef` `#ifndef` để thực hiện biên dịch có điều kiện.

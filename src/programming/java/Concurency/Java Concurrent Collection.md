@@ -15,9 +15,9 @@ date modified: 2023-07-17
 Trong Java, Collection đồng bộ hóa chủ yếu bao gồm 2 loại:
 
 - `Vector`, `Stack`, `Hashtable`
-	- `Vector` - `Vector` thực hiện giao diện `List`. `Vector` thực tế là một mảng, tương tự như `ArrayList`. Tuy nhiên, các phương thức trong `Vector` đều được đồng bộ hóa, tức là đã thực hiện các biện pháp đồng bộ hóa.
+	- `Vector` - `Vector` triển khai interface `List`. `Vector` thực tế là một mảng, tương tự như `ArrayList`. Tuy nhiên, các phương thức trong `Vector` đều được đồng bộ hóa, tức là đã thực hiện các biện pháp đồng bộ hóa.
 	- `Stack` - `Stack` cũng là một Collection đồng bộ hóa, các phương thức của nó cũng được đồng bộ hóa, thực tế nó kế thừa từ lớp `Vector`.
-	- `Hashtable` - `Hashtable` thực hiện giao diện `Map`, nó tương tự như `HashMap`, nhưng `Hashtable` đã được xử lý đồng bộ hóa, trong khi `HashMap` không có.
+	- `Hashtable` - `Hashtable` triển khai interface `Map`, nó tương tự như `HashMap`, nhưng `Hashtable` đã được xử lý đồng bộ hóa, trong khi `HashMap` không có.
 - Các lớp được tạo bằng các phương thức tĩnh trong lớp `Collections` (như `Collections.synchronizedXXX`)
 
 ### Vấn đề với Synchronized Collection
@@ -232,7 +232,7 @@ Nếu có nhiều hoạt động ghi và ít hoạt động đọc, hãy sử d�
 
 ## Map
 
-Trong Java, có hai lớp triển khai của giao diện Map là `ConcurrentHashMap` và `ConcurrentSkipListMap`. Sự khác biệt chính giữa chúng từ quan điểm ứng dụng là `ConcurrentHashMap` có key không có thứ tự, trong khi `ConcurrentSkipListMap` có key được sắp xếp. Do đó, nếu bạn cần đảm bảo thứ tự của key, bạn chỉ có thể sử dụng `ConcurrentSkipListMap`.
+Trong Java, có hai lớp triển khai của interface Map là `ConcurrentHashMap` và `ConcurrentSkipListMap`. Sự khác biệt chính giữa chúng từ quan điểm ứng dụng là `ConcurrentHashMap` có key không có thứ tự, trong khi `ConcurrentSkipListMap` có key được sắp xếp. Do đó, nếu bạn cần đảm bảo thứ tự của key, bạn chỉ có thể sử dụng `ConcurrentSkipListMap`.
 
 Khi sử dụng `ConcurrentHashMap` và `ConcurrentSkipListMap`, cần lưu ý rằng cả key và value không được null, nếu không sẽ gây ra ngoại lệ `NullPointerException`.
 
@@ -242,7 +242,7 @@ Khi sử dụng `ConcurrentHashMap` và `ConcurrentSkipListMap`, cần lưu ý r
 
 #### Tính năng của ConcurrentHashMap
 
-`ConcurrentHashMap` triển khai giao diện `ConcurrentMap`, và `ConcurrentMap` mở rộng từ giao diện `Map`.
+`ConcurrentHashMap` triển khai interface `ConcurrentMap`, và `ConcurrentMap` mở rộng từ interface `Map`.
 
 ```java
 public class ConcurrentHashMap<K,V> extends AbstractMap<K,V>
@@ -253,7 +253,7 @@ public class ConcurrentHashMap<K,V> extends AbstractMap<K,V>
 
 `ConcurrentHashMap` triển khai bao gồm tất cả các tính năng cơ bản của `HashMap`, bao gồm cấu trúc dữ liệu, chiến lược đọc và ghi, v.v.
 
-`ConcurrentHashMap` không thực hiện việc khóa toàn bộ Map để cung cấp truy cập độc quyền. Do đó, không thể tạo ra các hoạt động nguyên tử mới bằng cách khóa từ phía khách hàng. Tuy nhiên, một số hoạt động phức tạp phổ biến như "thêm nếu không có", "xóa nếu bằng" và "thay thế nếu bằng" đã được triển khai như các hoạt động nguyên tử và được triển khai xung quanh các giao diện mở rộng của `ConcurrentMap`.
+`ConcurrentHashMap` không thực hiện việc khóa toàn bộ Map để cung cấp truy cập độc quyền. Do đó, không thể tạo ra các hoạt động nguyên tử mới bằng cách khóa từ phía khách hàng. Tuy nhiên, một số hoạt động phức tạp phổ biến như "thêm nếu không có", "xóa nếu bằng" và "thay thế nếu bằng" đã được triển khai như các hoạt động nguyên tử và được triển khai xung quanh các interface mở rộng của `ConcurrentMap`.
 
 ```java
 public interface ConcurrentMap<K, V> extends Map<K, V> {
@@ -829,7 +829,7 @@ Hiệu suất đọc cao hơn trăm lần so với hiệu suất ghi.
 
 ## Set
 
-Set là một giao diện trong Java, có hai cài đặt là CopyOnWriteArraySet và ConcurrentSkipListSet. Bạn có thể tham khảo các ví dụ sử dụng CopyOnWriteArrayList và ConcurrentSkipListMap đã được trình bày ở trên để biết các trường hợp sử dụng của chúng. Nguyên tắc hoạt động của chúng cũng tương tự.
+Set là một interface trong Java, có hai cài đặt là CopyOnWriteArraySet và ConcurrentSkipListSet. Bạn có thể tham khảo các ví dụ sử dụng CopyOnWriteArrayList và ConcurrentSkipListMap đã được trình bày ở trên để biết các trường hợp sử dụng của chúng. Nguyên tắc hoạt động của chúng cũng tương tự.
 
 ## Queue
 
@@ -839,7 +839,7 @@ Trong gói concurrent của Java, các cấu trúc dữ liệu hàng đợi (Que
 
 `BlockingQueue` có nghĩa là một **hàng đợi chặn**. `BlockingQueue` thường được triển khai dựa trên cơ chế khóa. Trong `BlockingQueue`, **khi hàng đợi đầy, thao tác thêm vào sẽ bị chặn; khi hàng đợi trống, thao tác lấy ra sẽ bị chặn**.
 
-Giao diện `BlockingQueue` được định nghĩa như sau:
+interface `BlockingQueue` được định nghĩa như sau:
 
 ```java
 public interface BlockingQueue<E> extends Queue<E> {}
@@ -1038,7 +1038,7 @@ Lớp `SynchronousQueue` này được sử dụng trong lớp `ScheduledThreadP
 
 `SynchronousQueue` cũng không thể được lặp lại, vì không có phần tử nào để lặp lại.
 
-Mặc dù `SynchronousQueue` gián tiếp triển khai giao diện Collection, nhưng nếu bạn sử dụng nó như một Collection, thì tập hợp này sẽ rỗng.
+Mặc dù `SynchronousQueue` gián tiếp triển khai interface Collection, nhưng nếu bạn sử dụng nó như một Collection, thì tập hợp này sẽ rỗng.
 
 Tất nhiên `SynchronousQueue` không chấp nhận giá trị null (các lớp dữ liệu đóng gói trong gói concurrent không chấp nhận giá trị null, vì giá trị null thường được sử dụng cho mục đích khác, ví dụ như đại diện cho thất bại của một phương thức).
 

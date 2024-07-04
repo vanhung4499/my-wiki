@@ -66,7 +66,7 @@ cafe babe 0000 0034 001d 0a00 0600 0f09
 0900 0000 2500 0200 0100 0000 09b2 0002
 1203 b600 04b1 0000 0001 000a 0000 000a
 0002 0000 0006 0008 0007 0001 000d 0000
-0002 000e 
+0002 000e
 ```
 
 Trước đó đã đề cập: Tệp Java bytecode (`.class`) là một luồng dữ liệu nhị phân được cấu trúc gọn gàng với đơn vị cơ bản là byte 8 bit, các mục dữ liệu được sắp xếp chặt chẽ theo thứ tự trong tệp .class mà không có bất kỳ ký tự phân tách nào.
@@ -166,20 +166,20 @@ Ngay sau version chính là Constant Pool, constant pool có thể được hi�
 Constant Pool chia thành hai phần chính: Constant Pool Count và Constant Pool Data.
 
 - **Constant Pool Count** - Vì số lượng hằng số không cố định, nên cần hai byte đầu tiên để đại diện cho giá trị đếm số lượng hằng số trong constant pool.
-    
+
 - **Constant Pool Data** - Mỗi hằng số trong khu vực dữ liệu là một bảng và có cấu trúc khác nhau.
 
 Constant Pool chủ yếu chứa hai loại hằng số:
 
 - **Hằng số kí tự** - Ví dụ như chuỗi văn bản, giá trị hằng số được khai báo là `final`.
 - **Tham chiếu tượng trưng**
-	- Tên đầy đủ của lớp và giao diện
+	- Tên đầy đủ của lớp và interface
 	- Tên và mô tả của trường
 	- Tên và mô tả của phương thức
 
 #### Access Flags
 
-Ngay sau Constant Pool là 2 byte đại diện cho Access Flags, cờ này **được sử dụng để nhận dạng thông tin truy cập của một số lớp hoặc giao diện**, mô tả xem Class này là lớp hay giao diện,và có được `public`, `abstract`, `final` hay các từ khóa khác điều chỉnh không.
+Ngay sau Constant Pool là 2 byte đại diện cho Access Flags, cờ này **được sử dụng để nhận dạng thông tin truy cập của một số lớp hoặc interface**, mô tả xem Class này là lớp hay interface,và có được `public`, `abstract`, `final` hay các từ khóa khác điều chỉnh không.
 
 Access Flags có các loại sau:
 
@@ -188,21 +188,21 @@ Access Flags có các loại sau:
 |**ACC_PUBLIC**|0x0001|Có phải là loại Public hay không|
 |**ACC_FINAL**|0x0010|Được khai báo là final, chỉ có lớp mới có thể đặt|
 |**ACC_SUPER**|0x0020|Cho phép sử dụng cú pháp mới của lệnh invokespecial|
-|**ACC_INTERFACE**|0x0200|Đây là một giao diện|
-|**ACC_ABSTRACT**|0x0400|Có phải là loại abstract hay không, đối với giao diện hoặc lớp trừu tượng|
+|**ACC_INTERFACE**|0x0200|Đây là một interface|
+|**ACC_ABSTRACT**|0x0400|Có phải là loại abstract hay không, đối với interface hoặc lớp trừu tượng|
 |**ACC_SYNTHETIC**|0x1000|Lớp này không được tạo ra bởi mã nguồn người dùng|
 |**ACC_ANNOTATION**|0x2000|Đây là một chú thích|
 |**ACC_ENUM**|0x4000|Đây là một enum|
 
 #### This Class, Super Class, Interface Class
 
-This Class và Super Class đều là dữ liệu 2 byte, trong khi chỉ mục giao diện là một tập hợp dữ liệu 2 byte. **Trong tệp `.class`, 3 dữ liệu này được sử dụng để xác định mối quan hệ kế thừa của lớp này**.
+This Class và Super Class đều là dữ liệu 2 byte, trong khi chỉ mục interface là một tập hợp dữ liệu 2 byte. **Trong tệp `.class`, 3 dữ liệu này được sử dụng để xác định mối quan hệ kế thừa của lớp này**.
 
 > Java chỉ hỗ trợ đơn kế thừa nhưng có thể triển khai nhiều interface -> Super Class tối đa một bản ghi, interface thì có thể có nhiều bản ghi hơn
 
 #### Field Table
 
-**Field Table (Bảng trường) được sử dụng để mô tả các biến được khai báo trong lớp và giao diện**. Bao gồm biến cấp lớp và biến cấp thể hiện, nhưng không bao gồm biến cục bộ được khai báo trong phạm vi phương thức.
+**Field Table (Bảng trường) được sử dụng để mô tả các biến được khai báo trong lớp và interface**. Bao gồm biến cấp lớp và biến cấp thể hiện, nhưng không bao gồm biến cục bộ được khai báo trong phạm vi phương thức.
 
 Bảng trường cũng được chia thành hai phần, phần đầu tiên là Fields Count (2 byte), mô tả số lượng trường; phần thứ hai là thông tin chi tiết về từng trường (Field Entries).
 
@@ -212,7 +212,7 @@ Sau Field Table là Method Table (bảng phương thức), cấu trúc bảng ph
 
 #### Attribues
 
-Tập hợp thuộc tính chứa thông tin cơ bản về các thuộc tính (field, method, class) được định nghĩa trong lớp hoặc giao diện trong tệp này.
+Tập hợp thuộc tính chứa thông tin cơ bản về các thuộc tính (field, method, class) được định nghĩa trong lớp hoặc interface trong tệp này.
 
 Các thuộc tính được sử dụng để đại diện cho:
 
@@ -277,7 +277,7 @@ Các lớp cốt lõi của Javassist bao gồm:
 
 ### Instrument
 
-Instrument là một thư viện được cung cấp bởi JVM để sửa đổi các lớp đã được tải, đặc biệt hỗ trợ cho việc viết mã gắn kết cho ngôn ngữ Java. Nó phụ thuộc vào cơ chế Attach API của JVMTI để thực hiện. Trước JDK 1.6, Instrument chỉ hoạt động khi lớp được tải lên JVM khi khởi động, nhưng từ JDK 1.6 trở đi, Instrument hỗ trợ sửa đổi lớp trong quá trình chạy. Để sử dụng chức năng sửa đổi lớp của Instrument, chúng ta cần triển khai giao diện ClassFileTransformer và định nghĩa một trình biên dịch tệp lớp. Phương thức transform() trong giao diện này sẽ được gọi khi tệp lớp được tải, và trong phương thức transform, chúng ta có thể sử dụng ASM hoặc Javassist để sửa đổi hoặc thay thế bytecode được truyền vào và trả về một mảng bytecode mới.
+Instrument là một thư viện được cung cấp bởi JVM để sửa đổi các lớp đã được tải, đặc biệt hỗ trợ cho việc viết mã gắn kết cho ngôn ngữ Java. Nó phụ thuộc vào cơ chế Attach API của JVMTI để thực hiện. Trước JDK 1.6, Instrument chỉ hoạt động khi lớp được tải lên JVM khi khởi động, nhưng từ JDK 1.6 trở đi, Instrument hỗ trợ sửa đổi lớp trong quá trình chạy. Để sử dụng chức năng sửa đổi lớp của Instrument, chúng ta cần triển khai interface ClassFileTransformer và định nghĩa một trình biên dịch tệp lớp. Phương thức transform() trong interface này sẽ được gọi khi tệp lớp được tải, và trong phương thức transform, chúng ta có thể sử dụng ASM hoặc Javassist để sửa đổi hoặc thay thế bytecode được truyền vào và trả về một mảng bytecode mới.
 
 ## JavaAgent
 
@@ -331,11 +331,11 @@ Chủ yếu là chặn trước quá trình tải lớp và sửa đổi mã byt
 
 Dưới đây, chúng ta sẽ giới thiệu các thuật ngữ quan trọng:
 
-- **JVMTI** (JVM Tool Interface) là một tập hợp các giao diện mà JVM cung cấp cho người dùng mở rộng. JVMTI hoạt động dựa trên sự kiện, mỗi khi JVM thực hiện một số logic, nó sẽ kích hoạt các giao diện gọi lại tương ứng, người dùng có thể mở rộng thông qua các giao diện gọi lại này.
+- **JVMTI** (JVM Tool Interface) là một tập hợp các interface mà JVM cung cấp cho người dùng mở rộng. JVMTI hoạt động dựa trên sự kiện, mỗi khi JVM thực hiện một số logic, nó sẽ kích hoạt các interface gọi lại tương ứng, người dùng có thể mở rộng thông qua các interface gọi lại này.
 
   JVMTI là nền tảng chung để triển khai các công cụ như Debugger, Profiler, Monitor, Thread Analyser,… và được hỗ trợ trên hầu hết các máy ảo Java phổ biến.
 
-- **JVMTIAgent** là một thư viện động, sử dụng các giao diện mà JVMTI cung cấp để thực hiện các tác vụ mà thông thường không thể thực hiện. Thông thường, nó triển khai một hoặc nhiều hàm sau:
+- **JVMTIAgent** là một thư viện động, sử dụng các interface mà JVMTI cung cấp để thực hiện các tác vụ mà thông thường không thể thực hiện. Thông thường, nó triển khai một hoặc nhiều hàm sau:
 	- Hàm Agent_OnLoad: được gọi khi agent được tải vào trong quá trình khởi động.
 	- Hàm Agent_OnAttach: được gọi khi agent được tải vào trong quá trình chạy thông qua JVM Attach.
 	- Hàm Agent_OnUnload: được gọi khi agent bị gỡ bỏ.

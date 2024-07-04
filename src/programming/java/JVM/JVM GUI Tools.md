@@ -16,7 +16,7 @@ date modified: 2023-07-19
 
 > jconsole là một công cụ GUI đi kèm với JDK. **jconsole (Java Monitoring and Management Console) là một công cụ quản lý và giám sát trực quan dựa trên JMX**.
 >
-> Chức năng quản lý của jconsole dành cho các MBean JMX, vì MBean có thể được truy cập bằng mã, giao diện quản lý của máy chủ trung gian hoặc bất kỳ phần mềm nào tuân thủ quy tắc JMX.
+> Chức năng quản lý của jconsole dành cho các MBean JMX, vì MBean có thể được truy cập bằng mã, interface quản lý của máy chủ trung gian hoặc bất kỳ phần mềm nào tuân thủ quy tắc JMX.
 
 Lưu ý: Để sử dụng jconsole, ứng dụng Java phải bật JMX.
 
@@ -45,7 +45,7 @@ Nếu là quy trình Java từ xa, bạn cần kết nối đến cổng JMX c�
 
 ![Kết nối với JMX Agent bằng JMX Service URL](https://raw.githubusercontent.com/vanhung4499/images/master/snap/connectadv.gif)
 
-### Giao diện jconsole
+### interface jconsole
 
 Sau khi mở ứng dụng jconsole, bạn sẽ thấy các tab sau.
 
@@ -108,7 +108,7 @@ Bạn có thể nhấp vào để xem chi tiết, trong trang chi tiết, "Short
 
 Để tìm ra rò rỉ bộ nhớ, tôi đã lấy hai tệp dump heap, khoảng thời gian giữa hai tệp là một ngày (vì bộ nhớ chỉ tăng nhẹ, nên khó phát hiện vấn đề trong thời gian ngắn). So sánh các đối tượng trong hai tệp, thông qua kết quả so sánh, bạn có thể dễ dàng xác định vị trí rò rỉ bộ nhớ.
 
-MAT mở cùng lúc hai tệp dump heap, mở Histogram cho từng tệp, như hình dưới đây. Trong hình dưới, nút 1 hình chữ nhật được sử dụng để so sánh hai Histogram, sau khi so sánh, chọn Group By package tại nút 2, sau đó so sánh sự thay đổi của các đối tượng. Không khó để nhận thấy rằng heap3.hprof thiếu 64 đối tượng eventInfo so với heap6.hprof, nếu bạn quen với mã nguồn, kết quả như vậy có thể cung cấp một số gợi ý cho lập trình viên. Tôi đã tìm thấy vị trí rò rỉ bộ nhớ cuối cùng dựa trên gợi ý này.  
+MAT mở cùng lúc hai tệp dump heap, mở Histogram cho từng tệp, như hình dưới đây. Trong hình dưới, nút 1 hình chữ nhật được sử dụng để so sánh hai Histogram, sau khi so sánh, chọn Group By package tại nút 2, sau đó so sánh sự thay đổi của các đối tượng. Không khó để nhận thấy rằng heap3.hprof thiếu 64 đối tượng eventInfo so với heap6.hprof, nếu bạn quen với mã nguồn, kết quả như vậy có thể cung cấp một số gợi ý cho lập trình viên. Tôi đã tìm thấy vị trí rò rỉ bộ nhớ cuối cùng dựa trên gợi ý này.
 ![img](https://raw.githubusercontent.com/vanhung4499/images/master/snap/20160223203226362)
 
 ## JProfiler
@@ -121,6 +121,6 @@ Vì nó là một công cụ trả phí, nên tôi ít sử dụng. Tuy nhiên, 
 
 [Arthas](https://github.com/alibaba/arthas) là một công cụ chẩn đoán Java mã nguồn mở do Alibaba phát triển, được yêu thích bởi các nhà phát triển. Nó cho phép chẩn đoán vấn đề trực tuyến mà không cần khởi động lại ứng dụng; theo dõi mã nguồn Java một cách động; giám sát trạng thái JVM theo thời gian thực.
 
-Arthas hỗ trợ JDK 6+ và có thể chạy trên Linux/Mac/Windows. Nó sử dụng giao diện dòng lệnh và cung cấp tính năng tự động hoàn thành lệnh `Tab` để dễ dàng xác định và chẩn đoán vấn đề.
+Arthas hỗ trợ JDK 6+ và có thể chạy trên Linux/Mac/Windows. Nó sử dụng interface dòng lệnh và cung cấp tính năng tự động hoàn thành lệnh `Tab` để dễ dàng xác định và chẩn đoán vấn đề.
 
 ![img](https://raw.githubusercontent.com/vanhung4499/images/master/snap/20200730145030.png)

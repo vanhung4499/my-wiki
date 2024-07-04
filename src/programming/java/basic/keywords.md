@@ -196,7 +196,7 @@ public enum PlayerType {
 
 ## 15. extends：
 
-Được sử dụng để chỉ ra một lớp được kế thừa từ một lớp hoặc giao diện khác ([kế thừa](https://javabetter.cn/oo/extends-bigsai.html)).
+Được sử dụng để chỉ ra một lớp được kế thừa từ một lớp hoặc interface khác ([kế thừa](https://javabetter.cn/oo/extends-bigsai.html)).
 
 ```java
 class Animal {
@@ -552,7 +552,7 @@ Trong ví dụ này, lớp MyClass có một biến tĩnh x và một phương t
 
 strict floating-point
 
-strictfp không phổ biến lắm, thường được sử dụng để đánh dấu một phương thức, giới hạn độ chính xác và hành vi làm tròn của các phép tính dấu chấm động. Khi bạn sử dụng strictfp trên một lớp, giao diện hoặc phương thức, tất cả các phép tính dấu chấm động trong phạm vi đó sẽ tuân thủ theo quy định của tiêu chuẩn IEEE 754, để đảm bảo tính nhất quán của các phép tính dấu chấm động trên nhiều nền tảng.
+strictfp không phổ biến lắm, thường được sử dụng để đánh dấu một phương thức, giới hạn độ chính xác và hành vi làm tròn của các phép tính dấu chấm động. Khi bạn sử dụng strictfp trên một lớp, interface hoặc phương thức, tất cả các phép tính dấu chấm động trong phạm vi đó sẽ tuân thủ theo quy định của tiêu chuẩn IEEE 754, để đảm bảo tính nhất quán của các phép tính dấu chấm động trên nhiều nền tảng.
 
 Các nền tảng phần cứng và triển khai JVM khác nhau có thể có sự khác biệt về độ chính xác và hành vi làm tròn của các phép tính dấu chấm động, điều này có thể dẫn đến các kết quả khác nhau khi chạy mã tính toán dấu chấm động giống nhau trên các môi trường khác nhau. Việc sử dụng từ khóa strictfp có thể đảm bảo rằng kết quả của các phép tính dấu chấm động sẽ giống nhau trên tất cả các nền tảng, tránh được sự không nhất quán trong kết quả tính toán.
 

@@ -402,7 +402,7 @@ Khi JVM phát hiện ra các tình huống cạnh tranh khác nhau, nó sẽ t�
 
 Khi không có cạnh tranh xảy ra, mặc định sẽ sử dụng khóa thiên vị. JVM sử dụng thao tác CAS (so sánh và trao đổi) để thiết lập ID luồng trong phần Mark Word của tiêu đề đối tượng, để chỉ ra rằng đối tượng này được thiên vị cho luồng hiện tại, do đó không liên quan đến khóa mutex thực sự. Điều này dựa trên giả định rằng trong nhiều tình huống ứng dụng, hầu hết các đối tượng sẽ bị khóa bởi nhiều nhất một luồng trong suốt vòng đời của nó, việc sử dụng khóa thiên vị có thể giảm thiểu chi phí không cạnh tranh.
 
-Nếu một luồng khác cố gắng khóa một đối tượng đã được thiên vị, JVM sẽ thu hồi (revoke) khóa thiên vị và chuyển sang cài đặt khóa nhẹ. Khóa nhẹ dựa trên thao tác CAS để cố gắng lấy khóa từ Mark Word của đối tượng. Nếu thử nghiệm thành công, luồng sẽ có được khóa trên đối tượng và Mark Word của đối tượng sẽ được cập nhật để đánh dấu là khóa nhẹ (00), cho biết đối tượng đang ở trạng thái khóa nhẹ,  
+Nếu một luồng khác cố gắng khóa một đối tượng đã được thiên vị, JVM sẽ thu hồi (revoke) khóa thiên vị và chuyển sang cài đặt khóa nhẹ. Khóa nhẹ dựa trên thao tác CAS để cố gắng lấy khóa từ Mark Word của đối tượng. Nếu thử nghiệm thành công, luồng sẽ có được khóa trên đối tượng và Mark Word của đối tượng sẽ được cập nhật để đánh dấu là khóa nhẹ (00), cho biết đối tượng đang ở trạng thái khóa nhẹ,
 nếu không, nó tiếp tục nâng cấp thành khoá nặng.
 
 #### Khóa thiên vị
@@ -1092,7 +1092,7 @@ static class ThreadLocalMap {
 
 #### Cách giải quyết xung đột Hash
 
-Mặc dù `ThreadLocalMap` có cấu trúc dữ liệu tương tự như một `Map`, nhưng nó không triển khai giao diện của `Map`. Nó không hỗ trợ phương thức `next` trong giao diện của `Map`, điều này có nghĩa là cách giải quyết xung đột Hash trong `ThreadLocalMap` không phải là **dùng danh sách liên kết**.
+Mặc dù `ThreadLocalMap` có cấu trúc dữ liệu tương tự như một `Map`, nhưng nó không triển khai interface của `Map`. Nó không hỗ trợ phương thức `next` trong interface của `Map`, điều này có nghĩa là cách giải quyết xung đột Hash trong `ThreadLocalMap` không phải là **dùng danh sách liên kết**.
 
 Thực tế, **`ThreadLocalMap` sử dụng phương pháp tìm kiếm tuyến tính để giải quyết xung đột Hash**. Phương pháp tìm kiếm tuyến tính được hiểu là dựa vào giá trị hashcode ban đầu của key để xác định vị trí của các thành phần trong mảng table. Nếu vị trí này đã bị chiếm bởi một key khác, thuật toán sẽ sử dụng một khoảng cố định để tìm kiếm vị trí tiếp theo và tiếp tục kiểm tra cho đến khi tìm được vị trí rỗng để lưu trữ.
 
