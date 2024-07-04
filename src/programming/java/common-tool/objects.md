@@ -197,6 +197,7 @@ System.out.println(Objects.deepEquals(nestedArray1, nestedArray3)); // Kết qu�
 
 Ngoài các phương thức đã đề cập ở trên, Objects còn cung cấp một số phương thức khác như `toString`, bạn có thể thử nếu có hứng thú.
 
-![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/common-tool/Objects-83489814-9784-4274-841a-27ee75c046ac.jpg)
+![image.png](https://raw.githubusercontent.com/vanhung4499/images/master/snap/20240704192653.png)
+
 
 Tóm lại, các phương thức mà lớp Objects cung cấp rất hữu ích trong nhiều trường hợp, giúp đơn giản hóa mã nguồn và giảm thiểu khả năng xảy ra lỗi.

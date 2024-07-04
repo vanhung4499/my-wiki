@@ -319,7 +319,8 @@ Thứ tự ban đầu của list là 312, sau khi sử dụng phương thức `r
 
 Lists còn có các công cụ hữu ích khác, tôi chỉ đưa ra một số ví dụ, bạn có thể tự nghiên cứu thêm.
 
-![Guava](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/common-tool/guava-4b962b06-a626-4707-9fe9-f5729536d9c5.jpg)
+![image.png](https://raw.githubusercontent.com/vanhung4499/images/master/snap/20240704191742.png)
+
 
 ### 08. Tổng kết
 

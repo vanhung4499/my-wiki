@@ -246,7 +246,7 @@ System.out.println(ClassUtils.isCglibProxy(new User()));
 
 `ClassUtils` còn rất nhiều phương thức hữu ích khác đang chờ bạn khám phá. Nếu bạn quan tâm, bạn có thể tìm hiểu thêm về chúng.
 
-![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/common-tool/utils-c58920ac-cf04-4d95-ad29-90339a086569.jpg)
+![image.png](https://raw.githubusercontent.com/vanhung4499/images/master/snap/20240704192914.png)
 
 ### BeanUtils
 
@@ -299,7 +299,8 @@ System.out.println(propertyForMethod.getName());
 
 Nếu bạn quan tâm đến `BeanUtils`, bạn có thể tìm hiểu thêm về nó trong những nội dung dưới đây:
 
-![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/common-tool/utils-629ecd75-259b-46aa-b1dd-82606cfc92ee.jpg)
+![image.png](https://raw.githubusercontent.com/vanhung4499/images/master/snap/20240704192949.png)
+
 
 ### ReflectionUtils
 
@@ -351,5 +352,6 @@ System.out.println(ReflectionUtils.isEqualsMethod(method));
 
 Lớp này còn có nhiều phương thức thú vị khác. Nếu bạn quan tâm, có thể tìm hiểu thêm trong các nội dung dưới đây:
 
-![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/common-tool/utils-0a4ecb9c-b9d2-4090-a7b7-c626a0672b94.jpg)
+![image.png](https://raw.githubusercontent.com/vanhung4499/images/master/snap/20240704193001.png)
+
 

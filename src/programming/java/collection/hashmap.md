@@ -1183,7 +1183,8 @@ Tuy nhiên, vấn đề này đã được khắc phục trong JDK 8, và thứ 
 
 Thông thường, khi xảy ra xung đột băm, HashMap trông như thế này:
 
-![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/collection/hashmap-thread-nosafe-08.png)
+![image.png](https://raw.githubusercontent.com/vanhung4499/images/master/snap/20240704191241.png)
+
 
 Tuy nhiên, khi có nhiều luồng đồng thời thực hiện thao tác put, nếu vị trí chỉ mục tính toán được là giống nhau, điều này sẽ dẫn đến khóa key trước bị ghi đè bởi key sau, dẫn đến mất mát phần tử.
 
@@ -1261,11 +1262,13 @@ if ((p = tab[i = (n - 1) & hash]) == null)
 
 Hai luồng đều thực hiện câu lệnh if, giả sử luồng A thực hiện `tab[i] = newNode(hash, key, value, null)` trước, bảng table sẽ như sau:
 
-![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/collection/hashmap-thread-nosafe-09.png)
+![image.png](https://raw.githubusercontent.com/vanhung4499/images/master/snap/20240704191253.png)
+
 
 Tiếp theo, luồng B thực hiện `tab[i] = newNode(hash, key, value, null)`, bảng table sẽ như sau:
 
-![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/collection/hashmap-thread-nosafe-10.png)
+![image.png](https://raw.githubusercontent.com/vanhung4499/images/master/snap/20240704191309.png)
+
 
 Điều này dẫn đến mất mát dữ liệu của phần tử 3.
 

@@ -142,7 +142,8 @@ Trong biểu thức chính quy, `\Z` biểu thị kết thúc của đầu vào,
 
 Ngoài việc quét đầu vào từ bàn phím và tập tin như đã đề cập ở trên, Scanner còn cung cấp bốn phương thức khác bắt đầu với find để tìm kiếm mục khớp:
 
-![Scanner Methods](https://cdn.tobebetterjavaer.com/stutymore/scanner-20230329162213.png)
+![image.png](https://raw.githubusercontent.com/vanhung4499/images/master/snap/20240704192731.png)
+
 
 Hãy xem ví dụ dưới đây:
 

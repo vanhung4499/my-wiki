@@ -53,7 +53,8 @@ System.out.println(list);
 
 Đoạn mã này dường như không có vấn đề gì, nhưng khi chạy thì lại bị lỗi.
 
-![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/collection/fail-fast-01.png)
+![image.png](https://raw.githubusercontent.com/vanhung4499/images/master/snap/20240704191013.png)
+
 
 Dựa vào thông tin stack trace lỗi, chúng ta có thể xác định đến dòng mã thứ 901 của ArrayList.
 

@@ -6,6 +6,7 @@ categories:
   - java
 order: 3
 ---
+
 # Apache StringUtils
 
 `Chuỗi` ([String](/programming/java/string/immutable)) trong công việc hàng ngày của chúng ta được sử dụng rất, rất nhiều.
@@ -28,7 +29,8 @@ Cấu hình Maven:
 
 StringUtils cung cấp rất nhiều phương thức hữu ích, có khoảng bốn đến năm trang như hình dưới đây, tôi chỉ chụp hai trang, thực sự là quá nhiều.
 
-![StringUtils Methods](https://cdn.tobebetterjavaer.com/stutymore/StringUtils-20230330111122.png)
+![image.png](https://raw.githubusercontent.com/vanhung4499/images/master/snap/20240704192812.png)
+
 
 Tiếp theo, chúng ta sẽ lấy một số phương thức thường dùng để minh họa.
 

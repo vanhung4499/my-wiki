@@ -312,7 +312,8 @@ public class Animal {
 
 Vì phương thức `move()` trong lớp Animal là final, nên lớp con sẽ gặp lỗi biên dịch khi cố gắng ghi đè phương thức này!
 
-![Overriding-2](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/basic-extra-meal/Overriding-2.png)
+![image.png](https://raw.githubusercontent.com/vanhung4499/images/master/snap/20240704191522.png)
+
 
 Tương tự, nếu một phương thức là static, thì nó cũng không thể được ghi đè. Vì phương thức static có thể được gọi từ cả lớp cha và các đối tượng của lớp con mà không cần tạo ra các đối tượng riêng biệt.
 

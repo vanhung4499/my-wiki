@@ -12,7 +12,7 @@ Collections là một lớp công cụ do JDK cung cấp, nằm trong gói java.
 
 Cách sử dụng Collections rất đơn giản. Trong Intellij IDEA, khi bạn gõ `Collections.` thì sẽ thấy tất cả các phương thức mà nó cung cấp. Chỉ cần nhìn qua tên phương thức và các tham số là bạn có thể biết phương thức đó dùng để làm gì.
 
-![Collections Methods](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/common-tool/collections-01.png)
+![](https://raw.githubusercontent.com/vanhung4499/images/master/snap/20240704191622.png)
 
 Để tiết kiệm thời gian học tập của bạn, tôi đã phân loại các phương thức này và đưa ra một số ví dụ đơn giản.
 
@@ -106,7 +106,8 @@ Kết quả sau khi điền: [tom, tom, tom, tom, tom]
 
 [HashMap không an toàn khi dùng trong đa luồng](/programming/java/collection/hashmap), chúng ta đã nói về điều này trước đây. Thực ra, ArrayList cũng không an toàn khi dùng trong đa luồng và không thể sử dụng trong môi trường đa luồng. Tuy nhiên, lớp công cụ Collections cung cấp một số phương thức synchronizedXxx để trả về một đối tượng được đồng bộ hóa, từ đó giải quyết vấn đề an toàn khi truy cập collection trong đa luồng.
 
-![Synchronized Methods](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/common-tool/collections-02.png)
+![image.png](https://raw.githubusercontent.com/vanhung4499/images/master/snap/20240704191648.png)
+
 
 Sử dụng cũng rất đơn giản:
 
@@ -248,11 +249,12 @@ Ngoài các công cụ từ JDK như `Collections`, `CollectionUtils` từ Sprin
 
 Hiện tại, phổ biến nhất là `CollectionUtils` trong gói `org.springframework.util` của Spring.
 
-![](https://cdn.tobebetterjavaer.com/stutymore/utils-20230330101919.png)
+![image.png](https://raw.githubusercontent.com/vanhung4499/images/master/snap/20240704192055.png)
 
 Và `CollectionUtils` trong gói `org.apache.commons.collections` của Apache.
 
-![](https://cdn.tobebetterjavaer.com/stutymore/utils-20230330103825.png)
+![image.png](https://raw.githubusercontent.com/vanhung4499/images/master/snap/20240704192106.png)
+
 
 Các Maven coordinates như sau:
 

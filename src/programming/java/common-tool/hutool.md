@@ -32,7 +32,8 @@ Như tác giả đã nói trên trang web:
 
 Hutool không chỉ đóng gói các lớp cơ bản của JDK như file, stream, mã hóa và giải mã, mã hóa ký tự, regex, luồng, XML, mà còn cung cấp các thành phần sau:
 
-![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/common-tool/hutool-02.png)
+![image.png](https://raw.githubusercontent.com/vanhung4499/images/master/snap/20240704191802.png)
+
 
 Rất nhiều và rất đầy đủ, vì vậy tôi chỉ chọn một số thành phần mà tôi thích để giới thiệu.
 
@@ -144,11 +145,13 @@ Nói thêm về classpath.
 
 Trong thực tế lập trình, chúng ta thường cần đọc dữ liệu từ một số file như file cấu hình, file văn bản, hình ảnh, v.v. Những file này thường được đặt ở đâu?
 
-![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/common-tool/hutool-03.png)
+![image.png](https://raw.githubusercontent.com/vanhung4499/images/master/snap/20240704191817.png)
+
 
 Đặt trong thư mục resources của cấu trúc dự án, khi dự án được biên dịch, chúng sẽ xuất hiện trong thư mục classes. Trên đĩa, nó sẽ trông như thế này:
 
-![](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/common-tool/hutool-04.png)
+![image.png](https://raw.githubusercontent.com/vanhung4499/images/master/snap/20240704191825.png)
+
 
 Khi đọc file, tôi không khuyến nghị sử dụng đường dẫn tuyệt đối vì các hệ điều hành khác nhau sẽ có các dấu phân cách đường dẫn khác nhau. Tốt nhất là sử dụng đường dẫn tương đối.
 
@@ -299,7 +302,7 @@ Khi phát triển Web, phía server thường cần kiểm tra dữ liệu từ 
 - Có phải số điện thoại không
 - Và nhiều điều kiện khác
 
-![Validator](https://cdn.tobebetterjavaer.com/tobebetterjavaer/images/common-tool/hutool-05.png)
+![](https://raw.githubusercontent.com/vanhung4499/images/master/snap/20240704191837.png)
 
 ```java
 Validator.isEmail("Tom");
