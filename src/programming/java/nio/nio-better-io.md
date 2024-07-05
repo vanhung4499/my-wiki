@@ -6,7 +6,7 @@ categories:
   - java
 order: 1
 ---
-# 12.1 NIO mạnh hơn IO ở điểm nào?
+# NIO mạnh hơn IO ở điểm nào?
 
 
 [IO truyền thống](/programming/java/io/classification) dựa trên byte stream hoặc character stream (như FileInputStream, BufferedReader, v.v.) để thực hiện đọc và ghi file, và sử dụng Socket và ServerSocket để truyền tải mạng.
