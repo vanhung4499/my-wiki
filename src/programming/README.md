@@ -5,6 +5,4 @@ tags: ['programming']
 categories: ['programming']
 ---
 
-# Programming Languages
-
-This section contains articles about programming languages.
+<Catalog level=1 />

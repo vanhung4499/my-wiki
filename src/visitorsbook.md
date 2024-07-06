@@ -4,18 +4,18 @@ sidebar: false
 article: false
 ---
 
-# 留言板 ✨
+# News Feed ✨
 ![](https://tuapi.eees.cc/api.php?category=meinv&px=pc&type=302)
 
-:::: tip 博主留言✨📒
-欢迎来到留言板，这里是一个和时间无关的地方，一个让你的思绪在文字间蔓延的角落。
+:::: tip Lời nhắn✨📒
+Chào mừng bạn đến với bảng tin nhắn. Đây là một nơi không liên quan đến thời gian, một góc để tâm trí bạn lan tỏa trong những dòng chữ.
 
-在这个喧嚣的世界里，人们总是忙于追逐着生活的节奏，忙碌地奔走于繁琐的工作和琐事之间，但也总有那么一刻，我们需要停下来，静下心来，聆听内心的声音。
+Trong thế giới ồn ào này, mọi người luôn bận rộn theo đuổi nhịp điệu của cuộc sống, bận rộn với công việc và những việc vặt, nhưng luôn có những khoảnh khắc chúng ta cần dừng lại, tĩnh lặng lắng nghe tiếng nói bên trong.
 
-博客是我用来记录生活、思考和感悟的地方，每一篇文章都是我用心写下的文字，希望能够传递给更多的人，与大家一起分享我的所思所想。
-或许，你此时正在迷茫，或者你已找到了你想要的答案，又或者你只是想要寻找一个宁静的地方，希望我们可以相互启迪，相互学习，共同成长。
+Đây là nơi tôi ghi lại kiến thức, suy nghĩ và con đường phát triển của mình. Mỗi bài viết đều là do tôi tổng hợp và viết theo suy nghĩ cá nhân với tâm huyết, hy vọng có thể truyền tải đến nhiều người hơn, cùng nhau chia sẻ những kiến thức về ngành lập trình.
 
-🏷 如果你有什么想法、问题或者建议，都可以在这里留言，我会认真阅读每一条留言，尽可能地回复你们的问题和疑虑。同时，我也希望我们能够相互尊重、理解和包容，共同营造一个良好的交流环境。🌤
+Có lẽ, bạn đang cảm thấy mơ hồ, hoặc bạn đã tìm được câu trả lời mình muốn, hay có thể bạn chỉ muốn tìm một nơi học tập. Hy vọng chúng ta có thể giúp đỡ lẫn nhau, học hỏi lẫn nhau và cùng nhau phát triển.
+
+🏷 Nếu bạn có ý kiến, câu hỏi hoặc đề xuất gì, bạn có thể để lại lời nhắn ở đây. Tôi sẽ đọc kỹ từng lời nhắn và cố gắng trả lời những câu hỏi và thắc mắc của các bạn. Đồng thời, tôi cũng hy vọng chúng ta có thể tôn trọng, hiểu và bao dung lẫn nhau, cùng nhau tạo ra một môi trường giao lưu tốt đẹp.🌤
 
 ::::
-

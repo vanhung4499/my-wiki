@@ -20,9 +20,9 @@ projects:
     link: /about
 
   - icon: /assets/link.svg
-    name: Friend
-    desc: (●´∀｀●)ﾉ
-    link: /friend
+    name: Links
+    desc: Useful links
+    link: /link
 
   - icon: /assets/lyb.svg
     name: Visitors
