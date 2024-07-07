@@ -91,7 +91,8 @@ export default MyTheme({
   // Encrypt the content of the page
   encrypt: {
     config: {
-      "/demo/encrypt.html": ["1234"],
+      "/project/yudao-cloud/": ["4499"],
+      "/project/rouyi-vue-pro/": ["4499"],
     },
   },
   plugins: {

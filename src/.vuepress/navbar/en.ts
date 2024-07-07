@@ -161,6 +161,18 @@ export const enNavbar = navbar([
     text: "Project",
     icon: "ant-design:project-outlined",
     link: "/project/",
+    children: [
+      {
+        text: "Rouyi Vue Pro",
+        icon: "devicon:spring",
+        link: "/project/rouyi-vue-pro/",
+      },
+      {
+        text: "Yudao Cloud",
+        icon: "devicon:spring",
+        link: "/project/yudao-cloud/",
+      },
+    ],
   },
   {
     text: "Interview",

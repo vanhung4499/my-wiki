@@ -39,7 +39,9 @@ export const enSidebar = sidebar({
   "/design/system-design/": "structure",
 
   // Project
-  "/project/": "structure",
+  // "/project/": "structure",
+  "/project/rouyi-vue-pro/": "structure",
+  "/project/yudao-cloud/": "structure",
 
   // Interview
   "/interview/": "structure",
