@@ -151,6 +151,7 @@ export default MyTheme({
       echarts: true,
       figure: true,
       flowchart: true,
+      plantuml: true,
       gfm: true,
       tasklist: true,
       imgLazyload: true,

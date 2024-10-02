@@ -1,6 +1,7 @@
 ---
 title: Adapter Pattern
-tags: [design-pattern, Adapter]
+tags:
+  - design-pattern
 categories:
   - design-pattern
 date created: 2023-10-06
