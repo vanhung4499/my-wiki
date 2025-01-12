@@ -107,7 +107,7 @@ while (iterator.hasNext()) {
 
 Trong ví dụ trên, chúng ta đã tạo một đối tượng ArrayDeque, sau đó sử dụng phương thức offer để thêm ba phần tử vào hàng đợi. Tiếp theo, sử dụng phương thức peek để lấy phần tử đầu hàng đợi, sử dụng phương thức poll để xoá phần tử đầu hàng đợi, sử dụng poll và offer để sửa đổi các phần tử trong hàng đợi và sử dụng vòng lặp để tìm kiếm vị trí của phần tử trong hàng đợi.
 
-[Chúng ta đã nói](overview), LinkedList không chỉ là List, mà còn là Queue, và cũng triển khai interface Deque.
+[Chúng ta đã nói](programming/java/collection/overview.md), LinkedList không chỉ là List, mà còn là Queue, và cũng triển khai interface Deque.
 
 ```java
 public class LinkedList<E>
