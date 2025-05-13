@@ -8,7 +8,7 @@ order: 12
 ---
 # Từ khóa synchronized
 
-Trong Java, từ khóa `synchronized` đảm bảo rằng tại cùng một thời điểm, chỉ có một luồng (thread) có thể thực thi một phương thức hoặc đoạn mã nhất định (chủ yếu là các thao tác liên quan đến dữ liệu chia sẻ trong phương thức hoặc đoạn mã đó). Chúng ta cũng cần lưu ý rằng `synchronized` còn có một vai trò quan trọng khác: nó đảm bảo sự thay đổi của một luồng (chủ yếu là sự thay đổi của dữ liệu chia sẻ) có thể được các luồng khác nhìn thấy (đảm bảo tính khả biến, hoàn toàn có thể thay thế tính năng của từ khóa [volatile](./volatile)).
+Trong Java, từ khóa `synchronized` đảm bảo rằng tại cùng một thời điểm, chỉ có một luồng (thread) có thể thực thi một phương thức hoặc đoạn mã nhất định (chủ yếu là các thao tác liên quan đến dữ liệu chia sẻ trong phương thức hoặc đoạn mã đó). Chúng ta cũng cần lưu ý rằng `synchronized` còn có một vai trò quan trọng khác: nó đảm bảo sự thay đổi của một luồng (chủ yếu là sự thay đổi của dữ liệu chia sẻ) có thể được các luồng khác nhìn thấy (đảm bảo tính khả biến, hoàn toàn có thể thay thế tính năng của từ khóa [volatile](volatile.md)).
 
 Từ khóa `synchronized` chủ yếu có 3 cách sử dụng sau:
 
@@ -226,7 +226,7 @@ synchronized(AccountingSync.class) {
 
 ## synchronized và quy tắc happens-before
 
-Chúng ta đã đề cập đến việc sắp xếp lại lệnh khi nói về [JMM](./jmm), và bây giờ sẽ kết hợp từ khóa `synchronized` để giải thích thêm.
+Chúng ta đã đề cập đến việc sắp xếp lại lệnh khi nói về [JMM](jmm.md), và bây giờ sẽ kết hợp từ khóa `synchronized` để giải thích thêm.
 
 Xem đoạn mã dưới đây:
 

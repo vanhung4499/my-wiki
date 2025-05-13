@@ -294,7 +294,7 @@ BufferedWriter bw = new BufferedWriter(new FileWriter("b.txt"));
 
 #### 2. Phương thức đặc thù của buffered character stream
 
-Các phương thức cơ bản của buffered character stream và cách gọi tương tự như [character stream](character), ở đây không nhắc lại. Chúng ta sẽ xem xét các phương thức **đặc thù** của buffered character stream.
+Các phương thức cơ bản của buffered character stream và cách gọi tương tự như [character stream](character.md), ở đây không nhắc lại. Chúng ta sẽ xem xét các phương thức **đặc thù** của buffered character stream.
 
 - BufferedReader：`String readLine()`: **Đọc một dòng dữ liệu**, đọc đến cuối cùng sẽ trả về null.
 - BufferedWriter：`newLine()`: **Xuống dòng**, hệ thống xác định ký tự xuống dòng.

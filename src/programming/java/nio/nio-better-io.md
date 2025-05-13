@@ -9,7 +9,7 @@ order: 1
 # NIO mạnh hơn IO ở điểm nào?
 
 
-[IO truyền thống](/programming/java/io/classification) dựa trên byte stream hoặc character stream (như FileInputStream, BufferedReader, v.v.) để thực hiện đọc và ghi file, và sử dụng Socket và ServerSocket để truyền tải mạng.
+[IO truyền thống](classification.md) dựa trên byte stream hoặc character stream (như FileInputStream, BufferedReader, v.v.) để thực hiện đọc và ghi file, và sử dụng Socket và ServerSocket để truyền tải mạng.
 
 NIO sử dụng [kênh (Channel) và bộ đệm (Buffer)](/programming/java/nio/buffer-channel) để thực hiện các thao tác file, và sử dụng SocketChannel và ServerSocketChannel để truyền tải mạng.
 
@@ -23,7 +23,7 @@ Trong JDK 1.4, gói `java.nio.*` giới thiệu thư viện Java I/O mới nhằ
 
 - NIO có thể dịch là no-blocking io hoặc new io đều được, cả hai đều có thể hiểu được~
 
-Khi đọc sách "Java Programming Thought", câu "chúng ta có thể hưởng lợi từ nó mà không cần lập trình NIO một cách rõ ràng" đã thu hút sự chú ý của tôi, vì vậy: chúng ta **thử nghiệm** hiệu suất sao chép tệp sử dụng NIO và [IO truyền thống](/programming/java/io/file):
+Khi đọc sách "Java Programming Thought", câu "chúng ta có thể hưởng lợi từ nó mà không cần lập trình NIO một cách rõ ràng" đã thu hút sự chú ý của tôi, vì vậy: chúng ta **thử nghiệm** hiệu suất sao chép tệp sử dụng NIO và [IO truyền thống](file.md):
 
 ```java
 public class SimpleFileTransferTest {
@@ -96,7 +96,7 @@ public class SimpleFileTransferTest {
 }
 ```
 
-Trước khi giải thích đoạn mã này, chúng ta đã từng nói về [RandomAccessFile](/programming/java/io/file). FileChannel là một lớp trong thư viện Java NIO (New I/O), cung cấp các thao tác I/O hiệu quả đối với tệp tin, hỗ trợ truy cập ngẫu nhiên vào tệp tin và cho phép đọc ghi dữ liệu ở bất kỳ vị trí nào trong tệp tin.
+Trước khi giải thích đoạn mã này, chúng ta đã từng nói về [RandomAccessFile](file.md). FileChannel là một lớp trong thư viện Java NIO (New I/O), cung cấp các thao tác I/O hiệu quả đối với tệp tin, hỗ trợ truy cập ngẫu nhiên vào tệp tin và cho phép đọc ghi dữ liệu ở bất kỳ vị trí nào trong tệp tin.
 
 Khác với RandomAccessFile, FileChannel sử dụng [ByteBuffer (bộ đệm)](/programming/java/nio/buffer-channel) để truyền dữ liệu.
 

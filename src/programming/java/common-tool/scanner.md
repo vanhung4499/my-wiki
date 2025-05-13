@@ -8,7 +8,7 @@ order: 1
 ---
 # Scanner
 
-Lớp Scanner của Java là một công cụ tiện ích để quét đầu vào từ bàn phím, mặc dù nó cũng có thể quét nội dung của tệp, nhưng chúng ta thường thích nó trong vai trò quét đầu vào từ bàn phím hơn, vì quét tệp có thể được thực hiện thông qua [File Stream](/programming/java/io/file).
+Lớp Scanner của Java là một công cụ tiện ích để quét đầu vào từ bàn phím, mặc dù nó cũng có thể quét nội dung của tệp, nhưng chúng ta thường thích nó trong vai trò quét đầu vào từ bàn phím hơn, vì quét tệp có thể được thực hiện thông qua [File Stream](file.md).
 
 Tiếp theo, chúng ta sẽ thảo luận về lớp Scanner thông qua một vài ví dụ đơn giản.
 

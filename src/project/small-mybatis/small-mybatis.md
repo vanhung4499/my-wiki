@@ -1,2 +1,0 @@
-# Small Mybatis Project
-

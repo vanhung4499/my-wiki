@@ -122,7 +122,7 @@ String chineseZodiac = DateUtil.getChineseZodiac(1999);
 
 ### 04. IO liên quan
 
-[IO bao gồm đọc và ghi](/programming/java/io/shangtou.html), ứng dụng chính trong các hoạt động mạng và thao tác file. Thư viện Java nguyên gốc phân biệt giữa [character stream](/programming/java/io/character) và [byte stream](/programming/java/io/stream.html), có rất nhiều loại InputStream và OutputStream, việc sử dụng có thể làm người ta đau đầu.
+[IO bao gồm đọc và ghi](/programming/java/io/shangtou.html), ứng dụng chính trong các hoạt động mạng và thao tác file. Thư viện Java nguyên gốc phân biệt giữa [character stream](character.md) và [byte stream](/programming/java/io/stream.html), có rất nhiều loại InputStream và OutputStream, việc sử dụng có thể làm người ta đau đầu.
 
 Hutool đóng gói các công cụ thao tác luồng như IoUtil, công cụ đọc và ghi file FileUtil, công cụ xác định loại file FileTypeUtil, v.v.
 

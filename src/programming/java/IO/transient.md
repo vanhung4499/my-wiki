@@ -14,7 +14,7 @@ Dưới đây là tổng kết của anh ấy sau khi phỏng vấn không thàn
 
 ### 01. Tác dụng và cách sử dụng của từ khóa transient
 
-Chúng ta biết rằng, một đối tượng chỉ cần triển khai interface [Serializable](Serializbale), thì nó có thể được [serialize](serialize).
+Chúng ta biết rằng, một đối tượng chỉ cần triển khai interface [Serializable](Serializbale), thì nó có thể được [serialize](serialize.md).
 
 Trong quá trình phát triển thực tế, chúng ta thường gặp phải vấn đề như vậy: một số trường của lớp cần serialize, trong khi một số trường khác không cần, ví dụ như một số thông tin nhạy cảm của người dùng (như mật khẩu, số thẻ ngân hàng, v.v.). Vì lý do an toàn, không muốn truyền hoặc lưu trữ trên tệp đĩa trong các hoạt động mạng, những trường này có thể được thêm từ khóa `transient`.
 

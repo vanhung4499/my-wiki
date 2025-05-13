@@ -10,7 +10,7 @@ order: 10
 
 Trong sự nghiệp của tôi, tần suất sử dụng `System.out.println()` có lẽ không kém gì tần suất sử dụng phương thức main. `System.out` trả về một `PrintStream`.
 
-Ngoài ra, còn có một anh em sinh đôi khác là PrintWriter. PrintStream là một lớp con của OutputStream, còn PrintWriter là một lớp con của Writer, tức là một [byte stream](programming/java/io/stream.md) và một [character stream](character).
+Ngoài ra, còn có một anh em sinh đôi khác là PrintWriter. PrintStream là một lớp con của OutputStream, còn PrintWriter là một lớp con của Writer, tức là một [byte stream](programming/java/io/stream.md) và một [character stream](character.md).
 
 print stream có các đặc điểm sau:
 

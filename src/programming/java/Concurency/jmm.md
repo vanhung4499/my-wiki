@@ -78,7 +78,7 @@ Vì vậy, luồng B không trực tiếp đọc giá trị của biến dùng c
 
 Vậy làm sao để biết biến dùng chung đã được các luồng khác cập nhật? Đây chính là vai trò của JMM. **JMM đảm bảo tính khả kiến của bộ nhớ bằng cách điều khiển tương tác giữa bộ nhớ chính và bộ nhớ cục bộ của mỗi luồng**.
 
-Trong Java, từ khóa [**volatile**](./volatile) có thể đảm bảo tính khả kiến của biến dùng chung khi được truy cập bởi nhiều luồng, và cũng ngăn chặn việc sắp xếp lại lệnh. Từ khóa [**synchronized**](./synchronized-1) không chỉ đảm bảo tính khả kiến mà còn đảm bảo tính nguyên tử (tính đồng bộ).
+Trong Java, từ khóa [**volatile**](volatile.md) có thể đảm bảo tính khả kiến của biến dùng chung khi được truy cập bởi nhiều luồng, và cũng ngăn chặn việc sắp xếp lại lệnh. Từ khóa [**synchronized**](synchronized-1.md) không chỉ đảm bảo tính khả kiến mà còn đảm bảo tính nguyên tử (tính đồng bộ).
 
 Ở cấp độ thấp hơn, JMM sử dụng **rào chắn bộ nhớ** để thực hiện tính khả kiến của bộ nhớ và ngăn chặn việc sắp xếp lại lệnh. Để giúp lập trình viên dễ hiểu hơn, JMM đưa ra khái niệm **happens-before**, một khái niệm đơn giản dễ hiểu hơn, giúp tránh việc lập trình viên phải học những quy tắc sắp xếp lại phức tạp và cách thực hiện chúng.
 

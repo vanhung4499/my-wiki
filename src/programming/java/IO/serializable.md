@@ -8,7 +8,7 @@ order: 8
 ---
 # Serializable Interface
 
-Đối với việc serialize trong Java, trước đây tôi luôn có hiểu biết rất cơ bản - chỉ cần triển khai interface `Serializable` cho lớp cần được [serialize](serialize) là xong.
+Đối với việc serialize trong Java, trước đây tôi luôn có hiểu biết rất cơ bản - chỉ cần triển khai interface `Serializable` cho lớp cần được [serialize](serialize.md) là xong.
 
 Tôi dường như không muốn nghiên cứu sâu hơn vì chỉ cần biết cách sử dụng là đủ rồi mà.
 
@@ -225,7 +225,7 @@ private void defaultReadFields(Object obj, ObjectStreamClass desc) throws IOExce
 
 ### 03. Một số điểm cần lưu ý
 
-Nói thẳng vào vấn đề, các trường được sửa đổi bởi [`static`](/programming/java/oo/static) và [`transient`](transient) sẽ không được serialize.
+Nói thẳng vào vấn đề, các trường được sửa đổi bởi [`static`](/programming/java/oo/static) và [`transient`](transient.md) sẽ không được serialize.
 
 Tại sao lại như vậy? Chúng ta hãy chứng minh trước rồi giải thích sau.
 

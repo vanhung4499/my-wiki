@@ -10,12 +10,12 @@ order: 11
 
 Khi nói về những vấn đề mà lập trình đồng thời mang lại, chúng ta đã đề cập đến tính khả kiến và tính nguyên tử. Bây giờ tôi có thể nói rõ hơn: **volatile** đảm bảo tính khả kiến nhưng không đảm bảo tính nguyên tử.
 
-- Khi ghi vào một biến volatile, [JMM](./jmm) sẽ ép buộc biến đó trong bộ nhớ cục bộ của luồng hiện tại được đẩy vào bộ nhớ chính.
+- Khi ghi vào một biến volatile, [JMM](jmm.md) sẽ ép buộc biến đó trong bộ nhớ cục bộ của luồng hiện tại được đẩy vào bộ nhớ chính.
 - Việc ghi này sẽ làm cho bộ đệm của các biến volatile trong các luồng khác trở nên vô hiệu.
 
 ## volatile ngăn cản việc sắp xếp lại lệnh
 
-Khi nói về [JMM](./jmm), chúng ta đã nhắc đến việc sắp xếp lại lệnh, và tôi tin rằng mọi người vẫn nhớ quy tắc cần tuân thủ khi sắp xếp lại lệnh:
+Khi nói về [JMM](jmm.md), chúng ta đã nhắc đến việc sắp xếp lại lệnh, và tôi tin rằng mọi người vẫn nhớ quy tắc cần tuân thủ khi sắp xếp lại lệnh:
 
 - Không thể sắp xếp lại các thao tác có phụ thuộc dữ liệu. Ví dụ: `a=1; b=a;` thì thao tác thứ hai phụ thuộc vào thao tác thứ nhất, do đó chúng không thể bị sắp xếp lại khi biên dịch hoặc trong khi thực thi trên CPU.
 - Sắp xếp lại nhằm tối ưu hóa hiệu suất, nhưng bất kể cách sắp xếp lại thế nào, kết quả thực thi trong môi trường đơn luồng không được thay đổi. Ví dụ: `a=1; b=2; c=a+b;` vì không có phụ thuộc dữ liệu giữa thao tác `a=1` và `b=2`, nên có thể sắp xếp lại, nhưng thao tác `c=a+b` sẽ không bị sắp xếp lại vì cần đảm bảo kết quả cuối cùng là `c=a+b=3`.
@@ -53,7 +53,7 @@ class ReorderExample {
 }
 ```
 
-Do ảnh hưởng của sắp xếp lại lệnh, kết quả đầu ra cuối cùng có thể là 0. Sắp xếp lại lệnh được giải thích trong [bài viết về JMM](./jmm). Nếu sử dụng **volatile**, hãy xem lại mã sau:
+Do ảnh hưởng của sắp xếp lại lệnh, kết quả đầu ra cuối cùng có thể là 0. Sắp xếp lại lệnh được giải thích trong [bài viết về JMM](jmm.md). Nếu sử dụng **volatile**, hãy xem lại mã sau:
 
 ```java
 class ReorderExample {
@@ -72,7 +72,7 @@ class ReorderExample {
 }
 ```
 
-Lúc này, **volatile** sẽ ngăn cản việc sắp xếp lại lệnh, dựa trên mối quan hệ **happens-before** (được giải thích trong [bài trước](./jmm)):
+Lúc này, **volatile** sẽ ngăn cản việc sắp xếp lại lệnh, dựa trên mối quan hệ **happens-before** (được giải thích trong [bài trước](jmm.md)):
 
 1. Theo quy tắc thứ tự chương trình, thao tác 1 xảy ra trước thao tác 2; thao tác 3 xảy ra trước thao tác 4.
 2. Theo quy tắc volatile, thao tác 2 xảy ra trước thao tác 3.
@@ -129,7 +129,7 @@ Kết quả inc: 8182
 
 Vậy giải pháp là gì?
 
-01. Sử dụng từ khóa [synchronized](./synchronized-1) (phần sau sẽ được giải thích chi tiết) để đồng bộ hóa việc tăng giá trị `inc++`:
+01. Sử dụng từ khóa [synchronized](synchronized-1.md) (phần sau sẽ được giải thích chi tiết) để đồng bộ hóa việc tăng giá trị `inc++`:
 
 ```java
 public class volatileTest1 {
